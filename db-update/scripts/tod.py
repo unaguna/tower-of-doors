@@ -6,7 +6,24 @@ import service
 import service.doorlog
 
 
-def command_open_door(args: argparse.Namespace):
+class DoorControlArgs:
+    _args: argparse.Namespace
+
+    def __init__(self, args: argparse.Namespace) -> None:
+        self._args = args
+
+    @property
+    def door_id(self) -> str:
+        return self._args.door_id
+
+    @property
+    def control_all_doors_flg(self) -> bool:
+        return self.door_id.lower() == "all"
+
+
+def command_open_door(_args: argparse.Namespace):
+    args = DoorControlArgs(_args)
+
     connection = service.connect()
 
     # TODO: validation
@@ -16,7 +33,9 @@ def command_open_door(args: argparse.Namespace):
     connection.close()
 
 
-def command_close_door(args: argparse.Namespace):
+def command_close_door(_args: argparse.Namespace):
+    args = DoorControlArgs(_args)
+
     connection = service.connect()
 
     # TODO: validation
