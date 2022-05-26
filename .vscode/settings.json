@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "datasource",
+        "datasources",
+        "doorlog",
+        "grafana"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": null,
+        "editor.formatOnSave": true
+    },
+    "python.formatting.provider": "black"
+}
