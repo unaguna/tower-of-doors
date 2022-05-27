@@ -100,7 +100,6 @@ CREATE TABLE `azimuth_log` (
 
 DROP TABLE IF EXISTS `door_log`;
 CREATE TABLE `door_log` (
-  `id` int NOT NULL AUTO_INCREMENT,
   `door_id` char(8) NOT NULL,
   # Door status
   # 0: close
@@ -111,7 +110,8 @@ CREATE TABLE `door_log` (
   # 'GAME_PHASE': Due to the end of the answer time
   # 'MANUAL'
   `reason` char(10) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`door_id`, `timestamp`),
+  FOREIGN KEY fk_door_log(`door_id`) REFERENCES `door`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
