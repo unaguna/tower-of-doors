@@ -31,7 +31,9 @@ CREATE TABLE `door` (
   `azimuth_id` int,
   # Vertical travel distance (by floor number)
   # 0: if this door is not on the floor
-  `down_level` int NOT NULL,
+  # <0: down
+  # >0: up
+  `vertical_move` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,7 +42,7 @@ CREATE TABLE `door` (
 --
 
 set autocommit=0;
-INSERT INTO `door` (`id`, `floor`, `link_code`, `azimuth_id`, `down_level`) VALUES
+INSERT INTO `door` (`id`, `floor`, `link_code`, `azimuth_id`, `vertical_move`) VALUES
   ('F5-I-000', 5, -1, 0, 0),
   ('F5-I-060', 5, -1, 1, 0),
   ('F5-I-120', 5, -1, 2, 0),
@@ -54,8 +56,20 @@ INSERT INTO `door` (`id`, `floor`, `link_code`, `azimuth_id`, `down_level`) VALU
   ('F5-O-240', 5, 1, 4, 0),
   ('F5-O-300', 5, 1, 5, 0),
 
-  ('F5F4-001', 5, 0, NULL, 1),
-  ('F5F3-001', 5, 0, NULL, 2)
+  ('F5F4-001', 5, 0, NULL, -1),
+  ('F5F3-001', 5, 0, NULL, -2),
+  ('F4F5-001', 4, 0, NULL, 1),
+  ('F4F3-001', 4, 0, NULL, -1),
+  ('F4F2-001', 4, 0, NULL, -2),
+  ('F3F5-001', 3, 0, NULL, 2),
+  ('F3F4-001', 3, 0, NULL, 1),
+  ('F3F2-001', 3, 0, NULL, -1),
+  ('F3F1-001', 3, 0, NULL, -2),
+  ('F2F4-001', 2, 0, NULL, 2),
+  ('F2F3-001', 2, 0, NULL, 1),
+  ('F2F1-001', 2, 0, NULL, -1),
+  ('F1F3-001', 1, 0, NULL, 2),
+  ('F1F2-001', 1, 0, NULL, 1)
 ;
 commit;
 
