@@ -31,13 +31,8 @@ CREATE TABLE `door` (
   `azimuth_id` int,
   # Vertical travel distance (by floor number)
   # 0: if this door is not on the floor
-  # <0: down
-  # >0: up
   `vertical_move` int NOT NULL,
-  # Exit of a passageway corresponding to this door
-  `exit_door_id` char(8) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY fk_exit_door(`exit_door_id`) REFERENCES `door`(`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -58,29 +53,45 @@ INSERT INTO `door` (`id`, `floor`, `link_code`, `azimuth_id`, `vertical_move`) V
   ('F5-O-180', 5, 1, 3, 0),
   ('F5-O-240', 5, 1, 4, 0),
   ('F5-O-300', 5, 1, 5, 0),
+  ('F4-O-000', 4, 1, 0, 0),
+  ('F4-O-060', 4, 1, 1, 0),
+  ('F4-O-120', 4, 1, 2, 0),
+  ('F4-O-180', 4, 1, 3, 0),
+  ('F4-O-240', 4, 1, 4, 0),
+  ('F4-O-300', 4, 1, 5, 0),
+  ('F3-O-000', 3, 1, 0, 0),
+  ('F3-O-060', 3, 1, 1, 0),
+  ('F3-O-120', 3, 1, 2, 0),
+  ('F3-O-180', 3, 1, 3, 0),
+  ('F3-O-240', 3, 1, 4, 0),
+  ('F3-O-300', 3, 1, 5, 0),
+  ('F2-O-000', 2, 1, 0, 0),
+  ('F2-O-060', 2, 1, 1, 0),
+  ('F2-O-120', 2, 1, 2, 0),
+  ('F2-O-180', 2, 1, 3, 0),
+  ('F2-O-240', 2, 1, 4, 0),
+  ('F2-O-300', 2, 1, 5, 0),
+  ('F1-I-000', 1, -1, 0, 0),
+  ('F1-I-060', 1, -1, 1, 0),
+  ('F1-I-120', 1, -1, 2, 0),
+  ('F1-I-180', 1, -1, 3, 0),
+  ('F1-I-240', 1, -1, 4, 0),
+  ('F1-I-300', 1, -1, 5, 0),
+  ('F1-O-000', 1, 1, 0, 0),
+  ('F1-O-060', 1, 1, 1, 0),
+  ('F1-O-120', 1, 1, 2, 0),
+  ('F1-O-180', 1, 1, 3, 0),
+  ('F1-O-240', 1, 1, 4, 0),
+  ('F1-O-300', 1, 1, 5, 0),
 
-  ('F5F4-001', 5, 0, NULL, -1),
-  ('F5F3-001', 5, 0, NULL, -2),
-  ('F4F5-001', 4, 0, NULL, 1),
-  ('F4F3-001', 4, 0, NULL, -1),
-  ('F4F2-001', 4, 0, NULL, -2),
-  ('F3F5-001', 3, 0, NULL, 2),
-  ('F3F4-001', 3, 0, NULL, 1),
-  ('F3F2-001', 3, 0, NULL, -1),
-  ('F3F1-001', 3, 0, NULL, -2),
-  ('F2F4-001', 2, 0, NULL, 2),
-  ('F2F3-001', 2, 0, NULL, 1),
-  ('F2F1-001', 2, 0, NULL, -1),
-  ('F1F3-001', 1, 0, NULL, 2),
-  ('F1F2-001', 1, 0, NULL, 1)
+  ('F5F4-001', 5, 0, NULL, 1),
+  ('F5F3-001', 5, 0, NULL, 2),
+  ('F4F3-001', 4, 0, NULL, 1),
+  ('F4F2-001', 4, 0, NULL, 2),
+  ('F3F2-001', 3, 0, NULL, 1),
+  ('F3F1-001', 3, 0, NULL, 2),
+  ('F2F1-001', 2, 0, NULL, 1)
 ;
-# add values of `exit_door_id`
-UPDATE `door` TR
-  LEFT JOIN `door` T
-  ON TR.`vertical_move` + T.`vertical_move` = 0 and TR.`floor` + TR.`vertical_move` = T.`floor`
-  SET TR.`exit_door_id` = T.`id`
-  WHERE TR.`link_code` = 0;
-commit;
 
 --
 -- Table structure for table `azimuth_log`
