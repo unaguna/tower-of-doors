@@ -31,7 +31,7 @@ def insert_open(door: str, *, timestamp: datetime | None = None, connection):
         timestamp = datetime.now()
 
     door_log = DoorLogRecord(
-        door_id=door, status=DoorStatus.OPEN, timestamp=timestamp, reason="MANUAL"
+        door_id=door, status=DoorStatus.OPEN, timestamp=timestamp, reason="REMOTE"
     )
 
     insert(door_log, connection=connection)
@@ -42,7 +42,7 @@ def insert_close(door: str, *, timestamp: datetime | None = None, connection):
         timestamp = datetime.now()
 
     door_log = DoorLogRecord(
-        door_id=door, status=DoorStatus.CLOSED, timestamp=timestamp, reason="MANUAL"
+        door_id=door, status=DoorStatus.CLOSED, timestamp=timestamp, reason="REMOTE"
     )
 
     insert(door_log, connection=connection)

@@ -105,6 +105,36 @@ CREATE TABLE `azimuth_log` (
   PRIMARY KEY (`timestamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+--
+-- Table structure for table `door_log_reason`
+--
+
+DROP TABLE IF EXISTS `door_log_reason`;
+CREATE TABLE `door_log_reason` (
+  # reason of status
+  # 'GAME_PHASE': Close due to the end of the answer time
+  # 'ANSWER': Open by correct answer
+  # 'REMOTE': Open or close by remote control
+  # 'MASTER_KEY': Open or close by the card key
+  `reason` char(10) NOT NULL,
+  PRIMARY KEY (`reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Data for table `door_log_reason`
+--
+
+set autocommit=0;
+INSERT INTO `door_log_reason` (`reason`) VALUES
+  ('GAME_PHASE'),
+  ('ANSWER'),
+  ('REMOTE'),
+  ('MASTER_KEY')
+;
+
+
 --
 -- Table structure for table `door_log`
 --
@@ -118,11 +148,10 @@ CREATE TABLE `door_log` (
   `status` tinyint unsigned NOT NULL,
   `timestamp` datetime NOT NULL,
   # reason of status
-  # 'GAME_PHASE': Due to the end of the answer time
-  # 'MANUAL'
   `reason` char(10) NOT NULL,
   PRIMARY KEY (`door_id`, `timestamp`),
-  FOREIGN KEY fk_door_log(`door_id`) REFERENCES `door`(`id`)
+  FOREIGN KEY fk_door_log(`door_id`) REFERENCES `door`(`id`),
+  FOREIGN KEY fk_door_log_reason(`reason`) REFERENCES `door_log_reason`(`reason`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
