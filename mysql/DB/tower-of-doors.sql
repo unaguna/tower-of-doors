@@ -34,7 +34,10 @@ CREATE TABLE `door` (
   # <0: down
   # >0: up
   `vertical_move` int NOT NULL,
-  PRIMARY KEY (`id`)
+  # Exit of a passageway corresponding to this door
+  `exit_door_id` char(8) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY fk_exit_door(`exit_door_id`) REFERENCES `door`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -71,6 +74,12 @@ INSERT INTO `door` (`id`, `floor`, `link_code`, `azimuth_id`, `vertical_move`) V
   ('F1F3-001', 1, 0, NULL, 2),
   ('F1F2-001', 1, 0, NULL, 1)
 ;
+# add values of `exit_door_id`
+UPDATE `door` TR
+  LEFT JOIN `door` T
+  ON TR.`vertical_move` + T.`vertical_move` = 0 and TR.`floor` + TR.`vertical_move` = T.`floor`
+  SET TR.`exit_door_id` = T.`id`
+  WHERE TR.`link_code` = 0;
 commit;
 
 --
