@@ -114,5 +114,25 @@ CREATE TABLE `door_log` (
   FOREIGN KEY fk_door_log(`door_id`) REFERENCES `door`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- View `door_status`
+--
+
+CREATE VIEW door_status
+AS SELECT
+  door.id,
+  door_log.status,
+  door_log.`timestamp`
+FROM door
+LEFT JOIN door_log ON door_log.door_id = door.id
+INNER JOIN (
+  SELECT
+    door.id,
+    max(door_log.`timestamp`) as `time`
+  FROM door
+  LEFT JOIN door_log ON door_log.door_id = door.id
+  GROUP BY door.id
+) AS `sub` ON door.id = `sub`.id and (door_log.`timestamp` = `sub`.`time` or door_log.`timestamp` is null)
+;
 
 SET autocommit=@old_autocommit;
