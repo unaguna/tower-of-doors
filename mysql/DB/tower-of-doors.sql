@@ -172,11 +172,11 @@ INSERT INTO `game_status` (`status`, `timestamp`, `player_num`, `turn_player`) V
 
 
 --
--- Table structure for table `door_log_reason`
+-- Table structure for table `enum_door_log_reason`
 --
 
-DROP TABLE IF EXISTS `door_log_reason`;
-CREATE TABLE `door_log_reason` (
+DROP TABLE IF EXISTS `enum_door_log_reason`;
+CREATE TABLE `enum_door_log_reason` (
   # reason of status
   # 'GAME_PHASE': Close due to the end of the answer time
   # 'ANSWER': Open by correct answer
@@ -188,11 +188,11 @@ CREATE TABLE `door_log_reason` (
 
 
 --
--- Data for table `door_log_reason`
+-- Data for table `enum_door_log_reason`
 --
 
 set autocommit=0;
-INSERT INTO `door_log_reason` (`reason`) VALUES
+INSERT INTO `enum_door_log_reason` (`reason`) VALUES
   ('GAME_PHASE'),
   ('ANSWER'),
   ('REMOTE'),
@@ -216,7 +216,7 @@ CREATE TABLE `door_log` (
   `reason` char(10) NOT NULL,
   PRIMARY KEY (`door_id`, `timestamp`),
   FOREIGN KEY fk_door_log(`door_id`) REFERENCES `door`(`id`),
-  FOREIGN KEY fk_door_log_reason(`reason`) REFERENCES `door_log_reason`(`reason`)
+  FOREIGN KEY fk_door_log_reason(`reason`) REFERENCES `enum_door_log_reason`(`reason`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
