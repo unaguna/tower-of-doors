@@ -172,6 +172,7 @@ CREATE VIEW door_status
 AS SELECT
   door.id,
   door_log.status,
+  door_log.reason,
   door_log.`timestamp`
 FROM door
 LEFT JOIN door_log ON door_log.door_id = door.id
