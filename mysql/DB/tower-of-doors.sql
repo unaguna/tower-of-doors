@@ -107,6 +107,16 @@ CREATE TABLE `azimuth_log` (
 
 
 --
+-- Data for table `azimuth_log`
+--
+
+set autocommit=0;
+INSERT INTO `azimuth_log` (`azimuth`, `timestamp`, `yawing`) VALUES
+  (0.0, now(), false)
+;
+
+
+--
 -- Table structure for table `door_log_reason`
 --
 
