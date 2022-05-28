@@ -3,6 +3,7 @@
         "datasource",
         "datasources",
         "doorlog",
+        "gamestatus",
         "grafana"
     ],
     "[python]": {

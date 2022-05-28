@@ -23,3 +23,23 @@ class DoorLogRecord(
     status: DoorStatus
     timestamp: datetime
     reason: str
+
+
+GAME_STATUS_FIELDS = (
+    "status",
+    "player_num",
+    "turn_player",
+    "timestamp",
+)
+
+
+class GameStatusRecord(
+    namedtuple(
+        "GameStatusRecord",
+        GAME_STATUS_FIELDS,
+    )
+):
+    status: str
+    player_num: int | None
+    turn_player: int | None
+    timestamp: datetime
