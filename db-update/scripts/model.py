@@ -43,3 +43,15 @@ class GameStatusRecord(
     player_num: int | None
     turn_player: int | None
     timestamp: datetime
+
+    @property
+    def on_game(self) -> bool:
+        return self.status == "ON_GAME"
+
+    @property
+    def on_someones_turn(self) -> bool:
+        return self.on_game and self.turn_player > 0
+
+    @property
+    def on_interval_turn(self) -> bool:
+        return self.on_game and self.turn_player == 0

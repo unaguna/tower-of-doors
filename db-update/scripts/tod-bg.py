@@ -2,7 +2,10 @@
 
 
 import asyncio
-from datetime import timedelta
+from datetime import datetime, timedelta
+
+import service
+import service.gamestatus
 
 
 INTERVAL_TIME_SEC = 300
@@ -17,10 +20,31 @@ async def col_game_control(
     if turn_time is None:
         turn_time = timedelta(seconds=TURN_TIME_SEC)
 
+    loop_interval = max(timedelta(seconds=1), min(interval_time, turn_time) / 60)
+
+    loop_period_time = datetime.now()
     while True:
-        # TODO: implement
-        await asyncio.sleep(2)
-        print("foo", interval_time)
+        with service.connect() as connection:
+            game_status = service.gamestatus.get_latest(connection=connection)
+            game_status_oldness = loop_period_time - game_status.timestamp
+
+            if (
+                game_status.on_interval_turn and game_status_oldness >= interval_time
+            ) or (game_status.on_someones_turn and game_status_oldness >= turn_time):
+                next_game_status = service.gamestatus.insert_next_turn_of(
+                    game_status, connection=connection
+                )
+                print("increased turn to", next_game_status)
+
+            connection.commit()
+
+        # calc waiting time for the next loop
+        next_loop_period_time = loop_period_time + loop_interval
+        remaining_time = next_loop_period_time - datetime.now()
+
+        if remaining_time > timedelta(0):
+            await asyncio.sleep(remaining_time.total_seconds())
+        loop_period_time = next_loop_period_time
 
 
 if __name__ == "__main__":
