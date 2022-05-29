@@ -5,6 +5,8 @@ import asyncio
 from datetime import datetime, timedelta
 
 import service
+import service.doorlog
+import service.doorstatus
 import service.gamestatus
 
 
@@ -34,7 +36,18 @@ async def col_game_control(
                 next_game_status = service.gamestatus.insert_next_turn_of(
                     game_status, connection=connection
                 )
+
+                # Close doors
+                closed_doors = service.doorstatus.get_opened_door_id_list(
+                    connection=connection
+                )
+                for door_id in closed_doors:
+                    service.doorlog.insert_close(door_id, connection=connection)
+
+                # log
                 print("increased turn to", next_game_status)
+                if len(closed_doors) > 0:
+                    print("closed doors:", closed_doors)
 
             connection.commit()
 

@@ -4,6 +4,7 @@
         "datasource",
         "datasources",
         "doorlog",
+        "doorstatus",
         "gamestatus",
         "grafana"
     ],
