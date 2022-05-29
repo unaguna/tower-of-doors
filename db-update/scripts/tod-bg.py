@@ -4,6 +4,8 @@
 import asyncio
 from datetime import datetime, timedelta
 
+import MySQLdb
+
 import service
 import service.doorlog
 import service.doorstatus
@@ -12,6 +14,22 @@ import service.gamestatus
 
 INTERVAL_TIME_SEC = 300
 TURN_TIME_SEC = 300
+
+
+async def col_initial_connection():
+    connection_interval = timedelta(seconds=5)
+
+    while True:
+        try:
+            with service.connect() as connection:
+                game_status = service.gamestatus.get_latest(connection=connection)
+            print("Connected to the database successfully.")
+            print("Current status:", game_status)
+
+            break
+        except MySQLdb.OperationalError as e:
+            print("DB Connection failed:", e)
+        await asyncio.sleep(connection_interval.total_seconds())
 
 
 async def col_game_control(
@@ -62,6 +80,8 @@ async def col_game_control(
 
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()
-    loop.create_task(col_game_control())
 
+    loop.run_until_complete(col_initial_connection())
+
+    loop.create_task(col_game_control())
     loop.run_forever()
