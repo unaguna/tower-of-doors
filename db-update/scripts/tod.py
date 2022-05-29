@@ -2,9 +2,11 @@
 
 import argparse
 
+from argtype import positive_int
 import service
 import service.door
 import service.doorlog
+import service.gamestatus
 
 
 class DoorControlArgs:
@@ -20,6 +22,17 @@ class DoorControlArgs:
     @property
     def control_all_doors_flg(self) -> bool:
         return self.door_id.lower() == "all"
+
+
+class StartGameArgs:
+    _args: argparse.Namespace
+
+    def __init__(self, args: argparse.Namespace) -> None:
+        self._args = args
+
+    @property
+    def player_num(self) -> int:
+        return self._args.player_num
 
 
 def command_open_door(_args: argparse.Namespace):
@@ -58,9 +71,23 @@ def command_close_door(_args: argparse.Namespace):
     connection.close()
 
 
+def command_start_game(_args: argparse.Namespace):
+    args = StartGameArgs(_args)
+
+    with service.connect() as connection:
+        service.gamestatus.insert_start_game(args.player_num, connection=connection)
+        connection.commit()
+
+
 def arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Control Tower of Doors")
     subparsers = parser.add_subparsers()
+
+    parser_add = subparsers.add_parser("start", help="start a game")
+    parser_add.add_argument(
+        "player_num", type=positive_int, help="The number of players"
+    )
+    parser_add.set_defaults(handler=command_start_game)
 
     parser_add = subparsers.add_parser("open", help="open a door manually")
     parser_add.add_argument("door_id", type=str, help="The door id")

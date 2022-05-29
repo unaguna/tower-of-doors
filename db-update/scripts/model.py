@@ -49,6 +49,10 @@ class GameStatusRecord(
         return self.status == "ON_GAME"
 
     @property
+    def on_maintenance(self) -> bool:
+        return self.status == "MAINTENANCE"
+
+    @property
     def on_someones_turn(self) -> bool:
         return self.on_game and self.turn_player > 0
 

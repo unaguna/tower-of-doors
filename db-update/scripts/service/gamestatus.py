@@ -8,7 +8,7 @@ from model import GAME_STATUS_FIELDS, GameStatusRecord
 _TABLE = "game_status"
 
 
-def get_latest(*, connection) -> GameStatusRecord | None:
+def get_latest(*, connection) -> GameStatusRecord:
     cursor = connection.cursor(MySQLdb.cursors.DictCursor)
 
     query = f"""
@@ -48,6 +48,32 @@ def insert(game_status: GameStatusRecord, *, connection):
     """
 
     cursor.execute(query)
+
+
+def insert_start_game(
+    player_num: int, current_game_status: GameStatusRecord = None, *, connection
+) -> GameStatusRecord:
+    if current_game_status is None:
+        current_game_status = get_latest(connection=connection)
+
+    if current_game_status.on_game:
+        raise Exception(
+            "cannot insert into `game_status`: cannot start game: already started"
+        )
+    elif current_game_status.on_maintenance:
+        raise Exception(
+            "cannot insert into `game_status`: cannot start game: now on maintenance"
+        )
+    else:
+        start_game_status = GameStatusRecord(
+            status="ON_GAME",
+            player_num=player_num,
+            turn_player=0,
+            timestamp=datetime.now(),
+        )
+        insert(start_game_status, connection=connection)
+
+        return start_game_status
 
 
 def insert_next_turn_of(
