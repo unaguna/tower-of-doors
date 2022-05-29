@@ -11,7 +11,7 @@ def sql_literal(value: any) -> str:
     elif type(value) == bool:
         return str(value)
     elif isinstance(value, Enum):
-        return value.value
+        return sql_literal(value.value)
     elif isinstance(value, datetime):
         return f"'{value.isoformat()}'"
     elif isinstance(value, Real):

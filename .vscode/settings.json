@@ -6,7 +6,8 @@
         "doorlog",
         "doorstatus",
         "gamestatus",
-        "grafana"
+        "grafana",
+        "yawingschedule"
     ],
     "[python]": {
         "editor.defaultFormatter": null,

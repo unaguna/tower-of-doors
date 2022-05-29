@@ -8,6 +8,18 @@ class DoorStatus(Enum):
     OPEN = 1
 
 
+class YawingStatus(Enum):
+    SCHEDULED = "SCHEDULED"
+    CANCELLED = "CANCELLED"
+    ON_YAWING = "ON_YAWING"
+    COMPLETED = "COMPLETED"
+
+
+class YawingReason(Enum):
+    GAME_PHASE = "GAME_PHASE"
+    REMOTE = "REMOTE"
+
+
 class DoorLogRecord(
     namedtuple(
         "DoorLogRecord",
@@ -59,3 +71,31 @@ class GameStatusRecord(
     @property
     def on_interval_turn(self) -> bool:
         return self.on_game and self.turn_player == 0
+
+
+YAWING_SCHEDULE_FIELDS = (
+    "id",
+    "aim_azimuth",
+    "yawing_reason",
+    "schedule_start_time",
+    "schedule_end_time",
+    "yawing_status",
+    "actual_start_time",
+    "actual_end_time",
+)
+
+
+class YawingScheduleRecord(
+    namedtuple(
+        "YawingScheduleRecord",
+        YAWING_SCHEDULE_FIELDS,
+    )
+):
+    id: int
+    aim_azimuth: float
+    yawing_reason: YawingReason
+    schedule_start_time: datetime
+    schedule_end_time: datetime
+    yawing_status: YawingStatus
+    actual_start_time: datetime | None
+    actual_end_time: datetime | None

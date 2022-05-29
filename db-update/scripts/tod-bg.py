@@ -6,10 +6,12 @@ from datetime import datetime, timedelta
 
 import MySQLdb
 
+from model import YawingStatus
 import service
 import service.doorlog
 import service.doorstatus
 import service.gamestatus
+import service.yawingschedule
 
 
 INTERVAL_TIME_SEC = 300
@@ -78,10 +80,53 @@ async def col_game_control(
         loop_period_time = next_loop_period_time
 
 
+async def col_azimuth_control():
+    loop_interval = timedelta(seconds=5)
+
+    loop_period_time = datetime.now()
+    while True:
+        with service.connect() as connection:
+            current_yawing = service.yawingschedule.get_now_yawing(
+                connection=connection
+            )
+            starting_schedule_id_list = service.yawingschedule.find_id(
+                connection=connection,
+                yawing_status=YawingStatus.SCHEDULED,
+                schedule_start_time_max=loop_period_time,
+            )
+
+            if current_yawing is not None:
+                # TODO: yaw (insert into azimuth_log)
+                # TODO: semi-error when len(starting_schedule_id_list) > 0
+                pass
+            else:
+                # TODO: semi-error when len(starting_schedule_id_list) >= 2
+
+                # Start yawing
+                if len(starting_schedule_id_list) > 0:
+                    yawing_schedule_id = starting_schedule_id_list[0]
+                    service.yawingschedule.update_start_yawing(
+                        yawing_schedule_id, connection=connection
+                    )
+                    # TODO: output not only id but also aim_azimuth etc.
+                    print("start yawing: id =", yawing_schedule_id)
+
+            connection.commit()
+
+        # calc waiting time for the next loop
+        next_loop_period_time = loop_period_time + loop_interval
+        remaining_time = next_loop_period_time - datetime.now()
+
+        if remaining_time > timedelta(0):
+            await asyncio.sleep(remaining_time.total_seconds())
+        loop_period_time = next_loop_period_time
+
+
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()
 
     loop.run_until_complete(col_initial_connection())
 
     loop.create_task(col_game_control())
+    loop.create_task(col_azimuth_control())
     loop.run_forever()
