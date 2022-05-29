@@ -56,8 +56,6 @@ readonly SCRIPT_DIR
 # main
 ################################################################################
 
-echo cd "$SCRIPT_DIR"
 cd "$SCRIPT_DIR"
 
-echo python3 tod.py "$@"
 python3 tod.py "$@"
