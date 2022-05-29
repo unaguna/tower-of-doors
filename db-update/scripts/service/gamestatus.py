@@ -41,10 +41,10 @@ def insert(game_status: GameStatusRecord, *, connection):
         `turn_player`,
         `timestamp`
     ) VALUES (
-        '{game_status.status}',
+        {sql_literal(game_status.status)},
         {sql_literal(game_status.player_num)},
         {sql_literal(game_status.turn_player)},
-        '{game_status.timestamp.isoformat()}'
+        {sql_literal(game_status.timestamp.isoformat())}
     )
     """
 

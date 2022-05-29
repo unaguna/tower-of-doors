@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 from numbers import Real
 
 
@@ -9,9 +10,11 @@ def sql_literal(value: any) -> str:
         return f"'{value}'"
     elif type(value) == bool:
         return str(value)
+    elif isinstance(value, Enum):
+        return value.value
     elif isinstance(value, datetime):
         return f"'{value.isoformat()}'"
     elif isinstance(value, Real):
         return str(value)
     else:
-        ValueError(f"Unknown literal: {value}")
+        ValueError(f"Unknown literal: {repr(value)}")

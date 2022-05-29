@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from db import sql_literal
 from model import DoorLogRecord, DoorStatus
 
 
@@ -16,10 +17,10 @@ def insert(door_log: DoorLogRecord, *, connection):
         timestamp,
         reason
     ) VALUES (
-        '{door_log.door_id}',
-        {door_log.status.value},
-        '{door_log.timestamp.isoformat()}',
-        '{door_log.reason}'
+        {sql_literal(door_log.door_id)},
+        {sql_literal(door_log.status)},
+        {sql_literal(door_log.timestamp.isoformat())},
+        {sql_literal(door_log.reason)}
     )
     """
 
