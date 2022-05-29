@@ -8,6 +8,7 @@ services:
   mysql:
     build: ./mysql/
     volumes:
+      - ./mysql/log:/var/log/mysql
       - ./mysql/db:/docker-entrypoint-initdb.d
     image: tower-of-doors-mysql
     environment:
