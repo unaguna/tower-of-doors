@@ -75,6 +75,12 @@ def command_start_game(_args: argparse.Namespace):
         connection.commit()
 
 
+def command_end_game(_: argparse.Namespace):
+    with service.connect() as connection:
+        service.gamestatus.insert_end_game(connection=connection)
+        connection.commit()
+
+
 def arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Control Tower of Doors")
     subparsers = parser.add_subparsers()
@@ -84,6 +90,9 @@ def arg_parser() -> argparse.ArgumentParser:
         "player_num", type=positive_int, help="The number of players"
     )
     parser_add.set_defaults(handler=command_start_game)
+
+    parser_add = subparsers.add_parser("end", help="end the game")
+    parser_add.set_defaults(handler=command_end_game)
 
     parser_add = subparsers.add_parser("open", help="open a door manually")
     parser_add.add_argument("door_id", type=str, help="The door id")

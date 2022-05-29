@@ -2,6 +2,7 @@ from datetime import datetime
 
 import MySQLdb
 
+from db import sql_literal
 from model import GAME_STATUS_FIELDS, GameStatusRecord
 
 
@@ -41,8 +42,8 @@ def insert(game_status: GameStatusRecord, *, connection):
         `timestamp`
     ) VALUES (
         '{game_status.status}',
-        {game_status.player_num},
-        {game_status.turn_player},
+        {sql_literal(game_status.player_num)},
+        {sql_literal(game_status.turn_player)},
         '{game_status.timestamp.isoformat()}'
     )
     """
@@ -74,6 +75,28 @@ def insert_start_game(
         insert(start_game_status, connection=connection)
 
         return start_game_status
+
+
+def insert_end_game(
+    current_game_status: GameStatusRecord = None, *, connection
+) -> GameStatusRecord:
+    if current_game_status is None:
+        current_game_status = get_latest(connection=connection)
+
+    if not current_game_status.on_game:
+        raise Exception(
+            "cannot insert into `game_status`: cannot end game: not on game"
+        )
+    else:
+        end_game_status = GameStatusRecord(
+            status="STANDBY",
+            player_num=None,
+            turn_player=None,
+            timestamp=datetime.now(),
+        )
+        insert(end_game_status, connection=connection)
+
+        return end_game_status
 
 
 def insert_next_turn_of(
