@@ -87,6 +87,54 @@ def find_id(
     return list(map(lambda r: r[0], cursor))
 
 
+def insert_schedule(
+    aim_azimuth: float,
+    yawing_reason: YawingReason,
+    schedule_start_time: datetime,
+    schedule_end_time: datetime,
+    *,
+    connection,
+) -> YawingScheduleRecord:
+    yawing_schedule: YawingScheduleRecord = YawingScheduleRecord(
+        aim_azimuth=aim_azimuth,
+        yawing_reason=yawing_reason,
+        schedule_start_time=schedule_start_time,
+        schedule_end_time=schedule_end_time,
+        yawing_status=YawingStatus.SCHEDULED,
+        # TODO: dataclass を使用する際に、不要な引数があれば削除
+        id=None,
+        actual_start_time=None,
+        actual_end_time=None,
+    )
+
+    cursor = connection.cursor()
+
+    query = f"""
+    insert into {_TABLE} (
+        aim_azimuth,
+        yawing_reason,
+        schedule_start_time,
+        schedule_end_time,
+        yawing_status
+    ) VALUES (
+        {sql_literal(yawing_schedule.aim_azimuth)},
+        {sql_literal(yawing_schedule.yawing_reason)},
+        {sql_literal(yawing_schedule.schedule_start_time)},
+        {sql_literal(yawing_schedule.schedule_end_time)},
+        {sql_literal(yawing_schedule.yawing_status)}
+    )
+    """
+    cursor.execute(query)
+
+    cursor.execute("SELECT LAST_INSERT_ID()")
+    id = cursor.fetchone()[0]
+    cursor.close()
+
+    # TODO: dataclass を使用する際に代入が可能になっていればコメントアウト
+    # yawing_schedule.id = id
+    return yawing_schedule
+
+
 def update_start_yawing(
     id: int,
     *,

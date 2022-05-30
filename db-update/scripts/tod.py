@@ -72,6 +72,7 @@ def command_start_game(_args: argparse.Namespace):
 
     with service.connect() as connection:
         service.gamestatus.insert_start_game(args.player_num, connection=connection)
+        # TODO: start yawing because the game will start with interval-turn
         connection.commit()
 
 
