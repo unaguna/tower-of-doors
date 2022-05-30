@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 
+import logic.azimuth
 from model import YawingReason
 import service
 import service.azimuthlog
@@ -50,14 +51,9 @@ def make_turn_next_with_judge(
 
             # schedule yawing
             if next_game_status.on_interval_turn:
-                current_azimuth = service.azimuthlog.get_current_azimuth(
-                    connection=connection
-                )
-                next_azimuth = (current_azimuth + 60) % 360
                 schedule_end_time = now + (interval_time) * 4 / 5
-                scheduled_yawing = service.yawingschedule.insert_schedule(
-                    aim_azimuth=next_azimuth,
-                    yawing_reason=YawingReason.GAME_PHASE,
+                scheduled_yawing = logic.azimuth.schedule_yaw(
+                    yawing_angle=60.0,
                     schedule_start_time=now,
                     schedule_end_time=schedule_end_time,
                     connection=connection,

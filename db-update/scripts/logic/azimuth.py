@@ -2,7 +2,9 @@ from datetime import datetime, timedelta
 import math
 from typing import Tuple
 
-from model import YawingScheduleRecord, YawingStatus
+import MySQLdb
+
+from model import YawingReason, YawingScheduleRecord, YawingStatus
 import service
 import service.azimuthlog
 import service.gamestatus
@@ -39,6 +41,37 @@ def _calc_next_azimuth(
         is_last_step = False
 
     return next_azimuth, is_last_step
+
+
+def schedule_yaw(
+    yawing_angle: float,
+    schedule_start_time: datetime,
+    schedule_end_time: datetime,
+    *,
+    connection: MySQLdb.Connection = None
+) -> YawingScheduleRecord:
+    if connection is None:
+        with service.connect() as new_connection:
+            scheduled_yawing = schedule_yaw(
+                yawing_angle=yawing_angle,
+                schedule_start_time=schedule_start_time,
+                schedule_end_time=schedule_end_time,
+                connection=new_connection,
+            )
+            new_connection.commit()
+        return scheduled_yawing
+
+    current_azimuth = service.azimuthlog.get_current_azimuth(connection=connection)
+    next_azimuth = (current_azimuth + yawing_angle) % 360
+    scheduled_yawing = service.yawingschedule.insert_schedule(
+        aim_azimuth=next_azimuth,
+        yawing_reason=YawingReason.GAME_PHASE,
+        schedule_start_time=schedule_start_time,
+        schedule_end_time=schedule_end_time,
+        connection=connection,
+    )
+
+    return scheduled_yawing
 
 
 def azimuth_control(now: datetime, azimuth_update_interval: timedelta):
