@@ -1,9 +1,14 @@
 {
     "cSpell.words": [
+        "argtype",
+        "azimuthlog",
         "datasource",
         "datasources",
         "doorlog",
-        "grafana"
+        "doorstatus",
+        "gamestatus",
+        "grafana",
+        "yawingschedule"
     ],
     "[python]": {
         "editor.defaultFormatter": null,

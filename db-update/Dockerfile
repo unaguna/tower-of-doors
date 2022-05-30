@@ -10,3 +10,5 @@ RUN pip install mysqlclient==2.1.*
 RUN ln -s /var/lib/db-update/scripts/tod.sh /usr/local/bin/tod
 
 COPY ./scripts/ /var/lib/db-update/scripts
+
+ENTRYPOINT ["python", "/var/lib/db-update/scripts/tod-bg.py"]

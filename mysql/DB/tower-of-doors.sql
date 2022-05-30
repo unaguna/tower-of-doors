@@ -117,6 +117,72 @@ INSERT INTO `azimuth_log` (`azimuth`, `timestamp`, `yawing`) VALUES
 
 
 --
+-- Table structure for table `enum_yawing_status`
+--
+
+DROP TABLE IF EXISTS `enum_yawing_status`;
+CREATE TABLE `enum_yawing_status` (
+  `yawing_status` char(9) NOT NULL,
+  PRIMARY KEY (`yawing_status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Data for table `enum_yawing_status`
+--
+
+set autocommit=0;
+INSERT INTO `enum_yawing_status` (`yawing_status`) VALUES
+  ('SCHEDULED'),
+  ('CANCELLED'),
+  ('ON_YAWING'),
+  ('COMPLETED')
+;
+
+
+--
+-- Table structure for table `enum_yawing_reason`
+--
+
+DROP TABLE IF EXISTS `enum_yawing_reason`;
+CREATE TABLE `enum_yawing_reason` (
+  `yawing_reason` char(11) NOT NULL,
+  PRIMARY KEY (`yawing_reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Data for table `enum_yawing_reason`
+--
+
+set autocommit=0;
+INSERT INTO `enum_yawing_reason` (`yawing_reason`) VALUES
+  ('GAME_PHASE'),
+  ('REMOTE')
+;
+
+
+--
+-- Table structure for table `yawing_schedule`
+--
+
+DROP TABLE IF EXISTS `yawing_schedule`;
+CREATE TABLE `yawing_schedule` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `aim_azimuth` double NOT NULL,
+  `yawing_reason` char(11) NOT NULL,
+  `schedule_start_time` datetime NOT NULL,
+  `schedule_end_time` datetime NOT NULL,
+  `yawing_status` char(9) NOT NULL DEFAULT 'SCHEDULED',
+  `actual_start_time` datetime DEFAULT NULL,
+  `actual_end_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY fk_yawing_reason(`yawing_reason`) REFERENCES `enum_yawing_reason`(`yawing_reason`),
+  FOREIGN KEY fk_yawing_status(`yawing_status`) REFERENCES `enum_yawing_status`(`yawing_status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
 -- Table structure for table `enum_game_status`
 --
 
