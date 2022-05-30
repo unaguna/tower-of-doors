@@ -17,8 +17,8 @@ import service.gamestatus
 import service.yawingschedule
 
 
-INTERVAL_TIME_SEC = 300
-TURN_TIME_SEC = 300
+INTERVAL_TIME_SEC = 30
+TURN_TIME_SEC = 30
 
 
 def calc_next_azimuth(
@@ -31,7 +31,13 @@ def calc_next_azimuth(
         now = datetime.now()
 
     remaining_time = yawing_schedule.schedule_end_time - now
-    remaining_azimuth = yawing_schedule.aim_azimuth - current_azimuth
+    # Remaining yawing angle
+    # The direction of yawing is determined so that the absolute value of the yawing angle is smaller
+    remaining_azimuth = min(
+        yawing_schedule.aim_azimuth - current_azimuth,
+        yawing_schedule.aim_azimuth + 360 - current_azimuth,
+        key=abs,
+    )
 
     # Number of azimuth change decisions to be made until the scheduled end time.
     remaining_step = max(1, math.floor(remaining_time / interval))
