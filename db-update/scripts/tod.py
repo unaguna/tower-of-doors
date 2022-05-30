@@ -4,6 +4,7 @@ import argparse
 from cmath import log
 
 from argtype import positive_int
+import logic.door
 import logic.game
 import service
 import service.door
@@ -42,15 +43,10 @@ def command_open_door(_args: argparse.Namespace):
 
     # TODO: validation
 
-    with service.connect() as connection:
-        if args.control_all_doors_flg:
-            door_id_list = service.door.id_list(connection=connection)
-            for door_id in door_id_list:
-                service.doorlog.insert_open(door_id, connection=connection)
-        else:
-            service.doorlog.insert_open(args.door_id, connection=connection)
-
-        connection.commit()
+    if args.control_all_doors_flg:
+        logic.door.open_all_door()
+    else:
+        logic.door.open_door(args.door_id)
 
 
 def command_close_door(_args: argparse.Namespace):
@@ -58,15 +54,10 @@ def command_close_door(_args: argparse.Namespace):
 
     # TODO: validation
 
-    with service.connect() as connection:
-        if args.control_all_doors_flg:
-            door_id_list = service.door.id_list(connection=connection)
-            for door_id in door_id_list:
-                service.doorlog.insert_close(door_id, connection=connection)
-        else:
-            service.doorlog.insert_close(args.door_id, connection=connection)
-
-        connection.commit()
+    if args.control_all_doors_flg:
+        logic.door.close_all_door()
+    else:
+        logic.door.close_door(args.door_id)
 
 
 def command_start_game(_args: argparse.Namespace):
