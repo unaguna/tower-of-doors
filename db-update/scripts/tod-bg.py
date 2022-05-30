@@ -3,11 +3,14 @@
 
 import asyncio
 from datetime import datetime, timedelta
+import math
+from typing import Tuple
 
 import MySQLdb
 
-from model import YawingStatus
+from model import YawingScheduleRecord, YawingStatus
 import service
+import service.azimuthlog
 import service.doorlog
 import service.doorstatus
 import service.gamestatus
@@ -16,6 +19,32 @@ import service.yawingschedule
 
 INTERVAL_TIME_SEC = 300
 TURN_TIME_SEC = 300
+
+
+def calc_next_azimuth(
+    yawing_schedule: YawingScheduleRecord,
+    current_azimuth: float,
+    interval: timedelta,
+    now: datetime = None,
+) -> Tuple[float, bool]:
+    if now is None:
+        now = datetime.now()
+
+    remaining_time = yawing_schedule.schedule_end_time - now
+    remaining_azimuth = yawing_schedule.aim_azimuth - current_azimuth
+
+    # Number of azimuth change decisions to be made until the scheduled end time.
+    remaining_step = max(1, math.floor(remaining_time / interval))
+
+    # Determine the angular velocity so that the yawing is completed by the scheduled end time.
+    if remaining_step <= 1:
+        next_azimuth = yawing_schedule.aim_azimuth
+        is_last_step = True
+    else:
+        next_azimuth = (remaining_azimuth / remaining_step) + current_azimuth
+        is_last_step = False
+
+    return next_azimuth, is_last_step
 
 
 async def col_initial_connection():
@@ -96,9 +125,33 @@ async def col_azimuth_control():
             )
 
             if current_yawing is not None:
-                # TODO: yaw (insert into azimuth_log)
                 # TODO: semi-error when len(starting_schedule_id_list) > 0
-                pass
+
+                current_azimuth = service.azimuthlog.get_current_azimuth(
+                    connection=connection
+                )
+
+                # yaw (insert into azimuth_log)
+                next_azimuth, is_last_step = calc_next_azimuth(
+                    current_yawing,
+                    current_azimuth,
+                    interval=loop_interval,
+                    now=loop_period_time,
+                )
+                service.azimuthlog.insert_azimuth(
+                    next_azimuth,
+                    yawing=not is_last_step,
+                    timestamp=loop_period_time,
+                    connection=connection,
+                )
+                print("yawing: current_azimuth =", next_azimuth)
+                if is_last_step:
+                    service.yawingschedule.update_end_yawing(
+                        current_yawing,
+                        connection=connection,
+                        actual_end_time=loop_period_time,
+                    )
+                    print("complete yawing: id =", current_yawing.id)
             else:
                 # TODO: semi-error when len(starting_schedule_id_list) >= 2
 

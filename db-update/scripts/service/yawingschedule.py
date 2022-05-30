@@ -108,3 +108,28 @@ def update_start_yawing(
 
     cursor.execute(query)
     cursor.close()
+
+
+def update_end_yawing(
+    id: int | YawingScheduleRecord,
+    *,
+    connection,
+    actual_end_time: datetime = None,
+):
+    if isinstance(id, YawingScheduleRecord):
+        id = id.id
+    if actual_end_time is None:
+        actual_end_time = datetime.now()
+
+    cursor = connection.cursor()
+
+    query = f"""
+    UPDATE {_TABLE}
+    SET
+        `yawing_status` = {sql_literal(YawingStatus.COMPLETED)},
+        `actual_end_time` = {sql_literal(actual_end_time)}
+    WHERE `id` = {sql_literal(id)} and `yawing_status` = {sql_literal(YawingStatus.ON_YAWING)}
+    """
+
+    cursor.execute(query)
+    cursor.close()
