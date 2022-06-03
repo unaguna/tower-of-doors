@@ -9,6 +9,6 @@ def connect(*, host: str = None) -> MySQLdb.Connection:
 
     return MySQLdb.connect(
         host=host,
-        read_default_file="/etc/mysql/conf.d/my.cnf",
+        read_default_file="/root/.my.cnf",
         db="tod",
     )
