@@ -8,7 +8,9 @@ RUN pip install --upgrade setuptools
 RUN pip install mysqlclient==2.1.*
 
 RUN ln -s /var/lib/db-update/scripts/tod.sh /usr/local/bin/tod
-
 COPY ./scripts/ /var/lib/db-update/scripts
+
+ADD ./my.cnf /etc/mysql/conf.d/my.cnf
+RUN chmod 600 /etc/mysql/conf.d/my.cnf
 
 ENTRYPOINT ["python", "/var/lib/db-update/scripts/tod-bg.py"]

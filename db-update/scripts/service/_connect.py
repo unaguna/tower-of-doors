@@ -9,7 +9,6 @@ def connect(*, host: str = None) -> MySQLdb.Connection:
 
     return MySQLdb.connect(
         host=host,
-        user="tod-logic",
-        passwd="pass",
+        read_default_file="/etc/mysql/conf.d/my.cnf",
         db="tod",
     )
