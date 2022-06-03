@@ -36,8 +36,6 @@ services:
     hostname: tod-dbupdate
     networks:
       - tower-of-doors-network
-    environment:
-      - MYSQL_HOST=tod-mysql
     tty: true
 networks:
   tower-of-doors-network:
