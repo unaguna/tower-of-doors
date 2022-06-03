@@ -2,3 +2,9 @@ DROP USER IF EXISTS 'grafana';
 CREATE USER 'grafana' identified by 'grafana';
 
 GRANT SELECT ON `tod`.* TO 'grafana';
+
+
+DROP USER IF EXISTS 'tod-logic';
+CREATE USER 'tod-logic' identified by 'pass';
+
+GRANT INSERT, SELECT, UPDATE, DELETE ON `tod`.* TO 'tod-logic';

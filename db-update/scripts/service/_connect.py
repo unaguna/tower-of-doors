@@ -9,7 +9,7 @@ def connect(*, host: str = None) -> MySQLdb.Connection:
 
     return MySQLdb.connect(
         host=host,
-        user="root",
+        user="tod-logic",
         passwd="pass",
         db="tod",
     )
