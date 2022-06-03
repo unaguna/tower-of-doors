@@ -17,7 +17,7 @@ datasources:
     # <string> url
     url: tod-mysql:3306
     # <string> database user, if used
-    user: root
+    user: grafana
     # <string> database name, if used
     database: tod
     # <bool> mark as default datasource. Max one per org
@@ -30,7 +30,7 @@ datasources:
     # <string> json object of data that will be encrypted.
     secureJsonData:
       # <string> database password, if used
-      password: pass
+      password: grafana
     version: 1
     # <bool> allow users to edit datasources from the UI.
     editable: true
