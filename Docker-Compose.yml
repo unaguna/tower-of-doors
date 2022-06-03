@@ -11,8 +11,10 @@ services:
       - ./mysql/log:/var/log/mysql
       - ./mysql/db:/docker-entrypoint-initdb.d
     image: tower-of-doors-mysql
+    container_name: tower-of-doors-mysql
+    hostname: tod-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_ROOT_PASSWORD=KEqUG3wDAAZaU5hRHBC43DvUmTbFEdtPM49jqKRCA4RePBTPCVeeU4ZTjASdNnkv
     networks:
       - tower-of-doors-network
   grafana:
@@ -21,6 +23,8 @@ services:
       - tower-of-doors-grafana-volume-DB:/var/lib/grafana
       - tower-of-doors-grafana-volume-etc:/etc/grafana
     image: tower-of-doors-grafana
+    container_name: tower-of-doors-grafana
+    hostname: tod-grafana
     networks:
       - tower-of-doors-network
     ports:
@@ -28,10 +32,10 @@ services:
   db-update:
     build: ./db-update/
     image: tower-of-doors-db-update
+    container_name: tower-of-doors-db-update
+    hostname: tod-dbupdate
     networks:
       - tower-of-doors-network
-    environment:
-      - MYSQL_HOST=tower-of-doors-mysql-1
     tty: true
 networks:
   tower-of-doors-network:

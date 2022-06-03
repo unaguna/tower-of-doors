@@ -15,9 +15,9 @@ datasources:
     # <string> custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically
     uid: 1st_data_
     # <string> url
-    url: tower-of-doors-mysql-1:3306
+    url: tod-mysql:3306
     # <string> database user, if used
-    user: root
+    user: grafana
     # <string> database name, if used
     database: tod
     # <bool> mark as default datasource. Max one per org
@@ -30,7 +30,7 @@ datasources:
     # <string> json object of data that will be encrypted.
     secureJsonData:
       # <string> database password, if used
-      password: pass
+      password: grafana
     version: 1
     # <bool> allow users to edit datasources from the UI.
     editable: true
