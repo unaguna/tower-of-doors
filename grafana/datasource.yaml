@@ -30,7 +30,7 @@ datasources:
     # <string> json object of data that will be encrypted.
     secureJsonData:
       # <string> database password, if used
-      password: grafana
+      password: GJz7SFpPJ6e63LdR7r6r4AKsN365AiZadMJY4Nv8TcgAjbvBWpDmQW5cNCXNWZea
     version: 1
     # <bool> allow users to edit datasources from the UI.
     editable: true
