@@ -1,0 +1,27 @@
+apiVersion: 1
+
+providers:
+  - name: 'Tower Status'
+    type: 'file'
+    disableDeletion: false
+    allowUiUpdates: true
+    options:
+      path: '/var/lib/grafana/dashboards/Tower_Status.dashboard.json'
+  - name: 'Doors Status'
+    type: 'file'
+    disableDeletion: false
+    allowUiUpdates: true
+    options:
+      path: '/var/lib/grafana/dashboards/Doors_Status.dashboard.json'
+  - name: 'Doors Status (2)'
+    type: 'file'
+    disableDeletion: false
+    allowUiUpdates: true
+    options:
+      path: '/var/lib/grafana/dashboards/Doors_Status_2.dashboard.json'
+  - name: 'Doors Summary'
+    type: 'file'
+    disableDeletion: false
+    allowUiUpdates: true
+    options:
+      path: '/var/lib/grafana/dashboards/Doors_Summary.dashboard.json'
