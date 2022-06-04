@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$comment": "Reference: https://grafana.com/docs/grafana/v8.4/administration/provisioning/#dashboards",
+  "title": "Grafana Dashboard Config",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "providers"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": {
+      "enum": [
+        1
+      ]
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "options"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "description": "an unique provider name.",
+            "type": "string"
+          },
+          "orgId": {
+            "description": "Org id. Default to 1",
+            "type": "integer"
+          },
+          "folder": {
+            "description": "name of the dashboard folder.",
+            "type": "string"
+          },
+          "folderUid": {
+            "description": "folder UID. will be automatically generated if not specified",
+            "type": "string"
+          },
+          "type": {
+            "description": "provider type. Default to 'file'",
+            "enum": [
+              "file"
+            ]
+          },
+          "disableDeletion": {
+            "description": "disable dashboard deletion",
+            "type": "boolean"
+          },
+          "updateIntervalSeconds": {
+            "description": "how often Grafana will scan for changed dashboards",
+            "type": "integer",
+            "minimum": 1
+          },
+          "allowUiUpdates": {
+            "description": "allow updating provisioned dashboards from the UI",
+            "type": "boolean"
+          },
+          "options": {
+            "type": "object",
+            "required": [
+              "path"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "description": "path to dashboard files on disk. Required when using the 'file' type",
+                "type": "string"
+              },
+              "foldersFromFilesStructure": {
+                "description": "use folder names from filesystem to create folders in Grafana",
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

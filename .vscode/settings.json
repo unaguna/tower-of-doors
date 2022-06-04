@@ -10,6 +10,23 @@
         "grafana",
         "yawingschedule"
     ],
+    "[json]": {
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
+    },
+    "json.format.enable": true,
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+    },
+    "yaml.format.enable": true,
+    "yaml.format.singleQuote": true,
+    "yaml.schemas": {
+        "./.vscode/jsonschema/dashboard.yaml.json": [
+            "dashboard.yaml"
+        ]
+    },
     "[python]": {
         "editor.defaultFormatter": null,
         "editor.formatOnSave": true
