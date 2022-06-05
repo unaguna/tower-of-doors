@@ -17,6 +17,25 @@ def _calc_next_azimuth(
     interval: timedelta,
     now: datetime = None,
 ) -> Tuple[float, bool]:
+    """Calculate the azimuth angle at the next time based on the yawing schedule.
+
+    Args:
+        yawing_schedule (YawingScheduleRecord):
+            Schedule to be used in calculations.
+            Calculate as if the yawing is as per this schedule.
+        current_azimuth (float):
+            Azimuth angle at the current time.
+            If the argument `now` is specified, the azimuth angle at that time.
+        interval (timedelta):
+            Recalculation interval.
+        now (datetime, optional):
+            Calculate the azimuth angle at this time. Defaults to current time.
+
+    Returns:
+        Tuple[float, bool]:
+            azimuth and whether the yawing continues.
+            If the second value is false, the yawing of the specified schedule is complete.
+    """
     if now is None:
         now = datetime.now()
 
@@ -50,6 +69,24 @@ def schedule_yaw(
     *,
     connection: MySQLdb.Connection = None
 ) -> YawingScheduleRecord:
+    """Schedule yawing
+
+    Args:
+        yawing_angle (float): Angle of yawing
+        schedule_start_time (datetime):
+            Time to start yawing.
+            The yawing actually starts after this time.
+        schedule_end_time (datetime):
+            Time to complete yawing.
+            The rotation is actually completed by this time.
+        connection (MySQLdb.Connection, optional):
+            Connection to DB.
+            If not specified, a new connection is created and committed
+            when the job of this function is successfully completed.
+
+    Returns:
+        YawingScheduleRecord: Record added to DB by this process
+    """
     if connection is None:
         with service.connect() as new_connection:
             scheduled_yawing = schedule_yaw(
@@ -75,6 +112,14 @@ def schedule_yaw(
 
 
 def azimuth_control(now: datetime, azimuth_update_interval: timedelta):
+    """Check yawing schedule and emulate yawing
+
+    All updates to each record associated with yawing are also performed.
+
+    Args:
+        now (datetime): current time.
+        azimuth_update_interval (timedelta): Azimuth recalculation interval.
+    """
     with service.connect() as connection:
         current_yawing = service.yawingschedule.get_now_yawing(connection=connection)
         starting_schedule_id_list = service.yawingschedule.find_id(
@@ -104,6 +149,8 @@ def azimuth_control(now: datetime, azimuth_update_interval: timedelta):
                 connection=connection,
             )
             print("yawing: current_azimuth =", next_azimuth)
+
+            # End yawing
             if is_last_step:
                 service.yawingschedule.update_end_yawing(
                     current_yawing,
