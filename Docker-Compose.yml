@@ -29,11 +29,11 @@ services:
       - tower-of-doors-network
     ports:
       - "127.0.0.1:3000:3000"
-  db-update:
-    build: ./db-update/
-    image: tower-of-doors-db-update
-    container_name: tower-of-doors-db-update
-    hostname: tod-dbupdate
+  tod-logic:
+    build: ./tod-logic/
+    image: tower-of-doors-tod-logic
+    container_name: tower-of-doors-tod-logic
+    hostname: tod-logic
     networks:
       - tower-of-doors-network
     tty: true

@@ -57,7 +57,7 @@ Changing the status of the tower is done using the CUI tool.
 1. Enter the container that controls the business logic of the tower.
 
     ```shell
-    docker exec -it tower-of-doors-db-update /bin/bash
+    docker exec -it tower-of-doors-tod-logic /bin/bash
     ```
 
 2. Use `tod` commands as follows
@@ -86,7 +86,7 @@ You can execute SQL directly without using the above tools.
 1. Enter the container that controls the business logic of the tower.
 
     ```shell
-    docker exec -it tower-of-doors-db-update /bin/bash
+    docker exec -it tower-of-doors-tod-logic /bin/bash
     ```
 
 2. Enter MySQL
@@ -95,7 +95,7 @@ You can execute SQL directly without using the above tools.
     mysql
     ```
 
-    User information and database name are provided in the [configuration file](db-update/root_my.cnf) and do not need to be entered as command arguments.
+    User information and database name are provided in the [configuration file](tod-logic/root_my.cnf) and do not need to be entered as command arguments.
 
 ## Caution
 
