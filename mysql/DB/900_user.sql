@@ -1,5 +1,5 @@
 DROP USER IF EXISTS 'grafana';
-CREATE USER 'grafana' identified by 'grafana';
+CREATE USER 'grafana' identified by 'GJz7SFpPJ6e63LdR7r6r4AKsN365AiZadMJY4Nv8TcgAjbvBWpDmQW5cNCXNWZea';
 
 GRANT SELECT ON `tod`.* TO 'grafana';
 

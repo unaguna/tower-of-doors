@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$comment": "Reference: https://grafana.com/docs/grafana/v8.4/administration/provisioning/#data-sources",
+  "title": "Grafana Datasource Config",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "datasources"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": {
+      "description": "config file version",
+      "enum": [
+        1
+      ]
+    },
+    "deleteDatasources": {
+      "description": "list of datasources that should be deleted from the database",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "orgId"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "orgId": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "datasources": {
+      "description": "list of datasources to insert/update depending what's available in the database",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "type",
+          "access"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "description": "name of the datasource.",
+            "type": "string"
+          },
+          "type": {
+            "description": "datasource type.",
+            "type": "string"
+          },
+          "access": {
+            "description": "access mode. proxy or direct (Server or Browser in the UI).",
+            "enum": [
+              "proxy",
+              "direct"
+            ]
+          },
+          "orgId": {
+            "description": "org id. will default to orgId 1 if not specified",
+            "type": "integer"
+          },
+          "uid": {
+            "description": "custom UID which can be used to reference this datasource in other parts of the configuration, if not specified will be generated automatically",
+            "type": "string"
+          },
+          "url": {
+            "description": "url",
+            "type": "string"
+          },
+          "password": {
+            "description": "Deprecated, use secureJsonData.password",
+            "type": "string"
+          },
+          "user": {
+            "description": "database user, if used",
+            "type": "string"
+          },
+          "database": {
+            "description": "database name, if used",
+            "type": "string"
+          },
+          "basicAuth": {
+            "description": "enable/disable basic auth",
+            "type": "boolean"
+          },
+          "basicAuthUser": {
+            "description": "basic auth username",
+            "type": "string"
+          },
+          "basicAuthPassword": {
+            "description": "Deprecated, use secureJsonData.basicAuthPassword",
+            "type": "string"
+          },
+          "withCredentials": {
+            "description": "enable/disable with credentials headers",
+            "type": "boolean"
+          },
+          "isDefault": {
+            "description": "mark as default datasource. Max one per org",
+            "type": "boolean"
+          },
+          "jsonData": {
+            "$comment": "Incomplete",
+            "description": "fields that will be converted to json and stored in jsonData",
+            "type": "object"
+          },
+          "secureJsonData": {
+            "$comment": "Incomplete",
+            "description": "json object of data that will be encrypted.",
+            "type": "object"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "editable": {
+            "description": "allow users to edit datasources from the UI.",
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
