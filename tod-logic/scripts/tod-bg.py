@@ -17,6 +17,10 @@ TURN_TIME_SEC = 30
 
 
 async def col_initial_connection():
+    """Attempt to connect to DB until success
+
+    If a connection to the DB is established, output the records that were obtained.
+    """
     connection_interval = timedelta(seconds=5)
 
     while True:
@@ -35,6 +39,17 @@ async def col_initial_connection():
 async def col_game_control(
     *, interval_time: timedelta = None, turn_time: timedelta = None
 ):
+    """Control the progress of the game
+
+    Periodically check the state of the game and perform game state transitions
+    such as turn progression.
+
+    Args:
+        interval_time (timedelta, optional):
+            Duration of interval phase
+        turn_time (timedelta, optional):
+            Duration of each user's phase
+    """
     if interval_time is None:
         interval_time = timedelta(seconds=INTERVAL_TIME_SEC)
     if turn_time is None:
@@ -60,6 +75,10 @@ async def col_game_control(
 
 
 async def col_azimuth_control():
+    """Control the azimuth of the tower
+
+    Periodically check the schedule of yawing and perform yawing (i.e. update azimuth).
+    """
     loop_interval = timedelta(seconds=5)
 
     loop_period_time = datetime.now()
@@ -80,6 +99,9 @@ async def col_azimuth_control():
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()
 
+    # Wait for DB to start up
+    # This is because this script may be executed before the DB is launched
+    # if the docker containers are launched at the same time.
     loop.run_until_complete(col_initial_connection())
 
     loop.create_task(col_game_control())

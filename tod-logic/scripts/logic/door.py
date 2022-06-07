@@ -4,6 +4,11 @@ import service.doorlog
 
 
 def open_door(door_id: str):
+    """Record the door opening.
+
+    Args:
+        door_id (str): ID of door
+    """
     with service.connect() as connection:
         service.doorlog.insert_open(door_id, connection=connection)
 
@@ -11,6 +16,7 @@ def open_door(door_id: str):
 
 
 def open_all_door():
+    """Record the all door opening."""
     with service.connect() as connection:
         door_id_list = service.door.id_list(connection=connection)
         for door_id in door_id_list:
@@ -20,6 +26,11 @@ def open_all_door():
 
 
 def close_door(door_id: str):
+    """Record the door closing.
+
+    Args:
+        door_id (str): ID of door
+    """
     with service.connect() as connection:
         service.doorlog.insert_close(door_id, connection=connection)
 
@@ -27,6 +38,7 @@ def close_door(door_id: str):
 
 
 def close_all_door():
+    """Record the all door closing."""
     with service.connect() as connection:
         door_id_list = service.door.id_list(connection=connection)
         for door_id in door_id_list:

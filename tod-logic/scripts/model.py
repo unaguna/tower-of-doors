@@ -4,11 +4,15 @@ from enum import Enum
 
 
 class DoorStatus(Enum):
+    """State of door opening"""
+
     CLOSED = 0
     OPEN = 1
 
 
 class YawingStatus(Enum):
+    """State of tower yawing"""
+
     SCHEDULED = "SCHEDULED"
     CANCELLED = "CANCELLED"
     ON_YAWING = "ON_YAWING"
@@ -16,6 +20,8 @@ class YawingStatus(Enum):
 
 
 class YawingReason(Enum):
+    """Reason of tower yawing"""
+
     GAME_PHASE = "GAME_PHASE"
     REMOTE = "REMOTE"
 
@@ -31,6 +37,8 @@ class DoorLogRecord(
         ),
     )
 ):
+    """The record of `door_log`"""
+
     door_id: str
     status: DoorStatus
     timestamp: datetime
@@ -51,6 +59,8 @@ class GameStatusRecord(
         GAME_STATUS_FIELDS,
     )
 ):
+    """The record of `game_status`"""
+
     status: str
     player_num: int | None
     turn_player: int | None
@@ -58,18 +68,22 @@ class GameStatusRecord(
 
     @property
     def on_game(self) -> bool:
+        """If true, it is the record created in the middle of a game"""
         return self.status == "ON_GAME"
 
     @property
     def on_maintenance(self) -> bool:
+        """If true, it is the record created in maintenance"""
         return self.status == "MAINTENANCE"
 
     @property
     def on_someones_turn(self) -> bool:
+        """If true, it is the record created in user's phase of a game"""
         return self.on_game and self.turn_player > 0
 
     @property
     def on_interval_turn(self) -> bool:
+        """If true, it is the record created in interval phase of a game"""
         return self.on_game and self.turn_player == 0
 
 
@@ -91,6 +105,8 @@ class YawingScheduleRecord(
         YAWING_SCHEDULE_FIELDS,
     )
 ):
+    """The record of `yawing_schedule`"""
+
     id: int
     aim_azimuth: float
     yawing_reason: YawingReason
