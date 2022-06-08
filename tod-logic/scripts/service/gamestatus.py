@@ -3,7 +3,7 @@ from datetime import datetime
 import MySQLdb
 
 from db import sql_literal
-from model import GAME_STATUS_FIELDS, GameStatusRecord
+from model import GAME_STATUS_FIELDS, GameStatus, GameStatusRecord
 
 
 _TABLE = "game_status"
@@ -24,7 +24,7 @@ def get_latest(*, connection) -> GameStatusRecord:
     row = cursor.fetchone()
 
     return GameStatusRecord(
-        status=row["status"],
+        status=GameStatus(row["status"]),
         player_num=row["player_num"],
         turn_player=row["turn_player"],
         timestamp=row["timestamp"],
@@ -63,7 +63,7 @@ def insert_end_maintenance(
         )
     else:
         end_maintenance_status = GameStatusRecord(
-            status="STANDBY",
+            status=GameStatus.STANDBY,
             player_num=None,
             turn_player=None,
             timestamp=datetime.now(),
@@ -89,7 +89,7 @@ def insert_start_game(
         )
     else:
         start_game_status = GameStatusRecord(
-            status="ON_GAME",
+            status=GameStatus.ON_GAME,
             player_num=player_num,
             turn_player=0,
             timestamp=datetime.now(),
@@ -111,7 +111,7 @@ def insert_end_game(
         )
     else:
         end_game_status = GameStatusRecord(
-            status="STANDBY",
+            status=GameStatus.STANDBY,
             player_num=None,
             turn_player=None,
             timestamp=datetime.now(),
