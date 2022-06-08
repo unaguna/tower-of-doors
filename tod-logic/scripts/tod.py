@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 
 import argparse
-import sys
 
 from argtype import positive_int
 import logic.door
 import logic.game
-import service
-import service.door
-import service.doorlog
-import service.gamestatus
+import logic.maintenance
 
 
 class DoorControlArgs:
@@ -130,7 +126,7 @@ def command_end_maintenance(_: argparse.Namespace):
     Args:
         args (argparse.Namespace): The arguments got from `argparse` module.
     """
-    print("command_end_maintenance: Not Implemented")
+    logic.maintenance.end_maintenance()
 
 
 def arg_parser() -> argparse.ArgumentParser:
