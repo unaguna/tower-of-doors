@@ -2,6 +2,14 @@ import service
 import service.gamestatus
 
 
+def now_on_maintenance() -> bool:
+    """Check whether maintenance is in progress"""
+    with service.connect() as connection:
+        current_game_status = service.gamestatus.get_latest(connection=connection)
+
+    return current_game_status.on_maintenance
+
+
 def start_maintenance(force_maintenance: bool):
     """Start the maintenance
 

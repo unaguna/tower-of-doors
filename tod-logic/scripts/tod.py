@@ -127,7 +127,7 @@ def command_check_maintenance(_: argparse.Namespace):
     Args:
         args (argparse.Namespace): The arguments got from `argparse` module.
     """
-    print("command_check_maintenance: Not Implemented")
+    print(str(logic.maintenance.now_on_maintenance()).lower())
 
 
 def command_start_maintenance(_args: argparse.Namespace):
