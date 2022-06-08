@@ -51,6 +51,28 @@ def insert(game_status: GameStatusRecord, *, connection):
     cursor.execute(query)
 
 
+def insert_start_maintenance(
+    current_game_status: GameStatusRecord = None, *, connection: MySQLdb.Connection
+) -> GameStatusRecord:
+    if current_game_status is None:
+        current_game_status = get_latest(connection=connection)
+
+    if current_game_status.on_maintenance:
+        raise Exception(
+            "cannot insert into `game_status`: cannot start maintenance: already in maintenance"
+        )
+    else:
+        start_maintenance_status = GameStatusRecord(
+            status=GameStatus.MAINTENANCE,
+            player_num=None,
+            turn_player=None,
+            timestamp=datetime.now(),
+        )
+        insert(start_maintenance_status, connection=connection)
+
+        return start_maintenance_status
+
+
 def insert_end_maintenance(
     current_game_status: GameStatusRecord = None, *, connection: MySQLdb.Connection
 ) -> GameStatusRecord:

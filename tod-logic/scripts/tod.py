@@ -32,6 +32,25 @@ class DoorControlArgs:
         return self.door_id.lower() == "all"
 
 
+class StartMaintenanceArgs:
+    """The arguments of subcommand to start maintenance."""
+
+    _args: argparse.Namespace
+
+    def __init__(self, args: argparse.Namespace) -> None:
+        """The arguments of subcommand to start maintenance.
+
+        Args:
+            args (argparse.Namespace): The arguments got from `argparse` module.
+        """
+        self._args = args
+
+    @property
+    def force_maintenance(self) -> bool:
+        """If true, start maintenance even during the game."""
+        return self._args.force
+
+
 class StartGameArgs:
     """The arguments of subcommand to start a game."""
 
@@ -111,13 +130,14 @@ def command_check_maintenance(_: argparse.Namespace):
     print("command_check_maintenance: Not Implemented")
 
 
-def command_start_maintenance(_: argparse.Namespace):
+def command_start_maintenance(_args: argparse.Namespace):
     """Implementation of subcommand to start maintenance.
 
     Args:
         args (argparse.Namespace): The arguments got from `argparse` module.
     """
-    print("command_start_maintenance: Not Implemented")
+    args = StartMaintenanceArgs(_args)
+    logic.maintenance.start_maintenance(force_maintenance=args.force_maintenance)
 
 
 def command_end_maintenance(_: argparse.Namespace):
@@ -167,6 +187,11 @@ def arg_parser() -> argparse.ArgumentParser:
     parser_add.set_defaults(handler=command_check_maintenance)
 
     parser_add = maintenance_subparsers.add_parser("start", help="start maintenance")
+    parser_add.add_argument(
+        "--force",
+        action="store_true",
+        help="If specified, start maintenance even during the game.",
+    )
     parser_add.set_defaults(handler=command_start_maintenance)
 
     parser_add = maintenance_subparsers.add_parser("end", help="end maintenance")
