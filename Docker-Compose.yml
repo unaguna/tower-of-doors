@@ -29,6 +29,15 @@ services:
       - tower-of-doors-network
     ports:
       - "127.0.0.1:3000:3000"
+    environment:
+      GF_RENDERING_SERVER_URL: http://tod-grafana-renderer:8081/render
+      GF_RENDERING_CALLBACK_URL: http://tod-grafana:3000/
+  renderer:
+    image: grafana/grafana-image-renderer:latest
+    container_name: tower-of-doors-grafana-renderer
+    hostname: tod-grafana-renderer
+    networks:
+      - tower-of-doors-network
   tod-logic:
     build: ./tod-logic/
     image: tower-of-doors-tod-logic
