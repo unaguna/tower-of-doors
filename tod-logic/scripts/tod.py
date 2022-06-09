@@ -5,10 +5,7 @@ import argparse
 from argtype import positive_int
 import logic.door
 import logic.game
-import service
-import service.door
-import service.doorlog
-import service.gamestatus
+import logic.maintenance
 
 
 class DoorControlArgs:
@@ -33,6 +30,25 @@ class DoorControlArgs:
     def control_all_doors_flg(self) -> bool:
         """If true, all doors are subject to control."""
         return self.door_id.lower() == "all"
+
+
+class StartMaintenanceArgs:
+    """The arguments of subcommand to start maintenance."""
+
+    _args: argparse.Namespace
+
+    def __init__(self, args: argparse.Namespace) -> None:
+        """The arguments of subcommand to start maintenance.
+
+        Args:
+            args (argparse.Namespace): The arguments got from `argparse` module.
+        """
+        self._args = args
+
+    @property
+    def force_maintenance(self) -> bool:
+        """If true, start maintenance even during the game."""
+        return self._args.force
 
 
 class StartGameArgs:
@@ -105,6 +121,34 @@ def command_end_game(_: argparse.Namespace):
     logic.game.end_game()
 
 
+def command_check_maintenance(_: argparse.Namespace):
+    """Implementation of subcommand to check whether maintenance is in progress.
+
+    Args:
+        args (argparse.Namespace): The arguments got from `argparse` module.
+    """
+    print(str(logic.maintenance.now_on_maintenance()).lower())
+
+
+def command_start_maintenance(_args: argparse.Namespace):
+    """Implementation of subcommand to start maintenance.
+
+    Args:
+        args (argparse.Namespace): The arguments got from `argparse` module.
+    """
+    args = StartMaintenanceArgs(_args)
+    logic.maintenance.start_maintenance(force_maintenance=args.force_maintenance)
+
+
+def command_end_maintenance(_: argparse.Namespace):
+    """Implementation of subcommand to end maintenance.
+
+    Args:
+        args (argparse.Namespace): The arguments got from `argparse` module.
+    """
+    logic.maintenance.end_maintenance()
+
+
 def arg_parser() -> argparse.ArgumentParser:
     """Build an argument parser of this script.
 
@@ -130,6 +174,28 @@ def arg_parser() -> argparse.ArgumentParser:
     parser_add = subparsers.add_parser("close", help="close a door manually")
     parser_add.add_argument("door_id", type=str, help="The door id")
     parser_add.set_defaults(handler=command_close_door)
+
+    parser_maintenance = subparsers.add_parser(
+        "maintenance", help="control maintenance"
+    )
+    maintenance_subparsers = parser_maintenance.add_subparsers()
+    parser_maintenance.set_defaults(handler=lambda _: parser_maintenance.print_help())
+
+    parser_add = maintenance_subparsers.add_parser(
+        "status", help="show whether the system is in maintenance"
+    )
+    parser_add.set_defaults(handler=command_check_maintenance)
+
+    parser_add = maintenance_subparsers.add_parser("start", help="start maintenance")
+    parser_add.add_argument(
+        "--force",
+        action="store_true",
+        help="If specified, start maintenance even during the game.",
+    )
+    parser_add.set_defaults(handler=command_start_maintenance)
+
+    parser_add = maintenance_subparsers.add_parser("end", help="end maintenance")
+    parser_add.set_defaults(handler=command_end_maintenance)
 
     return parser
 

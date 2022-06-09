@@ -3,6 +3,14 @@ from datetime import datetime
 from enum import Enum
 
 
+class GameStatus(Enum):
+    """State of game and the tower"""
+
+    MAINTENANCE = "MAINTENANCE"
+    STANDBY = "STANDBY"
+    ON_GAME = "ON_GAME"
+
+
 class DoorStatus(Enum):
     """State of door opening"""
 
@@ -61,7 +69,7 @@ class GameStatusRecord(
 ):
     """The record of `game_status`"""
 
-    status: str
+    status: GameStatus
     player_num: int | None
     turn_player: int | None
     timestamp: datetime
@@ -69,12 +77,12 @@ class GameStatusRecord(
     @property
     def on_game(self) -> bool:
         """If true, it is the record created in the middle of a game"""
-        return self.status == "ON_GAME"
+        return self.status == GameStatus.ON_GAME
 
     @property
     def on_maintenance(self) -> bool:
         """If true, it is the record created in maintenance"""
-        return self.status == "MAINTENANCE"
+        return self.status == GameStatus.MAINTENANCE
 
     @property
     def on_someones_turn(self) -> bool:
