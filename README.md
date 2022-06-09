@@ -70,6 +70,9 @@ Changing the status of the tower is done using the CUI tool.
     # Close all doors
     tod close all
 
+    # exit maintenance mode and enter standby mode
+    tod maintenance end
+
     # Start a game
     tod start
 
