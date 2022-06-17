@@ -5,10 +5,101 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "1st_data_"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "passed"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 22,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 49,
+      "options": {
+        "addAllIDs": false,
+        "captureMappings": false,
+        "context": {},
+        "eventAutoComplete": false,
+        "eventSource": "context = options.context;\r\nconsole.debug(\"Start Render\", context);\r\n\r\nconst PASSED_CLOSED = -1;\r\nconst PASSED_NODATA = -2;\r\nconst PASSED_THRESHOLD = 300; \r\n\r\nconst COLOR_CLOSED = svgnode.gradient('linear', function(add) {\r\n  add.stop(0, 'rgb(18, 74, 234)');\r\n  add.stop(1, 'rgb(63, 156, 240)');\r\n});\r\nconst COLOR_OPEN_SHORT = svgnode.gradient('linear', function(add) {\r\n  add.stop(0, 'rgb(66, 154, 67)');\r\n  add.stop(1, 'rgb(111, 183, 87)');\r\n});\r\nconst COLOR_OPEN_LONG = 'yellow';\r\nconst COLOR_NODATA = 'black';\r\n\r\nconst doors = [\r\n  'F5F4-001',\r\n  'F5F3-001',\r\n  'F4F3-001',\r\n  'F4F2-001',\r\n  'F3F2-001',\r\n  'F3F1-001',\r\n  'F2F1-001',\r\n  'F5-O-000',\r\n  'F5-O-060',\r\n  'F5-O-120',\r\n  'F5-O-180',\r\n  'F5-O-240',\r\n  'F5-O-300',\r\n  'F5-I-000',\r\n  'F5-I-060',\r\n  'F5-I-120',\r\n  'F5-I-180',\r\n  'F5-I-240',\r\n  'F5-I-300',\r\n  'F4-O-000',\r\n  'F4-O-060',\r\n  'F4-O-120',\r\n  'F4-O-180',\r\n  'F4-O-240',\r\n  'F4-O-300',\r\n  'F3-O-000',\r\n  'F3-O-060',\r\n  'F3-O-120',\r\n  'F3-O-180',\r\n  'F3-O-240',\r\n  'F3-O-300',\r\n  'F2-O-000',\r\n  'F2-O-060',\r\n  'F2-O-120',\r\n  'F2-O-180',\r\n  'F2-O-240',\r\n  'F2-O-300',\r\n  'F1-O-000',\r\n  'F1-O-060',\r\n  'F1-O-120',\r\n  'F1-O-180',\r\n  'F1-O-240',\r\n  'F1-O-300',\r\n  'F1-I-000',\r\n  'F1-I-060',\r\n  'F1-I-120',\r\n  'F1-I-180',\r\n  'F1-I-240',\r\n  'F1-I-300',\r\n];\r\n\r\n/*********************************************************\r\n * Fields of selected records\r\n * \r\n * These objects contain values\r\n *********************************************************/\r\nconst fieldId = data.series[0].fields.find(f => f.name === 'id');\r\nconst fieldPassed = data.series[0].fields.find(f => f.name === 'passed');\r\n\r\nfor (const doorId of doors) {\r\n  const doorElement = context.findElementByDoor(\".doorColored\", doorId, svgnode);\r\n  const gTextElement = context.findElementByDoor(\".gTextPassed\", doorId, svgnode);\r\n  const recordIndex = fieldId.values.buffer.findIndex(v => v === doorId);\r\n  const passed = fieldPassed.values.buffer[recordIndex];\r\n  const passedDisplayValue = fieldPassed.display(passed);\r\n  \r\n  context.renderDoor(doorElement, passedDisplayValue);\r\n  context.renderDoorText(gTextElement, passedDisplayValue);\r\n}\r\n\r\nconst tooltipNode = document.createElement(\"div\");\r\ntooltipNode.textContent = \"Tooltip\";\r\ndocument.body.appendChild(tooltipNode);\r\n\r\ncontext.findElementByDoor(\".doorColored\", \"F5F4-001\", svgnode).node.onmouseover = function() {\r\n\r\n};\r\n",
+        "initAutoComplete": false,
+        "initSource": "console.log(\"Start Init\");\r\ncontext = {};\r\n\r\n\r\nconst PASSED_CLOSED = -1;\r\nconst PASSED_NODATA = -2;\r\nconst PASSED_THRESHOLD = 300; \r\n\r\nconst COLOR_CLOSED = svgnode.gradient('linear', function(add) {\r\n  add.stop(0, 'rgb(18, 74, 234)');\r\n  add.stop(1, 'rgb(63, 156, 240)');\r\n});\r\nconst COLOR_OPEN_SHORT = svgnode.gradient('linear', function(add) {\r\n  add.stop(0, 'rgb(66, 154, 67)');\r\n  add.stop(1, 'rgb(111, 183, 87)');\r\n});\r\nconst COLOR_OPEN_LONG = 'yellow';\r\nconst COLOR_NODATA = 'black';\r\n\r\n\r\ncontext.findElementByDoor = (selector, doorId, svgnode) => {\r\n  return svgnode.findOne(`${selector}[door=\"${doorId}\"]`);\r\n}\r\n\r\n\r\ncontext.formatDisplayValue = (displayValue) =>\r\n  `${displayValue.prefix ?? \"\"}${displayValue.text}${displayValue.suffix ?? \"\"}`;\r\n\r\ncontext.renderDoor = (doorElement, passedDisplayValue) => {\r\n  const passed = passedDisplayValue.numeric;\r\n  if(passed == PASSED_CLOSED) {\r\n    doorElement?.fill(COLOR_CLOSED);\r\n  } else if (0 <= passed && passed < PASSED_THRESHOLD) {\r\n    doorElement?.fill(COLOR_OPEN_SHORT);\r\n  } else if (passed >= PASSED_THRESHOLD) {\r\n    doorElement?.fill(COLOR_OPEN_LONG);\r\n  } else {\r\n    doorElement?.fill(COLOR_NODATA);\r\n  }\r\n};\r\n\r\ncontext.renderDoorText = (gTextElement, passedDisplayValue) => {\r\n  const passed = passedDisplayValue.numeric;\r\n\r\n  const textElement = gTextElement?.findOne(\".text-passed\");\r\n\r\n  textElement?.text(context.formatDisplayValue(passedDisplayValue));\r\n  if(passed == PASSED_CLOSED) {\r\n    gTextElement?.hide();\r\n  } else if (0 <= passed && passed < PASSED_THRESHOLD) {\r\n    gTextElement?.show();\r\n  } else if (passed >= PASSED_THRESHOLD) {\r\n    gTextElement?.show();\r\n  } else {\r\n    gTextElement?.hide();\r\n  }\r\n};\r\n\r\n\r\noptions.context = context;\r\nconsole.log(\"End Init\", context);",
+        "svgAutoComplete": false,
+        "svgMappings": [],
+        "svgSource": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\r\n<!-- Created with Inkscape (http://www.inkscape.org/) -->\r\n\r\n<svg\r\n   viewBox=\"0 0 420 227\"\r\n   version=\"1.1\"\r\n   id=\"svg5\"\r\n   inkscape:version=\"1.2 (dc2aedaf03, 2022-05-15)\"\r\n   sodipodi:docname=\"doors.svg\"\r\n   xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\"\r\n   xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\"\r\n   xmlns=\"http://www.w3.org/2000/svg\"\r\n   xmlns:svg=\"http://www.w3.org/2000/svg\">\r\n  <sodipodi:namedview\r\n     id=\"namedview7\"\r\n     pagecolor=\"#232323\"\r\n     bordercolor=\"#000000\"\r\n     borderopacity=\"0.25\"\r\n     inkscape:showpageshadow=\"2\"\r\n     inkscape:pageopacity=\"0\"\r\n     inkscape:pagecheckerboard=\"0\"\r\n     inkscape:deskcolor=\"#d1d1d1\"\r\n     inkscape:document-units=\"mm\"\r\n     showgrid=\"false\"\r\n     inkscape:zoom=\"2.8284271\"\r\n     inkscape:cx=\"220.26376\"\r\n     inkscape:cy=\"130.10765\"\r\n     inkscape:window-width=\"1920\"\r\n     inkscape:window-height=\"1017\"\r\n     inkscape:window-x=\"1016\"\r\n     inkscape:window-y=\"-8\"\r\n     inkscape:window-maximized=\"1\"\r\n     inkscape:current-layer=\"layer1\" />\r\n  <defs\r\n     id=\"defs2\">\r\n    <rect\r\n       x=\"373.69449\"\r\n       y=\"31.715769\"\r\n       width=\"215.11565\"\r\n       height=\"38.6105\"\r\n       id=\"rect1433\" />\r\n  </defs>\r\n  <style\r\n     id=\"style5\">.gTextPassed .under-line {\r\n  fill:none;\r\n  fill-opacity:0.5;\r\n  stroke:#7f7f7f;\r\n  stroke-width:0.53;\r\n  stroke-opacity:1;\r\n}\r\n.gTextPassed .text-passed {\r\n   font-size:12px;\r\n   fill:#ffffff;\r\n   fill-opacity:1;\r\n   stroke:#7f7f7f;\r\n   stroke-width:0.53;\r\n   stroke-opacity:1;\r\n}</style>\r\n  <g\r\n     inkscape:label=\"Layer 1\"\r\n     inkscape:groupmode=\"layer\"\r\n     id=\"layer1\"\r\n     transform=\"scale(0.5)\">\r\n    <ellipse\r\n       style=\"fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.81967;stroke-dasharray:none;stroke-opacity:1\"\r\n       id=\"path005-6\"\r\n       cx=\"193.58971\"\r\n       cy=\"390\"\r\n       rx=\"91\"\r\n       ry=\"16.412884\" />\r\n    <g\r\n       id=\"g-wall-f3f1-2\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(32.503473,263.73098)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-16-3-8\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-2-0-0\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-51-2-0\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-83-1-1\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <g\r\n       id=\"g-wall-f2f1\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(64.788296,263.47299)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-16-3-8-0\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-2-0-0-1\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-51-2-0-8\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-83-1-1-1\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <ellipse\r\n       style=\"fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.795047;stroke-dasharray:none;stroke-opacity:1\"\r\n       id=\"path005-9\"\r\n       cx=\"193.58971\"\r\n       cy=\"310\"\r\n       rx=\"91\"\r\n       ry=\"15.393254\" />\r\n    <g\r\n       id=\"g-wall-f3f1-1\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(32.50347,183.88454)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-1-5-4\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-4-3-7\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-5-6-4\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-8-3-8\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <g\r\n       id=\"g-wall-f3f2\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(0.14552268,183.62655)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-3-8\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-46-7\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-4-9\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-89-6\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <g\r\n       id=\"g-wall-f4f2-2\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(127.31306,184.91648)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-16-3\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-2-0\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-51-2\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-83-1\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <ellipse\r\n       style=\"fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.802821;stroke-dasharray:none;stroke-opacity:1\"\r\n       id=\"path005-1\"\r\n       cx=\"193.58971\"\r\n       cy=\"230\"\r\n       rx=\"91\"\r\n       ry=\"14.873397\" />\r\n    <g\r\n       id=\"g-wall-f4f2-1\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(127.44205,104.94105)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-1-5\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-4-3\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-5-6\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-8-3\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <g\r\n       id=\"g-wall-f4f3\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(96.999786,105.19904)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-3\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-46\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-4\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-89\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <g\r\n       id=\"g-wall-f5f3-2\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(65.009616,106.10198)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-16\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-2\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-51\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-83\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <ellipse\r\n       style=\"fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.794826;stroke-dasharray:none;stroke-opacity:1\"\r\n       id=\"path005-7\"\r\n       cx=\"193.58971\"\r\n       cy=\"150\"\r\n       rx=\"91\"\r\n       ry=\"14.61941\" />\r\n    <g\r\n       id=\"g-wall-f5f4\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(34.652037,26.528217)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <g\r\n       id=\"g-wall-f5f3-1\"\r\n       style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208\"\r\n       transform=\"translate(65.009613,26.255549)\">\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8121-1\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"122.47582\"\r\n         y=\"41.59856\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-4\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"188.16943\"\r\n         y=\"180.42841\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8040-7-5\"\r\n         width=\"8\"\r\n         height=\"80\"\r\n         x=\"165.28865\"\r\n         y=\"163.91278\"\r\n         transform=\"matrix(0.70710678,-0.70710678,0,1,0,0)\" />\r\n      <rect\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208\"\r\n         id=\"rect8042-8\"\r\n         width=\"16\"\r\n         height=\"80\"\r\n         x=\"116.9273\"\r\n         y=\"47.372517\" />\r\n    </g>\r\n    <ellipse\r\n       style=\"fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.754253;stroke-dasharray:none;stroke-opacity:1\"\r\n       id=\"path005\"\r\n       cx=\"193.58971\"\r\n       cy=\"70\"\r\n       rx=\"91\"\r\n       ry=\"12.833798\" />\r\n    <rect\r\n       style=\"stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1\"\r\n       width=\"16\"\r\n       height=\"8\"\r\n       x=\"225.38785\"\r\n       y=\"96.256813\"\r\n       transform=\"matrix(1,0,-0.70710678,0.70710678,0,0)\"\r\n       door=\"F5F4-001\"\r\n       class=\"doorColored\"\r\n       id=\"rect1723\" />\r\n    <rect\r\n       style=\"stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1\"\r\n       width=\"16\"\r\n       height=\"8\"\r\n       x=\"255.44069\"\r\n       y=\"95.905273\"\r\n       transform=\"matrix(1,0,-0.70710678,0.70710678,0,0)\"\r\n       door=\"F5F3-001\"\r\n       class=\"doorColored\"\r\n       id=\"rect1725\" />\r\n    <rect\r\n       style=\"stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1\"\r\n       width=\"16\"\r\n       height=\"8\"\r\n       x=\"366.63235\"\r\n       y=\"207.54822\"\r\n       transform=\"matrix(1,0,-0.70710678,0.70710678,0,0)\"\r\n       door=\"F4F3-001\"\r\n       class=\"doorColored\"\r\n       id=\"rect1727\" />\r\n    <rect\r\n       style=\"stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1\"\r\n       width=\"16\"\r\n       height=\"8\"\r\n       x=\"396.68765\"\r\n       y=\"207.54823\"\r\n       transform=\"matrix(1,0,-0.70710678,0.70710678,0,0)\"\r\n       class=\"doorColored\"\r\n       door=\"F4F2-001\"\r\n       id=\"rect1729\" />\r\n    <rect\r\n       style=\"stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1\"\r\n       width=\"16\"\r\n       height=\"8\"\r\n       x=\"347.81863\"\r\n       y=\"318.46149\"\r\n       transform=\"matrix(1,0,-0.70710678,0.70710678,0,0)\"\r\n       door=\"F3F2-001\"\r\n       class=\"doorColored\"\r\n       id=\"rect1731\" />\r\n    <rect\r\n       style=\"stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1\"\r\n       width=\"16\"\r\n       height=\"8\"\r\n       x=\"380.56354\"\r\n       y=\"319.00876\"\r\n       transform=\"matrix(1,0,-0.70710678,0.70710678,0,0)\"\r\n       door=\"F3F1-001\"\r\n       class=\"doorColored\"\r\n       id=\"rect1733\" />\r\n    <rect\r\n       style=\"stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1\"\r\n       width=\"16\"\r\n       height=\"8\"\r\n       x=\"492.30783\"\r\n       y=\"431.19897\"\r\n       transform=\"matrix(1,0,-0.70710678,0.70710678,0,0)\"\r\n       door=\"F2F1-001\"\r\n       class=\"doorColored\"\r\n       id=\"rect1735\" />\r\n    <g\r\n       id=\"g1224\"\r\n       transform=\"matrix(2,0,0,2,460.569,89.046916)\">\r\n      <path\r\n         id=\"path356\"\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208\"\r\n         d=\"M -2.1503255e-4,-22.999958 A 23,23 0 0 0 -22.999845,1.8823437e-4 23,23 0 0 0 -2.1503255e-4,22.999818 23,23 0 0 0 22.999931,1.8823437e-4 23,23 0 0 0 -2.1503255e-4,-22.999958 Z m 0,9.999906 A 13,13 0 0 1 13.000025,1.8823437e-4 13,13 0 0 1 -2.1503255e-4,12.999912 13,13 0 0 1 -12.999938,1.8823437e-4 13,13 0 0 1 -2.1503255e-4,-13.000052 Z\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         door=\"F5-O-000\"\r\n         class=\"doorColored\"\r\n         id=\"rect1738\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         door=\"F5-I-000\"\r\n         class=\"doorColored\"\r\n         id=\"rect1740\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(60)\"\r\n         door=\"F5-O-300\"\r\n         class=\"doorColored\"\r\n         id=\"rect1742\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(60)\"\r\n         door=\"F5-I-300\"\r\n         class=\"doorColored\"\r\n         id=\"rect1744\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(120)\"\r\n         door=\"F5-O-240\"\r\n         class=\"doorColored\"\r\n         id=\"rect1746\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(120)\"\r\n         door=\"F5-I-240\"\r\n         class=\"doorColored\"\r\n         id=\"rect1748\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"scale(-1)\"\r\n         door=\"F5-O-180\"\r\n         class=\"doorColored\"\r\n         id=\"rect1750\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"scale(-1)\"\r\n         door=\"F5-I-180\"\r\n         class=\"doorColored\"\r\n         id=\"rect1752\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-120)\"\r\n         door=\"F5-O-120\"\r\n         class=\"doorColored\"\r\n         id=\"rect1754\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(-120)\"\r\n         door=\"F5-I-120\"\r\n         class=\"doorColored\"\r\n         id=\"rect1756\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-60)\"\r\n         door=\"F5-O-060\"\r\n         class=\"doorColored\"\r\n         id=\"rect1758\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(-60)\"\r\n         door=\"F5-I-060\"\r\n         class=\"doorColored\"\r\n         id=\"rect1760\" />\r\n    </g>\r\n    <g\r\n       id=\"g1224-3\"\r\n       transform=\"matrix(2,0,0,2,670.45994,89.046915)\">\r\n      <path\r\n         id=\"path356-0\"\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208\"\r\n         d=\"M 7.2591146e-5,-22.999958 A 23,23 0 0 0 -23.000074,1.8873437e-4 23,23 0 0 0 7.2591146e-5,22.999818 23,23 0 0 0 23.000219,1.8873437e-4 23,23 0 0 0 7.2591146e-5,-22.999958 Z m 0,9.999907 A 13,13 0 0 1 12.999796,1.8873437e-4 13,13 0 0 1 7.2591146e-5,12.999912 13,13 0 0 1 -13.000167,1.8873437e-4 13,13 0 0 1 7.2591146e-5,-13.000051 Z\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         door=\"F4-O-000\"\r\n         class=\"doorColored\"\r\n         id=\"rect1764\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(60)\"\r\n         door=\"F4-O-300\"\r\n         class=\"doorColored\"\r\n         id=\"rect1766\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(120)\"\r\n         door=\"F4-O-240\"\r\n         class=\"doorColored\"\r\n         id=\"rect1768\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"scale(-1)\"\r\n         door=\"F4-O-180\"\r\n         class=\"doorColored\"\r\n         id=\"rect1770\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-120)\"\r\n         door=\"F4-O-120\"\r\n         class=\"doorColored\"\r\n         id=\"rect1772\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-60)\"\r\n         door=\"F4-O-060\"\r\n         class=\"doorColored\"\r\n         id=\"rect1774\" />\r\n    </g>\r\n    <g\r\n       id=\"g1224-0\"\r\n       transform=\"matrix(2,0,0,2,460.569,230.97994)\">\r\n      <path\r\n         id=\"path356-5\"\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208\"\r\n         d=\"M -2.1503255e-4,-23.000252 A 23,23 0 0 0 -22.999845,-1.0541667e-4 23,23 0 0 0 -2.1503255e-4,23.000041 23,23 0 0 0 22.999931,-1.0541667e-4 23,23 0 0 0 -2.1503255e-4,-23.000252 Z m 0,10.000423 A 13,13 0 0 1 13.000025,-1.0541667e-4 13,13 0 0 1 -2.1503255e-4,13.000135 13,13 0 0 1 -12.999938,-1.0541667e-4 13,13 0 0 1 -2.1503255e-4,-12.999829 Z\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         door=\"F3-O-000\"\r\n         class=\"doorColored\"\r\n         id=\"rect1190\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(60)\"\r\n         door=\"F3-O-300\"\r\n         class=\"doorColored\"\r\n         id=\"rect1192\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(120)\"\r\n         door=\"F3-O-240\"\r\n         class=\"doorColored\"\r\n         id=\"rect1194\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"scale(-1)\"\r\n         door=\"F3-O-180\"\r\n         class=\"doorColored\"\r\n         id=\"rect1196\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-120)\"\r\n         door=\"F3-O-120\"\r\n         class=\"doorColored\"\r\n         id=\"rect1198\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-60)\"\r\n         door=\"F3-O-060\"\r\n         class=\"doorColored\"\r\n         id=\"rect1200\" />\r\n    </g>\r\n    <g\r\n       id=\"g1224-8\"\r\n       transform=\"matrix(2,0,0,2,670.45994,230.13241)\">\r\n      <path\r\n         id=\"path356-7\"\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208\"\r\n         d=\"M 7.2591146e-5,-23.000234 A 23,23 0 0 0 -23.000074,-8.7161458e-5 23,23 0 0 0 7.2591146e-5,23.000059 23,23 0 0 0 23.000219,-8.7161458e-5 23,23 0 0 0 7.2591146e-5,-23.000234 Z m 0,10.000424 A 13,13 0 0 1 12.999796,-8.7161458e-5 13,13 0 0 1 7.2591146e-5,13.000153 13,13 0 0 1 -13.000167,-8.7161458e-5 13,13 0 0 1 7.2591146e-5,-12.99981 Z\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         door=\"F2-O-000\"\r\n         class=\"doorColored\"\r\n         id=\"rect1204\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(60)\"\r\n         door=\"F2-O-300\"\r\n         class=\"doorColored\"\r\n         id=\"rect1206\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(120)\"\r\n         door=\"F2-O-240\"\r\n         class=\"doorColored\"\r\n         id=\"rect1208\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"scale(-1)\"\r\n         door=\"F2-O-180\"\r\n         class=\"doorColored\"\r\n         id=\"rect1210\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-120)\"\r\n         door=\"F2-O-120\"\r\n         class=\"doorColored\"\r\n         id=\"rect1212\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-60)\"\r\n         class=\"doorColored\"\r\n         door=\"F2-O-060\"\r\n         id=\"rect1214\" />\r\n    </g>\r\n    <g\r\n       id=\"g1224-9\"\r\n       transform=\"matrix(2,0,0,2,460.08147,378.31255)\">\r\n      <path\r\n         id=\"path356-3\"\r\n         style=\"fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208\"\r\n         d=\"M -2.1503255e-4,-23.000019 A 23,23 0 0 0 -22.999845,1.2717448e-4 23,23 0 0 0 -2.1503255e-4,22.999757 23,23 0 0 0 22.999931,1.2717448e-4 23,23 0 0 0 -2.1503255e-4,-23.000019 Z m 0,9.999906 A 13,13 0 0 1 13.000025,1.2717448e-4 13,13 0 0 1 -2.1503255e-4,12.99985 13,13 0 0 1 -12.999938,1.2717448e-4 13,13 0 0 1 -2.1503255e-4,-13.000113 Z\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         door=\"F1-O-000\"\r\n         class=\"doorColored\"\r\n         id=\"rect1218\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         door=\"F1-I-000\"\r\n         class=\"doorColored\"\r\n         id=\"rect1220\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(60)\"\r\n         door=\"F1-O-300\"\r\n         class=\"doorColored\"\r\n         id=\"rect1222\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(60)\"\r\n         door=\"F1-I-300\"\r\n         class=\"doorColored\"\r\n         id=\"rect1224\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(120)\"\r\n         door=\"F1-O-240\"\r\n         class=\"doorColored\"\r\n         id=\"rect1226\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(120)\"\r\n         door=\"F1-I-240\"\r\n         class=\"doorColored\"\r\n         id=\"rect1228\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"scale(-1)\"\r\n         door=\"F1-O-180\"\r\n         class=\"doorColored\"\r\n         id=\"rect1230\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"scale(-1)\"\r\n         door=\"F1-I-180\"\r\n         class=\"doorColored\"\r\n         id=\"rect1232\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-120)\"\r\n         door=\"F1-O-120\"\r\n         class=\"doorColored\"\r\n         id=\"rect1234\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(-120)\"\r\n         door=\"F1-I-120\"\r\n         class=\"doorColored\"\r\n         id=\"rect1236\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"20\"\r\n         transform=\"rotate(-60)\"\r\n         door=\"F1-O-060\"\r\n         class=\"doorColored\"\r\n         id=\"rect1238\" />\r\n      <rect\r\n         style=\"stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208\"\r\n         width=\"12\"\r\n         height=\"6\"\r\n         x=\"-6\"\r\n         y=\"10\"\r\n         transform=\"rotate(-60)\"\r\n         door=\"F1-I-060\"\r\n         class=\"doorColored\"\r\n         id=\"rect1240\" />\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F5F3-001\"\r\n       id=\"g1813\"\r\n       transform=\"translate(30.647085,0.7296925)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1807\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1811\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1809\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F3-O-180\"\r\n       id=\"g534\"\r\n       transform=\"translate(298.85217,114.49278)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path528\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text532\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan530\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F3-O-120\"\r\n       id=\"g542\"\r\n       transform=\"translate(341.59951,139.31382)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path536\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text540\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan538\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F3-O-060\"\r\n       id=\"g550\"\r\n       transform=\"translate(345.73635,191.02431)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 157.81467,63.724563 10.7443,-13.375781 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path544\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text548\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan546\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(13.134465,-22.620468)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F5F4-001\"\r\n       id=\"g1821\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 152.50573,92.670947 16.05324,-42.322165 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1815\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1819\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1817\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(347.12338,20.221314)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F5-O-120\"\r\n       id=\"g436\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 156.87426,43.739838 11.68471,6.608944 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path430\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text434\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan432\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(318.35904,1.6951286)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F5-I-120\"\r\n       id=\"g813\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,62.753555 7.29693,-12.404773 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path807\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text811\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan809\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(318.84657,-16.831057)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F5-I-180\"\r\n       id=\"g870\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 151.51142,76.404428 17.04755,-26.055646 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path864\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text868\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan866\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(299.34532,-33.894649)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F5-O-180\"\r\n       id=\"g1045\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 159.79945,72.016647 8.75952,-21.667865 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1039\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1043\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1041\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(324.69695,39.722562)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F5-I-060\"\r\n       id=\"g591\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,62.753555 7.29693,-12.404773 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path585\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text589\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan587\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(346.14832,66.536778)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F5-O-060\"\r\n       id=\"g599\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,39.352058 7.29693,10.996724 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path593\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text597\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan595\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(-68.591095,134.26342)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F3F1-001\"\r\n       id=\"g754\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 230.33508,92.670947 214.28184,50.348782 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path748\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"156.15421\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text752\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"156.15421\"\r\n           y=\"45.970631\"\r\n           id=\"tspan750\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(72.96925,53.997244)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F4F3-001\"\r\n       id=\"g575\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 152.50573,92.670947 16.05324,-42.322165 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path569\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text573\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan571\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(95.589717,77.347404)\"\r\n       door=\"F4F2-001\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1826\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path932\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text936\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan934\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(32.836162,236.42037)\"\r\n       door=\"F2F1-001\"\r\n       class=\"gTextPassed\"\r\n       id=\"g929\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path923\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text927\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan925\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(-104.34603,156.88389)\"\r\n       door=\"F3F2-001\"\r\n       class=\"gTextPassed\"\r\n       id=\"g583\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 230.33824,67.861402 -7.29693,-17.51262 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path577\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text581\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan579\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(187.68516,-3.5138738)\"\r\n       door=\"F5-I-240\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1225\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 251.78961,71.274121 -8.75952,-21.41287 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1218\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1222\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1220\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(160.10623,166.09655)\"\r\n       door=\"F3-O-240\"\r\n       class=\"gTextPassed\"\r\n       id=\"g822\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 259.37382,40.937299 -16.34373,8.923952 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path816\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text820\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan818\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(184.92727,241.24913)\"\r\n       door=\"F3-O-000\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1102\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 266.95802,37.489932 256.81955,51.240197 H 194.79567\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1096\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1100\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1098\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(161.48517,218.49651)\"\r\n       door=\"F3-O-300\"\r\n       class=\"gTextPassed\"\r\n       id=\"g830\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 254.5475,36.110986 243.03009,49.861251 H 181.00621\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path824\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text828\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan826\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F2-O-180\"\r\n       id=\"g534-0\"\r\n       transform=\"translate(508.92538,115.42192)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path528-0\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text532-5\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan530-1\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F2-O-120\"\r\n       id=\"g542-8\"\r\n       transform=\"translate(551.67272,140.24296)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path536-3\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text540-6\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan538-5\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F2-O-060\"\r\n       id=\"g550-6\"\r\n       transform=\"translate(555.80956,191.95345)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 157.81467,63.724563 10.7443,-13.375781 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path544-7\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text548-3\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan546-0\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(370.17944,167.02569)\"\r\n       door=\"F2-O-240\"\r\n       class=\"gTextPassed\"\r\n       id=\"g822-8\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 259.37382,40.937299 -16.34373,8.923952 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path816-3\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text820-1\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan818-4\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(395.00048,242.17827)\"\r\n       door=\"F2-O-000\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1102-3\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 266.95802,37.489932 256.81955,51.240197 H 194.79567\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1096-7\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1100-3\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1098-5\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(371.55838,219.42565)\"\r\n       door=\"F2-O-300\"\r\n       class=\"gTextPassed\"\r\n       id=\"g830-8\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 254.5475,36.110986 243.03009,49.861251 H 181.00621\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path824-6\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text828-4\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan826-1\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(180.85972,17.937499)\"\r\n       door=\"F5-O-240\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1233\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 231.80083,55.673122 -8.75952,-5.32434 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1227\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1231\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1229\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(185.73504,40.363934)\"\r\n       door=\"F5-I-300\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1420\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 247.88936,60.060903 223.04131,50.348782 H 161.01743\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1414\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1418\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1416\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(180.37219,62.302838)\"\r\n       door=\"F5-O-300\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1428\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 236.18861,44.459905 -8.27199,4.913815 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1422\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1426\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1424\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(187.19763,82.779148)\"\r\n       door=\"F5-I-000\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1623\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 263.00283,33.734219 227.91662,49.37372 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1617\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1621\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1619\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(208.16147,100.8178)\"\r\n       door=\"F5-O-000\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1822\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 242.03899,38.122 227.91662,49.37372 H 165.89274\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1816\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1820\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1818\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(346.58608,308.88479)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F1-O-120\"\r\n       id=\"g436-4\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 156.87426,43.739838 11.68471,6.608944 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path430-7\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text434-1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan432-7\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(317.82174,290.35861)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F1-I-120\"\r\n       id=\"g813-1\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,62.753555 7.29693,-12.404773 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path807-8\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text811-7\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan809-9\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(318.30927,271.83242)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F1-I-180\"\r\n       id=\"g870-9\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 151.51142,76.404428 17.04755,-26.055646 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path864-6\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text868-5\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan866-5\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(298.80802,254.76883)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F1-O-180\"\r\n       id=\"g1045-0\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 159.79945,72.016647 8.75952,-21.667865 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1039-8\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1043-4\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1041-5\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(324.15965,328.38604)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F1-I-060\"\r\n       id=\"g591-9\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,62.753555 7.29693,-12.404773 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path585-2\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text589-2\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan587-7\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(345.61102,355.20026)\"\r\n       class=\"gTextPassed\"\r\n       door=\"F1-O-060\"\r\n       id=\"g599-6\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,39.352058 7.29693,10.996724 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path593-8\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text597-0\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan595-1\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(186.66033,371.44263)\"\r\n       door=\"F1-I-000\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1623-7\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 263.00283,33.734219 227.91662,49.37372 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1617-3\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1621-3\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1619-7\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(207.62417,389.48128)\"\r\n       door=\"F1-O-000\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1822-5\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 242.03899,38.122 227.91662,49.37372 H 165.89274\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1816-3\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1820-6\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1818-9\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(188.37411,286.53528)\"\r\n       door=\"F1-I-240\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1225-2\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 251.78961,71.274121 -8.75952,-21.41287 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1218-6\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1222-5\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1220-9\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(181.54867,307.98665)\"\r\n       door=\"F1-O-240\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1233-7\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 231.80083,55.673122 -8.75952,-5.32434 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1227-4\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1231-9\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1229-0\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(186.42399,330.41308)\"\r\n       door=\"F1-I-300\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1420-6\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 247.88936,60.060903 223.04131,50.348782 H 161.01743\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1414-7\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1418-1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1416-2\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(181.06114,352.35199)\"\r\n       door=\"F1-O-300\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1428-9\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 236.18861,44.459905 -8.27199,4.913815 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1422-0\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1426-2\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1424-8\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F4-O-180\"\r\n       id=\"g534-9\"\r\n       transform=\"translate(508.23591,-25.230621)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path528-7\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text532-0\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan530-2\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F4-O-120\"\r\n       id=\"g542-9\"\r\n       transform=\"translate(550.98325,-0.40958085)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 161.26204,67.861402 7.29693,-17.51262 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path536-8\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text540-3\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan538-0\" /></text>\r\n    </g>\r\n    <g\r\n       class=\"gTextPassed\"\r\n       door=\"F4-O-060\"\r\n       id=\"g550-8\"\r\n       transform=\"translate(555.12009,51.300909)\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 157.81467,63.724563 10.7443,-13.375781 h 62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path544-77\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text548-2\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan546-2\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(369.48997,26.373149)\"\r\n       door=\"F4-O-240\"\r\n       class=\"gTextPassed\"\r\n       id=\"g822-2\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"m 259.37382,40.937299 -16.34373,8.923952 h -62.02388\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path816-34\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text820-8\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan818-8\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(394.31101,101.52573)\"\r\n       door=\"F4-O-000\"\r\n       class=\"gTextPassed\"\r\n       id=\"g1102-0\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 266.95802,37.489932 256.81955,51.240197 H 194.79567\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path1096-2\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text1100-2\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan1098-56\" /></text>\r\n    </g>\r\n    <g\r\n       transform=\"translate(370.86891,78.773109)\"\r\n       door=\"F4-O-300\"\r\n       class=\"gTextPassed\"\r\n       id=\"g830-3\">\r\n      <path\r\n         class=\"under-line\"\r\n         d=\"M 254.5475,36.110986 243.03009,49.861251 H 181.00621\"\r\n         sodipodi:nodetypes=\"ccc\"\r\n         id=\"path824-3\"\r\n         style=\"fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\" />\r\n      <text\r\n         xml:space=\"preserve\"\r\n         x=\"170.01836\"\r\n         y=\"45.970631\"\r\n         class=\"text-passed\"\r\n         id=\"text828-3\"\r\n         style=\"font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1\"><tspan\r\n           sodipodi:role=\"line\"\r\n           style=\"stroke-width:0.53\"\r\n           x=\"170.01836\"\r\n           y=\"45.970631\"\r\n           id=\"tspan826-8\" /></text>\r\n    </g>\r\n  </g>\r\n</svg>\r\n"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "1st_data_"
+          },
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  door_status.id,\n  CASE\n    WHEN door_status.status = 0 THEN -1\n    WHEN door_status.status = 1 THEN TIMESTAMPDIFF(SECOND, door_status.timestamp, now())\n    ELSE -2\n  END AS passed\nFROM door_status\nLEFT JOIN door ON door_status.id = door.id\nORDER BY door_status.id",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "player_num"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "game_status",
+          "timeColumn": "timestamp",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "type": "aceiot-svg-panel"
+    },
     {
       "datasource": {
         "type": "mysql",
@@ -88,7 +179,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 0
+        "y": 22
       },
       "id": 41,
       "options": {
@@ -106,7 +197,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -223,7 +314,7 @@
         "h": 6,
         "w": 1,
         "x": 8,
-        "y": 0
+        "y": 22
       },
       "id": 13,
       "options": {
@@ -241,7 +332,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -370,7 +461,7 @@
         "h": 9,
         "w": 1,
         "x": 9,
-        "y": 0
+        "y": 22
       },
       "id": 34,
       "options": {
@@ -388,7 +479,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -447,14 +538,14 @@
         "h": 3,
         "w": 1,
         "x": 10,
-        "y": 0
+        "y": 22
       },
       "id": 28,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "transparent": true,
       "type": "text"
     },
@@ -467,14 +558,14 @@
         "h": 3,
         "w": 1,
         "x": 11,
-        "y": 0
+        "y": 22
       },
       "id": 29,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "transparent": true,
       "type": "text"
     },
@@ -487,14 +578,14 @@
         "h": 6,
         "w": 1,
         "x": 12,
-        "y": 0
+        "y": 22
       },
       "id": 38,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "transparent": true,
       "type": "text"
     },
@@ -507,14 +598,14 @@
         "h": 6,
         "w": 1,
         "x": 13,
-        "y": 0
+        "y": 22
       },
       "id": 31,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "transparent": true,
       "type": "text"
     },
@@ -527,14 +618,14 @@
         "h": 9,
         "w": 1,
         "x": 14,
-        "y": 0
+        "y": 22
       },
       "id": 32,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "transparent": true,
       "type": "text"
     },
@@ -617,7 +708,7 @@
         "h": 3,
         "w": 8,
         "x": 15,
-        "y": 0
+        "y": 22
       },
       "id": 46,
       "options": {
@@ -635,7 +726,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -689,8 +780,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -735,8 +825,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -753,7 +842,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 3
+        "y": 25
       },
       "id": 45,
       "options": {
@@ -771,7 +860,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -824,8 +913,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -870,8 +958,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -888,7 +975,7 @@
         "h": 6,
         "w": 1,
         "x": 10,
-        "y": 3
+        "y": 25
       },
       "id": 35,
       "options": {
@@ -906,7 +993,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -971,8 +1058,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1017,8 +1103,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -1035,7 +1120,7 @@
         "h": 9,
         "w": 1,
         "x": 11,
-        "y": 3
+        "y": 25
       },
       "id": 36,
       "options": {
@@ -1053,7 +1138,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -1112,14 +1197,14 @@
         "h": 9,
         "w": 8,
         "x": 15,
-        "y": 3
+        "y": 25
       },
       "id": 33,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "transparent": true,
       "type": "text"
     },
@@ -1138,8 +1223,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1184,8 +1268,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -1202,7 +1285,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 6
+        "y": 28
       },
       "id": 44,
       "options": {
@@ -1220,7 +1303,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -1273,8 +1356,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1319,8 +1401,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -1337,7 +1418,7 @@
         "h": 6,
         "w": 1,
         "x": 12,
-        "y": 6
+        "y": 28
       },
       "id": 37,
       "options": {
@@ -1355,7 +1436,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -1420,8 +1501,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1466,8 +1546,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -1484,7 +1563,7 @@
         "h": 9,
         "w": 1,
         "x": 13,
-        "y": 6
+        "y": 28
       },
       "id": 39,
       "options": {
@@ -1502,7 +1581,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -1567,8 +1646,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1613,8 +1691,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -1631,7 +1708,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 9
+        "y": 31
       },
       "id": 43,
       "options": {
@@ -1649,7 +1726,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -1702,8 +1779,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1748,8 +1824,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -1766,7 +1841,7 @@
         "h": 6,
         "w": 1,
         "x": 14,
-        "y": 9
+        "y": 31
       },
       "id": 40,
       "options": {
@@ -1784,7 +1859,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -1849,8 +1924,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1895,8 +1969,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -1913,7 +1986,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 12
+        "y": 34
       },
       "id": 42,
       "options": {
@@ -1931,7 +2004,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
@@ -1984,8 +2057,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -2030,8 +2102,7 @@
                   "mode": "absolute",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "yellow",
@@ -2048,7 +2119,7 @@
         "h": 3,
         "w": 8,
         "x": 15,
-        "y": 12
+        "y": 34
       },
       "id": 47,
       "options": {
@@ -2066,7 +2137,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "8.5.5",
       "targets": [
         {
           "datasource": {
