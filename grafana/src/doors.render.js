@@ -73,8 +73,12 @@ const doors = [
  * 
  * These objects contain values
  *********************************************************/
-const fieldId = data.series[0].fields.find(f => f.name === 'id');
-const fieldPassed = data.series[0].fields.find(f => f.name === 'passed');
+const seriesDoorStatus = data.series.find(s => s.refId === 'DoorStatus');
+const seriesAzimuth = data.series.find(s => s.refId === 'Azimuth');
+const fieldId = seriesDoorStatus.fields.find(f => f.name === 'id');
+const fieldPassed = seriesDoorStatus.fields.find(f => f.name === 'passed');
+
+const azimuth = seriesAzimuth.fields[0].values.buffer[0];
 
 for (const doorId of doors) {
   const doorElement = context.findElementByDoor(".doorColored", doorId, svgnode);
@@ -86,3 +90,12 @@ for (const doorId of doors) {
   context.renderDoor(doorElement, passedDisplayValue);
   context.renderDoorText(gTextElement, passedDisplayValue);
 }
+
+// rotate the direction symbol.
+// under = north
+for (const directionSymbolElement of svgnode.find(".direction-symbol")) {
+  const currentDirectionSymbolTransform = directionSymbolElement.transform();
+  directionSymbolElement.transform({});
+  directionSymbolElement.rotate(azimuth + 180, 0, 0);
+  directionSymbolElement.translate(currentDirectionSymbolTransform.translateX, currentDirectionSymbolTransform.translateY);
+};

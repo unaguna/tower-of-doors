@@ -641,6 +641,15 @@
          door="F5-I-060"
          class="doorColored"
          id="rect1760" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
+         x="0"
+         y="0"
+         id="text3787"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3839">5F</tspan></text>
     </g>
     <g
        id="g1224-3"
@@ -708,6 +717,15 @@
          door="F4-O-060"
          class="doorColored"
          id="rect1774" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
+         x="0"
+         y="0"
+         id="text3843"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3841">4F</tspan></text>
     </g>
     <g
        id="g1224-0"
@@ -775,6 +793,15 @@
          door="F3-O-060"
          class="doorColored"
          id="rect1200" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
+         x="0"
+         y="0"
+         id="text3851"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3849">3F</tspan></text>
     </g>
     <g
        id="g1224-8"
@@ -842,6 +869,15 @@
          class="doorColored"
          door="F2-O-060"
          id="rect1214" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
+         x="0"
+         y="0"
+         id="text3859"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3857">2F</tspan></text>
     </g>
     <g
        id="g1224-9"
@@ -968,6 +1004,15 @@
          door="F1-I-060"
          class="doorColored"
          id="rect1240" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
+         x="0"
+         y="0"
+         id="text3867"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3865">1F</tspan></text>
     </g>
     <g
        class="gTextPassed"
@@ -1333,14 +1378,14 @@
          id="path1218" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="180.51836"
+         y="47.470631"
          class="text-passed"
          id="text1222"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="180.51836"
+           y="47.470631"
            id="tspan1220" /></text>
     </g>
     <g
@@ -1355,14 +1400,14 @@
          id="path816" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="181.51836"
+         y="47.470631"
          class="text-passed"
          id="text820"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="181.51836"
+           y="47.470631"
            id="tspan818" /></text>
     </g>
     <g
@@ -1377,14 +1422,14 @@
          id="path1096" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="193.51836"
+         y="48.470631"
          class="text-passed"
          id="text1100"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="193.51836"
+           y="48.470631"
            id="tspan1098" /></text>
     </g>
     <g
@@ -1399,14 +1444,14 @@
          id="path824" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="180.51836"
+         y="46.970631"
          class="text-passed"
          id="text828"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="180.51836"
+           y="46.970631"
            id="tspan826" /></text>
     </g>
     <g
@@ -1494,15 +1539,15 @@
          style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="180.01836"
+         y="46.470631"
          class="text-passed"
          id="text820-1"
          style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="180.01836"
+           y="46.470631"
            id="tspan818-4" /></text>
     </g>
     <g
@@ -1518,15 +1563,15 @@
          style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="195.01836"
+         y="46.970631"
          class="text-passed"
          id="text1100-3"
          style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="195.01836"
+           y="46.970631"
            id="tspan1098-5" /></text>
     </g>
     <g
@@ -1542,15 +1587,15 @@
          style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="181.01836"
+         y="45.470631"
          class="text-passed"
          id="text828-4"
          style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="181.01836"
+           y="45.470631"
            id="tspan826-1" /></text>
     </g>
     <g
@@ -1565,14 +1610,14 @@
          id="path1227" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="160.01836"
+         y="47.470631"
          class="text-passed"
          id="text1231"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="160.01836"
+           y="47.470631"
            id="tspan1229" /></text>
     </g>
     <g
@@ -1587,14 +1632,14 @@
          id="path1414" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="160.01836"
+         y="47.470631"
          class="text-passed"
          id="text1418"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="160.01836"
+           y="47.470631"
            id="tspan1416" /></text>
     </g>
     <g
@@ -1609,13 +1654,13 @@
          id="path1422" />
       <text
          xml:space="preserve"
-         x="170.01836"
+         x="166.51836"
          y="45.970631"
          class="text-passed"
          id="text1426"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
+           x="166.51836"
            y="45.970631"
            id="tspan1424" /></text>
     </g>
@@ -1631,14 +1676,14 @@
          id="path1617" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="164.51836"
+         y="46.470631"
          class="text-passed"
          id="text1621"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="164.51836"
+           y="46.470631"
            id="tspan1619" /></text>
     </g>
     <g
@@ -1653,14 +1698,14 @@
          id="path1816" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="166.01836"
+         y="46.470631"
          class="text-passed"
          id="text1820"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="166.01836"
+           y="46.470631"
            id="tspan1818" /></text>
     </g>
     <g
@@ -1807,14 +1852,14 @@
          id="path1617-3" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="165.51836"
+         y="46.970631"
          class="text-passed"
          id="text1621-3"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="165.51836"
+           y="46.970631"
            id="tspan1619-7" /></text>
     </g>
     <g
@@ -1829,14 +1874,14 @@
          id="path1816-3" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="166.01836"
+         y="46.970631"
          class="text-passed"
          id="text1820-6"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="166.01836"
+           y="46.970631"
            id="tspan1818-9" /></text>
     </g>
     <g
@@ -1851,14 +1896,14 @@
          id="path1218-6" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="181.01836"
+         y="46.970631"
          class="text-passed"
          id="text1222-5"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="181.01836"
+           y="46.970631"
            id="tspan1220-9" /></text>
     </g>
     <g
@@ -1873,14 +1918,14 @@
          id="path1227-4" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="160.51836"
+         y="47.470631"
          class="text-passed"
          id="text1231-9"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="160.51836"
+           y="47.470631"
            id="tspan1229-0" /></text>
     </g>
     <g
@@ -1895,14 +1940,14 @@
          id="path1414-7" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="161.51836"
+         y="47.470631"
          class="text-passed"
          id="text1418-1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="161.51836"
+           y="47.470631"
            id="tspan1416-2" /></text>
     </g>
     <g
@@ -1917,13 +1962,13 @@
          id="path1422-0" />
       <text
          xml:space="preserve"
-         x="170.01836"
+         x="166.01836"
          y="45.970631"
          class="text-passed"
          id="text1426-2"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
+           x="166.01836"
            y="45.970631"
            id="tspan1424-8" /></text>
     </g>
@@ -2000,27 +2045,27 @@
            id="tspan546-2" /></text>
     </g>
     <g
-       transform="translate(369.48997,26.373149)"
+       transform="translate(375.98997,-7.6268513)"
        door="F4-O-240"
        class="gTextPassed"
        id="g822-2">
       <path
          class="under-line"
-         d="m 259.37382,40.937299 -16.34373,8.923952 h -62.02388"
+         d="M 258.37382,68.437299 243.03009,49.861251 h -62.02388"
          sodipodi:nodetypes="ccc"
          id="path816-34"
          style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="181.01836"
+         y="47.470631"
          class="text-passed"
          id="text820-8"
          style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="181.01836"
+           y="47.470631"
            id="tspan818-8" /></text>
     </g>
     <g
@@ -2036,40 +2081,72 @@
          style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="194.51836"
+         y="47.970631"
          class="text-passed"
          id="text1100-2"
          style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="194.51836"
+           y="47.970631"
            id="tspan1098-56" /></text>
     </g>
     <g
-       transform="translate(370.86891,78.773109)"
+       transform="translate(370.86891,85.773109)"
        door="F4-O-300"
        class="gTextPassed"
        id="g830-3">
       <path
          class="under-line"
-         d="M 254.5475,36.110986 243.03009,49.861251 H 181.00621"
+         d="M 256.0475,30.110986 243.03009,49.861251 H 181.00621"
          sodipodi:nodetypes="ccc"
          id="path824-3"
          style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
       <text
          xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
+         x="180.51836"
+         y="46.470631"
          class="text-passed"
          id="text828-3"
          style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
+           x="180.51836"
+           y="46.470631"
            id="tspan826-8" /></text>
+    </g>
+    <g
+       id="g1535"
+       transform="translate(671.75145,370.92345) rotate(0)"
+       class="direction-symbol">
+      <path
+         style="fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:2.00314;stroke-opacity:1"
+         d="M 0,30 -15,35 0,-40 Z"
+         id="path804"
+         sodipodi:nodetypes="cccc" />
+      <path
+         style="fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:2.00314;stroke-opacity:1"
+         d="M 0,30 15,35 0,-40 Z"
+         id="path817"
+         sodipodi:nodetypes="cccc" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#7f7f7f;stroke-width:2.00314;stroke-opacity:1"
+         id="path1426"
+         cx="0"
+         cy="0"
+         r="40" />
+      <text
+         xml:space="preserve"
+         style="font-size:32px;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:2.00314;stroke-opacity:1"
+         x="0"
+         y="-43"
+         id="text1591"><tspan
+           sodipodi:role="line"
+           id="tspan1589"
+           style="text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:2.00315"
+           x="0"
+           y="-43">N</tspan></text>
     </g>
   </g>
 </svg>
