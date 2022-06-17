@@ -44,7 +44,7 @@
      id="style5">.gTextPassed .under-line {
   fill:none;
   fill-opacity:0.5;
-  stroke:#7f7f7f;
+  stroke:#808080;
   stroke-width:0.53;
   stroke-opacity:1;
 }
@@ -52,17 +52,64 @@
    font-size:12px;
    fill:#ffffff;
    fill-opacity:1;
-   stroke:#7f7f7f;
+  stroke:#808080;
    stroke-width:0.53;
    stroke-opacity:1;
-}</style>
+}
+.doorColored {
+  stroke:#000000;
+  stroke-width:0.37;
+  stroke-dasharray:none;
+  stroke-opacity:1;
+}
+.floor-label {
+  font-style:normal;
+  font-variant:normal;
+  font-weight:normal;
+  font-stretch:normal;
+  font-size:13px;
+  font-family:sans-serif;
+  -inkscape-font-specification:'sans-serif, Normal';
+  font-variant-ligatures:normal;
+  font-variant-caps:normal;
+  font-variant-numeric:normal;
+  font-variant-east-asian:normal;
+  text-align:center;
+  text-anchor:middle;
+  fill:#808080;
+  fill-opacity:1;
+  stroke:none;
+}
+.figure-vertical .tower-floor {
+  fill:#808080;
+  fill-opacity:0.5;
+  stroke:#000000;
+  stroke-width:0.81967;
+  stroke-dasharray:none;
+  stroke-opacity:1;
+}
+.figure-horizontal .tower-floor {
+  fill:#808080;
+  fill-opacity:0.5;
+  stroke:none;
+}
+.figure-vertical .g-wall rect {
+  fill:#808080;
+  fill-opacity:0.5;
+  stroke:#000000;
+  stroke-width:0.45;
+  stroke-dasharray:none;
+  stroke-opacity:0.5;
+}
+</style>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
+     class="figure-vertical"
      transform="scale(0.5)">
     <ellipse
-       style="fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.81967;stroke-dasharray:none;stroke-opacity:1"
+       class="tower-floor"
        id="path005-6"
        cx="193.58971"
        cy="390"
@@ -70,17 +117,15 @@
        ry="16.412884" />
     <g
        id="g-wall-f3f1-2"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(32.503473,263.73098)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-16-3-8"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-2-0-0"
          width="8"
          height="80"
@@ -88,7 +133,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-51-2-0"
          width="8"
          height="80"
@@ -96,7 +140,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-83-1-1"
          width="16"
          height="80"
@@ -105,17 +148,15 @@
     </g>
     <g
        id="g-wall-f2f1"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(64.788296,263.47299)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-16-3-8-0"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-2-0-0-1"
          width="8"
          height="80"
@@ -123,7 +164,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-51-2-0-8"
          width="8"
          height="80"
@@ -131,7 +171,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-83-1-1-1"
          width="16"
          height="80"
@@ -139,7 +178,7 @@
          y="47.372517" />
     </g>
     <ellipse
-       style="fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.795047;stroke-dasharray:none;stroke-opacity:1"
+       class="tower-floor"
        id="path005-9"
        cx="193.58971"
        cy="310"
@@ -147,17 +186,15 @@
        ry="15.393254" />
     <g
        id="g-wall-f3f1-1"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(32.50347,183.88454)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-1-5-4"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-4-3-7"
          width="8"
          height="80"
@@ -165,7 +202,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-5-6-4"
          width="8"
          height="80"
@@ -173,7 +209,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-8-3-8"
          width="16"
          height="80"
@@ -182,17 +217,15 @@
     </g>
     <g
        id="g-wall-f3f2"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(0.14552268,183.62655)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-3-8"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-46-7"
          width="8"
          height="80"
@@ -200,7 +233,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-4-9"
          width="8"
          height="80"
@@ -208,7 +240,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-89-6"
          width="16"
          height="80"
@@ -217,17 +248,15 @@
     </g>
     <g
        id="g-wall-f4f2-2"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(127.31306,184.91648)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-16-3"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-2-0"
          width="8"
          height="80"
@@ -235,7 +264,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-51-2"
          width="8"
          height="80"
@@ -243,7 +271,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-83-1"
          width="16"
          height="80"
@@ -251,7 +278,7 @@
          y="47.372517" />
     </g>
     <ellipse
-       style="fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.802821;stroke-dasharray:none;stroke-opacity:1"
+       class="tower-floor"
        id="path005-1"
        cx="193.58971"
        cy="230"
@@ -259,17 +286,15 @@
        ry="14.873397" />
     <g
        id="g-wall-f4f2-1"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(127.44205,104.94105)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-1-5"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-4-3"
          width="8"
          height="80"
@@ -277,7 +302,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-5-6"
          width="8"
          height="80"
@@ -285,7 +309,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-8-3"
          width="16"
          height="80"
@@ -294,17 +317,15 @@
     </g>
     <g
        id="g-wall-f4f3"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(96.999786,105.19904)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-3"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-46"
          width="8"
          height="80"
@@ -312,7 +333,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-4"
          width="8"
          height="80"
@@ -320,7 +340,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-89"
          width="16"
          height="80"
@@ -329,17 +348,15 @@
     </g>
     <g
        id="g-wall-f5f3-2"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(65.009616,106.10198)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-16"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-2"
          width="8"
          height="80"
@@ -347,7 +364,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-51"
          width="8"
          height="80"
@@ -355,7 +371,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-83"
          width="16"
          height="80"
@@ -363,7 +378,7 @@
          y="47.372517" />
     </g>
     <ellipse
-       style="fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.794826;stroke-dasharray:none;stroke-opacity:1"
+       class="tower-floor"
        id="path005-7"
        cx="193.58971"
        cy="150"
@@ -371,17 +386,15 @@
        ry="14.61941" />
     <g
        id="g-wall-f5f4"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(34.652037,26.528217)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040"
          width="8"
          height="80"
@@ -389,7 +402,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7"
          width="8"
          height="80"
@@ -397,7 +409,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042"
          width="16"
          height="80"
@@ -406,17 +417,15 @@
     </g>
     <g
        id="g-wall-f5f3-1"
-       style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-opacity:0.495208"
+       class="g-wall"
        transform="translate(65.009613,26.255549)">
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8121-1"
          width="16"
          height="80"
          x="122.47582"
          y="41.59856" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-4"
          width="8"
          height="80"
@@ -424,7 +433,6 @@
          y="180.42841"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8040-7-5"
          width="8"
          height="80"
@@ -432,7 +440,6 @@
          y="163.91278"
          transform="matrix(0.70710678,-0.70710678,0,1,0,0)" />
       <rect
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.445674;stroke-dasharray:none;stroke-opacity:0.495208"
          id="rect8042-8"
          width="16"
          height="80"
@@ -440,14 +447,13 @@
          y="47.372517" />
     </g>
     <ellipse
-       style="fill:#808080;fill-opacity:0.5;stroke:#000000;stroke-width:0.754253;stroke-dasharray:none;stroke-opacity:1"
+       class="tower-floor"
        id="path005"
        cx="193.58971"
        cy="70"
        rx="91"
        ry="12.833798" />
     <rect
-       style="stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1"
        width="16"
        height="8"
        x="225.38785"
@@ -457,7 +463,6 @@
        class="doorColored"
        id="rect1723" />
     <rect
-       style="stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1"
        width="16"
        height="8"
        x="255.44069"
@@ -467,7 +472,6 @@
        class="doorColored"
        id="rect1725" />
     <rect
-       style="stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1"
        width="16"
        height="8"
        x="366.63235"
@@ -477,7 +481,6 @@
        class="doorColored"
        id="rect1727" />
     <rect
-       style="stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1"
        width="16"
        height="8"
        x="396.68765"
@@ -487,7 +490,6 @@
        door="F4F2-001"
        id="rect1729" />
     <rect
-       style="stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1"
        width="16"
        height="8"
        x="347.81863"
@@ -497,7 +499,6 @@
        class="doorColored"
        id="rect1731" />
     <rect
-       style="stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1"
        width="16"
        height="8"
        x="380.56354"
@@ -507,7 +508,6 @@
        class="doorColored"
        id="rect1733" />
     <rect
-       style="stroke:#000000;stroke-width:0.374766;stroke-dasharray:none;stroke-opacity:1"
        width="16"
        height="8"
        x="492.30783"
@@ -516,504 +516,6 @@
        door="F2F1-001"
        class="doorColored"
        id="rect1735" />
-    <g
-       id="g1224"
-       transform="matrix(2,0,0,2,460.569,89.046916)">
-      <path
-         id="path356"
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208"
-         d="M -2.1503255e-4,-22.999958 A 23,23 0 0 0 -22.999845,1.8823437e-4 23,23 0 0 0 -2.1503255e-4,22.999818 23,23 0 0 0 22.999931,1.8823437e-4 23,23 0 0 0 -2.1503255e-4,-22.999958 Z m 0,9.999906 A 13,13 0 0 1 13.000025,1.8823437e-4 13,13 0 0 1 -2.1503255e-4,12.999912 13,13 0 0 1 -12.999938,1.8823437e-4 13,13 0 0 1 -2.1503255e-4,-13.000052 Z" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         door="F5-O-000"
-         class="doorColored"
-         id="rect1738" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         door="F5-I-000"
-         class="doorColored"
-         id="rect1740" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(60)"
-         door="F5-O-300"
-         class="doorColored"
-         id="rect1742" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(60)"
-         door="F5-I-300"
-         class="doorColored"
-         id="rect1744" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(120)"
-         door="F5-O-240"
-         class="doorColored"
-         id="rect1746" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(120)"
-         door="F5-I-240"
-         class="doorColored"
-         id="rect1748" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="scale(-1)"
-         door="F5-O-180"
-         class="doorColored"
-         id="rect1750" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="scale(-1)"
-         door="F5-I-180"
-         class="doorColored"
-         id="rect1752" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-120)"
-         door="F5-O-120"
-         class="doorColored"
-         id="rect1754" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(-120)"
-         door="F5-I-120"
-         class="doorColored"
-         id="rect1756" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-60)"
-         door="F5-O-060"
-         class="doorColored"
-         id="rect1758" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(-60)"
-         door="F5-I-060"
-         class="doorColored"
-         id="rect1760" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
-         x="0"
-         y="0"
-         id="text3787"
-         dominant-baseline="central"><tspan
-           sodipodi:role="line"
-           id="tspan3839">5F</tspan></text>
-    </g>
-    <g
-       id="g1224-3"
-       transform="matrix(2,0,0,2,670.45994,89.046915)">
-      <path
-         id="path356-0"
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208"
-         d="M 7.2591146e-5,-22.999958 A 23,23 0 0 0 -23.000074,1.8873437e-4 23,23 0 0 0 7.2591146e-5,22.999818 23,23 0 0 0 23.000219,1.8873437e-4 23,23 0 0 0 7.2591146e-5,-22.999958 Z m 0,9.999907 A 13,13 0 0 1 12.999796,1.8873437e-4 13,13 0 0 1 7.2591146e-5,12.999912 13,13 0 0 1 -13.000167,1.8873437e-4 13,13 0 0 1 7.2591146e-5,-13.000051 Z" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         door="F4-O-000"
-         class="doorColored"
-         id="rect1764" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(60)"
-         door="F4-O-300"
-         class="doorColored"
-         id="rect1766" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(120)"
-         door="F4-O-240"
-         class="doorColored"
-         id="rect1768" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="scale(-1)"
-         door="F4-O-180"
-         class="doorColored"
-         id="rect1770" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-120)"
-         door="F4-O-120"
-         class="doorColored"
-         id="rect1772" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-60)"
-         door="F4-O-060"
-         class="doorColored"
-         id="rect1774" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
-         x="0"
-         y="0"
-         id="text3843"
-         dominant-baseline="central"><tspan
-           sodipodi:role="line"
-           id="tspan3841">4F</tspan></text>
-    </g>
-    <g
-       id="g1224-0"
-       transform="matrix(2,0,0,2,460.569,230.97994)">
-      <path
-         id="path356-5"
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208"
-         d="M -2.1503255e-4,-23.000252 A 23,23 0 0 0 -22.999845,-1.0541667e-4 23,23 0 0 0 -2.1503255e-4,23.000041 23,23 0 0 0 22.999931,-1.0541667e-4 23,23 0 0 0 -2.1503255e-4,-23.000252 Z m 0,10.000423 A 13,13 0 0 1 13.000025,-1.0541667e-4 13,13 0 0 1 -2.1503255e-4,13.000135 13,13 0 0 1 -12.999938,-1.0541667e-4 13,13 0 0 1 -2.1503255e-4,-12.999829 Z" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         door="F3-O-000"
-         class="doorColored"
-         id="rect1190" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(60)"
-         door="F3-O-300"
-         class="doorColored"
-         id="rect1192" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(120)"
-         door="F3-O-240"
-         class="doorColored"
-         id="rect1194" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="scale(-1)"
-         door="F3-O-180"
-         class="doorColored"
-         id="rect1196" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-120)"
-         door="F3-O-120"
-         class="doorColored"
-         id="rect1198" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-60)"
-         door="F3-O-060"
-         class="doorColored"
-         id="rect1200" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
-         x="0"
-         y="0"
-         id="text3851"
-         dominant-baseline="central"><tspan
-           sodipodi:role="line"
-           id="tspan3849">3F</tspan></text>
-    </g>
-    <g
-       id="g1224-8"
-       transform="matrix(2,0,0,2,670.45994,230.13241)">
-      <path
-         id="path356-7"
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208"
-         d="M 7.2591146e-5,-23.000234 A 23,23 0 0 0 -23.000074,-8.7161458e-5 23,23 0 0 0 7.2591146e-5,23.000059 23,23 0 0 0 23.000219,-8.7161458e-5 23,23 0 0 0 7.2591146e-5,-23.000234 Z m 0,10.000424 A 13,13 0 0 1 12.999796,-8.7161458e-5 13,13 0 0 1 7.2591146e-5,13.000153 13,13 0 0 1 -13.000167,-8.7161458e-5 13,13 0 0 1 7.2591146e-5,-12.99981 Z" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         door="F2-O-000"
-         class="doorColored"
-         id="rect1204" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(60)"
-         door="F2-O-300"
-         class="doorColored"
-         id="rect1206" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(120)"
-         door="F2-O-240"
-         class="doorColored"
-         id="rect1208" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="scale(-1)"
-         door="F2-O-180"
-         class="doorColored"
-         id="rect1210" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-120)"
-         door="F2-O-120"
-         class="doorColored"
-         id="rect1212" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-60)"
-         class="doorColored"
-         door="F2-O-060"
-         id="rect1214" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
-         x="0"
-         y="0"
-         id="text3859"
-         dominant-baseline="central"><tspan
-           sodipodi:role="line"
-           id="tspan3857">2F</tspan></text>
-    </g>
-    <g
-       id="g1224-9"
-       transform="matrix(2,0,0,2,460.08147,378.31255)">
-      <path
-         id="path356-3"
-         style="fill:#808080;fill-opacity:0.501598;stroke:#000000;stroke-width:0.211541;stroke-opacity:0.495208"
-         d="M -2.1503255e-4,-23.000019 A 23,23 0 0 0 -22.999845,1.2717448e-4 23,23 0 0 0 -2.1503255e-4,22.999757 23,23 0 0 0 22.999931,1.2717448e-4 23,23 0 0 0 -2.1503255e-4,-23.000019 Z m 0,9.999906 A 13,13 0 0 1 13.000025,1.2717448e-4 13,13 0 0 1 -2.1503255e-4,12.99985 13,13 0 0 1 -12.999938,1.2717448e-4 13,13 0 0 1 -2.1503255e-4,-13.000113 Z" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         door="F1-O-000"
-         class="doorColored"
-         id="rect1218" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         door="F1-I-000"
-         class="doorColored"
-         id="rect1220" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(60)"
-         door="F1-O-300"
-         class="doorColored"
-         id="rect1222" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(60)"
-         door="F1-I-300"
-         class="doorColored"
-         id="rect1224" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(120)"
-         door="F1-O-240"
-         class="doorColored"
-         id="rect1226" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(120)"
-         door="F1-I-240"
-         class="doorColored"
-         id="rect1228" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="scale(-1)"
-         door="F1-O-180"
-         class="doorColored"
-         id="rect1230" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="scale(-1)"
-         door="F1-I-180"
-         class="doorColored"
-         id="rect1232" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-120)"
-         door="F1-O-120"
-         class="doorColored"
-         id="rect1234" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(-120)"
-         door="F1-I-120"
-         class="doorColored"
-         id="rect1236" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="20"
-         transform="rotate(-60)"
-         door="F1-O-060"
-         class="doorColored"
-         id="rect1238" />
-      <rect
-         style="stroke:#000000;stroke-width:0.264999;stroke-opacity:0.495208"
-         width="12"
-         height="6"
-         x="-6"
-         y="10"
-         transform="rotate(-60)"
-         door="F1-I-060"
-         class="doorColored"
-         id="rect1240" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-opacity:1"
-         x="0"
-         y="0"
-         id="text3867"
-         dominant-baseline="central"><tspan
-           sodipodi:role="line"
-           id="tspan3865">1F</tspan></text>
-    </g>
     <g
        class="gTextPassed"
        door="F5F3-001"
@@ -1037,72 +539,6 @@
            id="tspan1809" /></text>
     </g>
     <g
-       class="gTextPassed"
-       door="F3-O-180"
-       id="g534"
-       transform="translate(298.85217,114.49278)">
-      <path
-         class="under-line"
-         d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path528" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text532"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan530" /></text>
-    </g>
-    <g
-       class="gTextPassed"
-       door="F3-O-120"
-       id="g542"
-       transform="translate(341.59951,139.31382)">
-      <path
-         class="under-line"
-         d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path536" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text540"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan538" /></text>
-    </g>
-    <g
-       class="gTextPassed"
-       door="F3-O-060"
-       id="g550"
-       transform="translate(345.73635,191.02431)">
-      <path
-         class="under-line"
-         d="m 157.81467,63.724563 10.7443,-13.375781 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path544" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text548"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan546" /></text>
-    </g>
-    <g
        transform="translate(13.134465,-22.620468)"
        class="gTextPassed"
        door="F5F4-001"
@@ -1123,138 +559,6 @@
            x="170.01836"
            y="45.970631"
            id="tspan1817" /></text>
-    </g>
-    <g
-       transform="translate(347.12338,20.221314)"
-       class="gTextPassed"
-       door="F5-O-120"
-       id="g436">
-      <path
-         class="under-line"
-         d="m 156.87426,43.739838 11.68471,6.608944 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path430" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text434"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan432" /></text>
-    </g>
-    <g
-       transform="translate(318.35904,1.6951286)"
-       class="gTextPassed"
-       door="F5-I-120"
-       id="g813">
-      <path
-         class="under-line"
-         d="m 161.26204,62.753555 7.29693,-12.404773 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path807" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text811"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan809" /></text>
-    </g>
-    <g
-       transform="translate(318.84657,-16.831057)"
-       class="gTextPassed"
-       door="F5-I-180"
-       id="g870">
-      <path
-         class="under-line"
-         d="m 151.51142,76.404428 17.04755,-26.055646 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path864" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text868"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan866" /></text>
-    </g>
-    <g
-       transform="translate(299.34532,-33.894649)"
-       class="gTextPassed"
-       door="F5-O-180"
-       id="g1045">
-      <path
-         class="under-line"
-         d="m 159.79945,72.016647 8.75952,-21.667865 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path1039" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text1043"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan1041" /></text>
-    </g>
-    <g
-       transform="translate(324.69695,39.722562)"
-       class="gTextPassed"
-       door="F5-I-060"
-       id="g591">
-      <path
-         class="under-line"
-         d="m 161.26204,62.753555 7.29693,-12.404773 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path585" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text589"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan587" /></text>
-    </g>
-    <g
-       transform="translate(346.14832,66.536778)"
-       class="gTextPassed"
-       door="F5-O-060"
-       id="g599">
-      <path
-         class="under-line"
-         d="m 161.26204,39.352058 7.29693,10.996724 h 62.02388"
-         sodipodi:nodetypes="ccc"
-         id="path593" />
-      <text
-         xml:space="preserve"
-         x="170.01836"
-         y="45.970631"
-         class="text-passed"
-         id="text597"><tspan
-           sodipodi:role="line"
-           style="stroke-width:0.53"
-           x="170.01836"
-           y="45.970631"
-           id="tspan595" /></text>
     </g>
     <g
        transform="translate(-68.591095,134.26342)"
@@ -1366,8 +670,668 @@
            y="45.970631"
            id="tspan579" /></text>
     </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     class="figure-horizontal"
+     inkscape:label="Layer 2">
     <g
-       transform="translate(187.68516,-3.5138738)"
+       id="g1224"
+       transform="translate(230.2845,44.523458)">
+      <path
+         id="path356"
+         class="tower-floor"
+         d="M -2.1503255e-4,-22.999958 A 23,23 0 0 0 -22.999845,1.8823437e-4 23,23 0 0 0 -2.1503255e-4,22.999818 23,23 0 0 0 22.999931,1.8823437e-4 23,23 0 0 0 -2.1503255e-4,-22.999958 Z m 0,9.999906 A 13,13 0 0 1 13.000025,1.8823437e-4 13,13 0 0 1 -2.1503255e-4,12.999912 13,13 0 0 1 -12.999938,1.8823437e-4 13,13 0 0 1 -2.1503255e-4,-13.000052 Z" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         door="F5-O-000"
+         class="doorColored"
+         id="rect1738" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         door="F5-I-000"
+         class="doorColored"
+         id="rect1740" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(60)"
+         door="F5-O-300"
+         class="doorColored"
+         id="rect1742" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(60)"
+         door="F5-I-300"
+         class="doorColored"
+         id="rect1744" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(120)"
+         door="F5-O-240"
+         class="doorColored"
+         id="rect1746" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(120)"
+         door="F5-I-240"
+         class="doorColored"
+         id="rect1748" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="scale(-1)"
+         door="F5-O-180"
+         class="doorColored"
+         id="rect1750" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="scale(-1)"
+         door="F5-I-180"
+         class="doorColored"
+         id="rect1752" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-120)"
+         door="F5-O-120"
+         class="doorColored"
+         id="rect1754" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(-120)"
+         door="F5-I-120"
+         class="doorColored"
+         id="rect1756" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-60)"
+         door="F5-O-060"
+         class="doorColored"
+         id="rect1758" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(-60)"
+         door="F5-I-060"
+         class="doorColored"
+         id="rect1760" />
+      <text
+         xml:space="preserve"
+         class="floor-label"
+         x="0"
+         y="0"
+         id="text3787"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3839">5F</tspan></text>
+    </g>
+    <g
+       id="g1224-3"
+       transform="translate(335.22997,44.523457)">
+      <path
+         id="path356-0"
+         class="tower-floor"
+         d="M 7.2591146e-5,-22.999958 A 23,23 0 0 0 -23.000074,1.8873437e-4 23,23 0 0 0 7.2591146e-5,22.999818 23,23 0 0 0 23.000219,1.8873437e-4 23,23 0 0 0 7.2591146e-5,-22.999958 Z m 0,9.999907 A 13,13 0 0 1 12.999796,1.8873437e-4 13,13 0 0 1 7.2591146e-5,12.999912 13,13 0 0 1 -13.000167,1.8873437e-4 13,13 0 0 1 7.2591146e-5,-13.000051 Z" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         door="F4-O-000"
+         class="doorColored"
+         id="rect1764" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(60)"
+         door="F4-O-300"
+         class="doorColored"
+         id="rect1766" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(120)"
+         door="F4-O-240"
+         class="doorColored"
+         id="rect1768" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="scale(-1)"
+         door="F4-O-180"
+         class="doorColored"
+         id="rect1770" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-120)"
+         door="F4-O-120"
+         class="doorColored"
+         id="rect1772" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-60)"
+         door="F4-O-060"
+         class="doorColored"
+         id="rect1774" />
+      <text
+         xml:space="preserve"
+         class="floor-label"
+         x="0"
+         y="0"
+         id="text3843"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3841">4F</tspan></text>
+    </g>
+    <g
+       id="g1224-0"
+       transform="translate(230.2845,115.48997)">
+      <path
+         id="path356-5"
+         class="tower-floor"
+         d="M -2.1503255e-4,-23.000252 A 23,23 0 0 0 -22.999845,-1.0541667e-4 23,23 0 0 0 -2.1503255e-4,23.000041 23,23 0 0 0 22.999931,-1.0541667e-4 23,23 0 0 0 -2.1503255e-4,-23.000252 Z m 0,10.000423 A 13,13 0 0 1 13.000025,-1.0541667e-4 13,13 0 0 1 -2.1503255e-4,13.000135 13,13 0 0 1 -12.999938,-1.0541667e-4 13,13 0 0 1 -2.1503255e-4,-12.999829 Z" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         door="F3-O-000"
+         class="doorColored"
+         id="rect1190" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(60)"
+         door="F3-O-300"
+         class="doorColored"
+         id="rect1192" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(120)"
+         door="F3-O-240"
+         class="doorColored"
+         id="rect1194" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="scale(-1)"
+         door="F3-O-180"
+         class="doorColored"
+         id="rect1196" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-120)"
+         door="F3-O-120"
+         class="doorColored"
+         id="rect1198" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-60)"
+         door="F3-O-060"
+         class="doorColored"
+         id="rect1200" />
+      <text
+         xml:space="preserve"
+         class="floor-label"
+         x="0"
+         y="0"
+         id="text3851"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3849">3F</tspan></text>
+    </g>
+    <g
+       id="g1224-8"
+       transform="translate(335.22997,115.0662)">
+      <path
+         id="path356-7"
+         class="tower-floor"
+         d="M 7.2591146e-5,-23.000234 A 23,23 0 0 0 -23.000074,-8.7161458e-5 23,23 0 0 0 7.2591146e-5,23.000059 23,23 0 0 0 23.000219,-8.7161458e-5 23,23 0 0 0 7.2591146e-5,-23.000234 Z m 0,10.000424 A 13,13 0 0 1 12.999796,-8.7161458e-5 13,13 0 0 1 7.2591146e-5,13.000153 13,13 0 0 1 -13.000167,-8.7161458e-5 13,13 0 0 1 7.2591146e-5,-12.99981 Z" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         door="F2-O-000"
+         class="doorColored"
+         id="rect1204" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(60)"
+         door="F2-O-300"
+         class="doorColored"
+         id="rect1206" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(120)"
+         door="F2-O-240"
+         class="doorColored"
+         id="rect1208" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="scale(-1)"
+         door="F2-O-180"
+         class="doorColored"
+         id="rect1210" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-120)"
+         door="F2-O-120"
+         class="doorColored"
+         id="rect1212" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-60)"
+         class="doorColored"
+         door="F2-O-060"
+         id="rect1214" />
+      <text
+         xml:space="preserve"
+         class="floor-label"
+         x="0"
+         y="0"
+         id="text3859"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3857">2F</tspan></text>
+    </g>
+    <g
+       id="g1224-9"
+       transform="translate(230.04073,189.15627)">
+      <path
+         id="path356-3"
+         class="tower-floor"
+         d="M -2.1503255e-4,-23.000019 A 23,23 0 0 0 -22.999845,1.2717448e-4 23,23 0 0 0 -2.1503255e-4,22.999757 23,23 0 0 0 22.999931,1.2717448e-4 23,23 0 0 0 -2.1503255e-4,-23.000019 Z m 0,9.999906 A 13,13 0 0 1 13.000025,1.2717448e-4 13,13 0 0 1 -2.1503255e-4,12.99985 13,13 0 0 1 -12.999938,1.2717448e-4 13,13 0 0 1 -2.1503255e-4,-13.000113 Z" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         door="F1-O-000"
+         class="doorColored"
+         id="rect1218" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         door="F1-I-000"
+         class="doorColored"
+         id="rect1220" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(60)"
+         door="F1-O-300"
+         class="doorColored"
+         id="rect1222" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(60)"
+         door="F1-I-300"
+         class="doorColored"
+         id="rect1224" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(120)"
+         door="F1-O-240"
+         class="doorColored"
+         id="rect1226" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(120)"
+         door="F1-I-240"
+         class="doorColored"
+         id="rect1228" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="scale(-1)"
+         door="F1-O-180"
+         class="doorColored"
+         id="rect1230" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="scale(-1)"
+         door="F1-I-180"
+         class="doorColored"
+         id="rect1232" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-120)"
+         door="F1-O-120"
+         class="doorColored"
+         id="rect1234" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(-120)"
+         door="F1-I-120"
+         class="doorColored"
+         id="rect1236" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="20"
+         transform="rotate(-60)"
+         door="F1-O-060"
+         class="doorColored"
+         id="rect1238" />
+      <rect
+         width="12"
+         height="6"
+         x="-6"
+         y="10"
+         transform="rotate(-60)"
+         door="F1-I-060"
+         class="doorColored"
+         id="rect1240" />
+      <text
+         xml:space="preserve"
+         class="floor-label"
+         x="0"
+         y="0"
+         id="text3867"
+         dominant-baseline="central"><tspan
+           sodipodi:role="line"
+           id="tspan3865">1F</tspan></text>
+    </g>
+    <g
+       class="gTextPassed"
+       door="F3-O-180"
+       id="g534"
+       transform="matrix(0.5,0,0,0.5,149.42608,57.24639)">
+      <path
+         class="under-line"
+         d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path528" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text532"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan530" /></text>
+    </g>
+    <g
+       class="gTextPassed"
+       door="F3-O-120"
+       id="g542"
+       transform="matrix(0.5,0,0,0.5,170.79975,69.65691)">
+      <path
+         class="under-line"
+         d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path536" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text540"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan538" /></text>
+    </g>
+    <g
+       class="gTextPassed"
+       door="F3-O-060"
+       id="g550"
+       transform="matrix(0.5,0,0,0.5,172.86817,95.512155)">
+      <path
+         class="under-line"
+         d="m 157.81467,63.724563 10.7443,-13.375781 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path544" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text548"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan546" /></text>
+    </g>
+    <g
+       transform="matrix(0.5,0,0,0.5,173.56169,10.110657)"
+       class="gTextPassed"
+       door="F5-O-120"
+       id="g436">
+      <path
+         class="under-line"
+         d="m 156.87426,43.739838 11.68471,6.608944 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path430" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text434"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan432" /></text>
+    </g>
+    <g
+       transform="matrix(0.5,0,0,0.5,159.17952,0.8475643)"
+       class="gTextPassed"
+       door="F5-I-120"
+       id="g813">
+      <path
+         class="under-line"
+         d="m 161.26204,62.753555 7.29693,-12.404773 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path807" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text811"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan809" /></text>
+    </g>
+    <g
+       transform="matrix(0.5,0,0,0.5,159.42328,-8.4155285)"
+       class="gTextPassed"
+       door="F5-I-180"
+       id="g870">
+      <path
+         class="under-line"
+         d="m 151.51142,76.404428 17.04755,-26.055646 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path864" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text868"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan866" /></text>
+    </g>
+    <g
+       transform="matrix(0.5,0,0,0.5,149.67266,-16.947324)"
+       class="gTextPassed"
+       door="F5-O-180"
+       id="g1045">
+      <path
+         class="under-line"
+         d="m 159.79945,72.016647 8.75952,-21.667865 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path1039" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text1043"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan1041" /></text>
+    </g>
+    <g
+       transform="matrix(0.5,0,0,0.5,162.34847,19.861281)"
+       class="gTextPassed"
+       door="F5-I-060"
+       id="g591">
+      <path
+         class="under-line"
+         d="m 161.26204,62.753555 7.29693,-12.404773 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path585" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text589"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan587" /></text>
+    </g>
+    <g
+       transform="matrix(0.5,0,0,0.5,173.07416,33.268389)"
+       class="gTextPassed"
+       door="F5-O-060"
+       id="g599">
+      <path
+         class="under-line"
+         d="m 161.26204,39.352058 7.29693,10.996724 h 62.02388"
+         sodipodi:nodetypes="ccc"
+         id="path593" />
+      <text
+         xml:space="preserve"
+         x="170.01836"
+         y="45.970631"
+         class="text-passed"
+         id="text597"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.53"
+           x="170.01836"
+           y="45.970631"
+           id="tspan595" /></text>
+    </g>
+    <g
+       transform="matrix(0.5,0,0,0.5,93.84258,-1.7569369)"
        door="F5-I-240"
        class="gTextPassed"
        id="g1225">
@@ -1389,7 +1353,7 @@
            id="tspan1220" /></text>
     </g>
     <g
-       transform="translate(160.10623,166.09655)"
+       transform="matrix(0.5,0,0,0.5,80.053115,83.048275)"
        door="F3-O-240"
        class="gTextPassed"
        id="g822">
@@ -1411,7 +1375,7 @@
            id="tspan818" /></text>
     </g>
     <g
-       transform="translate(184.92727,241.24913)"
+       transform="matrix(0.5,0,0,0.5,92.463635,120.62457)"
        door="F3-O-000"
        class="gTextPassed"
        id="g1102">
@@ -1433,7 +1397,7 @@
            id="tspan1098" /></text>
     </g>
     <g
-       transform="translate(161.48517,218.49651)"
+       transform="matrix(0.5,0,0,0.5,80.742585,109.24826)"
        door="F3-O-300"
        class="gTextPassed"
        id="g830">
@@ -1458,20 +1422,18 @@
        class="gTextPassed"
        door="F2-O-180"
        id="g534-0"
-       transform="translate(508.92538,115.42192)">
+       transform="matrix(0.5,0,0,0.5,254.46269,57.71096)">
       <path
          class="under-line"
          d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
          sodipodi:nodetypes="ccc"
-         id="path528-0"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path528-0" />
       <text
          xml:space="preserve"
          x="170.01836"
          y="45.970631"
          class="text-passed"
-         id="text532-5"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text532-5"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="170.01836"
@@ -1482,20 +1444,18 @@
        class="gTextPassed"
        door="F2-O-120"
        id="g542-8"
-       transform="translate(551.67272,140.24296)">
+       transform="matrix(0.5,0,0,0.5,275.83636,70.12148)">
       <path
          class="under-line"
          d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
          sodipodi:nodetypes="ccc"
-         id="path536-3"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path536-3" />
       <text
          xml:space="preserve"
          x="170.01836"
          y="45.970631"
          class="text-passed"
-         id="text540-6"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text540-6"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="170.01836"
@@ -1506,20 +1466,18 @@
        class="gTextPassed"
        door="F2-O-060"
        id="g550-6"
-       transform="translate(555.80956,191.95345)">
+       transform="matrix(0.5,0,0,0.5,277.90478,95.976725)">
       <path
          class="under-line"
          d="m 157.81467,63.724563 10.7443,-13.375781 h 62.02388"
          sodipodi:nodetypes="ccc"
-         id="path544-7"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path544-7" />
       <text
          xml:space="preserve"
          x="170.01836"
          y="45.970631"
          class="text-passed"
-         id="text548-3"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text548-3"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="170.01836"
@@ -1527,7 +1485,7 @@
            id="tspan546-0" /></text>
     </g>
     <g
-       transform="translate(370.17944,167.02569)"
+       transform="matrix(0.5,0,0,0.5,185.08972,83.512845)"
        door="F2-O-240"
        class="gTextPassed"
        id="g822-8">
@@ -1535,15 +1493,13 @@
          class="under-line"
          d="m 259.37382,40.937299 -16.34373,8.923952 h -62.02388"
          sodipodi:nodetypes="ccc"
-         id="path816-3"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path816-3" />
       <text
          xml:space="preserve"
          x="180.01836"
          y="46.470631"
          class="text-passed"
-         id="text820-1"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text820-1"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="180.01836"
@@ -1551,7 +1507,7 @@
            id="tspan818-4" /></text>
     </g>
     <g
-       transform="translate(395.00048,242.17827)"
+       transform="matrix(0.5,0,0,0.5,197.50024,121.08914)"
        door="F2-O-000"
        class="gTextPassed"
        id="g1102-3">
@@ -1559,15 +1515,13 @@
          class="under-line"
          d="M 266.95802,37.489932 256.81955,51.240197 H 194.79567"
          sodipodi:nodetypes="ccc"
-         id="path1096-7"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path1096-7" />
       <text
          xml:space="preserve"
          x="195.01836"
          y="46.970631"
          class="text-passed"
-         id="text1100-3"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text1100-3"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="195.01836"
@@ -1575,7 +1529,7 @@
            id="tspan1098-5" /></text>
     </g>
     <g
-       transform="translate(371.55838,219.42565)"
+       transform="matrix(0.5,0,0,0.5,185.77919,109.71282)"
        door="F2-O-300"
        class="gTextPassed"
        id="g830-8">
@@ -1583,15 +1537,13 @@
          class="under-line"
          d="M 254.5475,36.110986 243.03009,49.861251 H 181.00621"
          sodipodi:nodetypes="ccc"
-         id="path824-6"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path824-6" />
       <text
          xml:space="preserve"
          x="181.01836"
          y="45.470631"
          class="text-passed"
-         id="text828-4"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text828-4"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="181.01836"
@@ -1599,7 +1551,7 @@
            id="tspan826-1" /></text>
     </g>
     <g
-       transform="translate(180.85972,17.937499)"
+       transform="matrix(0.5,0,0,0.5,90.42986,8.9687495)"
        door="F5-O-240"
        class="gTextPassed"
        id="g1233">
@@ -1621,7 +1573,7 @@
            id="tspan1229" /></text>
     </g>
     <g
-       transform="translate(185.73504,40.363934)"
+       transform="matrix(0.5,0,0,0.5,92.86752,20.181967)"
        door="F5-I-300"
        class="gTextPassed"
        id="g1420">
@@ -1643,7 +1595,7 @@
            id="tspan1416" /></text>
     </g>
     <g
-       transform="translate(180.37219,62.302838)"
+       transform="matrix(0.5,0,0,0.5,90.186095,31.151419)"
        door="F5-O-300"
        class="gTextPassed"
        id="g1428">
@@ -1665,7 +1617,7 @@
            id="tspan1424" /></text>
     </g>
     <g
-       transform="translate(187.19763,82.779148)"
+       transform="matrix(0.5,0,0,0.5,93.598815,41.389574)"
        door="F5-I-000"
        class="gTextPassed"
        id="g1623">
@@ -1687,7 +1639,7 @@
            id="tspan1619" /></text>
     </g>
     <g
-       transform="translate(208.16147,100.8178)"
+       transform="matrix(0.5,0,0,0.5,104.08074,50.4089)"
        door="F5-O-000"
        class="gTextPassed"
        id="g1822">
@@ -1709,7 +1661,7 @@
            id="tspan1818" /></text>
     </g>
     <g
-       transform="translate(346.58608,308.88479)"
+       transform="matrix(0.5,0,0,0.5,173.29304,154.44239)"
        class="gTextPassed"
        door="F1-O-120"
        id="g436-4">
@@ -1731,7 +1683,7 @@
            id="tspan432-7" /></text>
     </g>
     <g
-       transform="translate(317.82174,290.35861)"
+       transform="matrix(0.5,0,0,0.5,158.91087,145.1793)"
        class="gTextPassed"
        door="F1-I-120"
        id="g813-1">
@@ -1753,7 +1705,7 @@
            id="tspan809-9" /></text>
     </g>
     <g
-       transform="translate(318.30927,271.83242)"
+       transform="matrix(0.5,0,0,0.5,159.15464,135.91621)"
        class="gTextPassed"
        door="F1-I-180"
        id="g870-9">
@@ -1775,7 +1727,7 @@
            id="tspan866-5" /></text>
     </g>
     <g
-       transform="translate(298.80802,254.76883)"
+       transform="matrix(0.5,0,0,0.5,149.40401,127.38442)"
        class="gTextPassed"
        door="F1-O-180"
        id="g1045-0">
@@ -1797,7 +1749,7 @@
            id="tspan1041-5" /></text>
     </g>
     <g
-       transform="translate(324.15965,328.38604)"
+       transform="matrix(0.5,0,0,0.5,162.07982,164.19302)"
        class="gTextPassed"
        door="F1-I-060"
        id="g591-9">
@@ -1819,7 +1771,7 @@
            id="tspan587-7" /></text>
     </g>
     <g
-       transform="translate(345.61102,355.20026)"
+       transform="matrix(0.5,0,0,0.5,172.80551,177.60013)"
        class="gTextPassed"
        door="F1-O-060"
        id="g599-6">
@@ -1841,7 +1793,7 @@
            id="tspan595-1" /></text>
     </g>
     <g
-       transform="translate(186.66033,371.44263)"
+       transform="matrix(0.5,0,0,0.5,93.330165,185.72131)"
        door="F1-I-000"
        class="gTextPassed"
        id="g1623-7">
@@ -1863,7 +1815,7 @@
            id="tspan1619-7" /></text>
     </g>
     <g
-       transform="translate(207.62417,389.48128)"
+       transform="matrix(0.5,0,0,0.5,103.81208,194.74064)"
        door="F1-O-000"
        class="gTextPassed"
        id="g1822-5">
@@ -1885,7 +1837,7 @@
            id="tspan1818-9" /></text>
     </g>
     <g
-       transform="translate(188.37411,286.53528)"
+       transform="matrix(0.5,0,0,0.5,94.187055,143.26764)"
        door="F1-I-240"
        class="gTextPassed"
        id="g1225-2">
@@ -1907,7 +1859,7 @@
            id="tspan1220-9" /></text>
     </g>
     <g
-       transform="translate(181.54867,307.98665)"
+       transform="matrix(0.5,0,0,0.5,90.774335,153.99332)"
        door="F1-O-240"
        class="gTextPassed"
        id="g1233-7">
@@ -1929,7 +1881,7 @@
            id="tspan1229-0" /></text>
     </g>
     <g
-       transform="translate(186.42399,330.41308)"
+       transform="matrix(0.5,0,0,0.5,93.211995,165.20654)"
        door="F1-I-300"
        class="gTextPassed"
        id="g1420-6">
@@ -1951,7 +1903,7 @@
            id="tspan1416-2" /></text>
     </g>
     <g
-       transform="translate(181.06114,352.35199)"
+       transform="matrix(0.5,0,0,0.5,90.53057,176.17599)"
        door="F1-O-300"
        class="gTextPassed"
        id="g1428-9">
@@ -1976,20 +1928,18 @@
        class="gTextPassed"
        door="F4-O-180"
        id="g534-9"
-       transform="translate(508.23591,-25.230621)">
+       transform="matrix(0.5,0,0,0.5,254.11795,-12.615311)">
       <path
          class="under-line"
          d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
          sodipodi:nodetypes="ccc"
-         id="path528-7"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path528-7" />
       <text
          xml:space="preserve"
          x="170.01836"
          y="45.970631"
          class="text-passed"
-         id="text532-0"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text532-0"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="170.01836"
@@ -2000,20 +1950,18 @@
        class="gTextPassed"
        door="F4-O-120"
        id="g542-9"
-       transform="translate(550.98325,-0.40958085)">
+       transform="matrix(0.5,0,0,0.5,275.49162,-0.20479042)">
       <path
          class="under-line"
          d="m 161.26204,67.861402 7.29693,-17.51262 h 62.02388"
          sodipodi:nodetypes="ccc"
-         id="path536-8"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path536-8" />
       <text
          xml:space="preserve"
          x="170.01836"
          y="45.970631"
          class="text-passed"
-         id="text540-3"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text540-3"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="170.01836"
@@ -2024,20 +1972,18 @@
        class="gTextPassed"
        door="F4-O-060"
        id="g550-8"
-       transform="translate(555.12009,51.300909)">
+       transform="matrix(0.5,0,0,0.5,277.56004,25.650454)">
       <path
          class="under-line"
          d="m 157.81467,63.724563 10.7443,-13.375781 h 62.02388"
          sodipodi:nodetypes="ccc"
-         id="path544-77"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path544-77" />
       <text
          xml:space="preserve"
          x="170.01836"
          y="45.970631"
          class="text-passed"
-         id="text548-2"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text548-2"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="170.01836"
@@ -2045,7 +1991,7 @@
            id="tspan546-2" /></text>
     </g>
     <g
-       transform="translate(375.98997,-7.6268513)"
+       transform="matrix(0.5,0,0,0.5,187.99499,-3.8134257)"
        door="F4-O-240"
        class="gTextPassed"
        id="g822-2">
@@ -2053,15 +1999,13 @@
          class="under-line"
          d="M 258.37382,68.437299 243.03009,49.861251 h -62.02388"
          sodipodi:nodetypes="ccc"
-         id="path816-34"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path816-34" />
       <text
          xml:space="preserve"
          x="181.01836"
          y="47.470631"
          class="text-passed"
-         id="text820-8"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text820-8"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="181.01836"
@@ -2069,7 +2013,7 @@
            id="tspan818-8" /></text>
     </g>
     <g
-       transform="translate(394.31101,101.52573)"
+       transform="matrix(0.5,0,0,0.5,197.1555,50.762865)"
        door="F4-O-000"
        class="gTextPassed"
        id="g1102-0">
@@ -2077,15 +2021,13 @@
          class="under-line"
          d="M 266.95802,37.489932 256.81955,51.240197 H 194.79567"
          sodipodi:nodetypes="ccc"
-         id="path1096-2"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path1096-2" />
       <text
          xml:space="preserve"
          x="194.51836"
          y="47.970631"
          class="text-passed"
-         id="text1100-2"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text1100-2"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="194.51836"
@@ -2093,7 +2035,7 @@
            id="tspan1098-56" /></text>
     </g>
     <g
-       transform="translate(370.86891,85.773109)"
+       transform="matrix(0.5,0,0,0.5,185.43446,42.886555)"
        door="F4-O-300"
        class="gTextPassed"
        id="g830-3">
@@ -2101,15 +2043,13 @@
          class="under-line"
          d="M 256.0475,30.110986 243.03009,49.861251 H 181.00621"
          sodipodi:nodetypes="ccc"
-         id="path824-3"
-         style="fill:none;fill-opacity:0.5;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1" />
+         id="path824-3" />
       <text
          xml:space="preserve"
          x="180.51836"
          y="46.470631"
          class="text-passed"
-         id="text828-3"
-         style="font-size:12px;fill:#ffffff;fill-opacity:1;stroke:#7f7f7f;stroke-width:0.53;stroke-opacity:1"><tspan
+         id="text828-3"><tspan
            sodipodi:role="line"
            style="stroke-width:0.53"
            x="180.51836"
@@ -2118,35 +2058,32 @@
     </g>
     <g
        id="g1535"
-       transform="translate(671.75145,370.92345) rotate(0)"
+       transform="matrix(1,0,0,1,335.87572,185.46172)"
        class="direction-symbol">
       <path
-         style="fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:2.00314;stroke-opacity:1"
-         d="M 0,30 -15,35 0,-40 Z"
+         style="fill:#808080;fill-opacity:1;stroke:#808080;stroke-width:2.00314;stroke-opacity:1"
+         d="M 0,13 -7,16 0,-19 Z"
          id="path804"
          sodipodi:nodetypes="cccc" />
       <path
-         style="fill:#7f7f7f;fill-opacity:1;stroke:#7f7f7f;stroke-width:2.00314;stroke-opacity:1"
-         d="M 0,30 15,35 0,-40 Z"
+         style="fill:#808080;fill-opacity:1;stroke:#808080;stroke-width:2.00314;stroke-opacity:1"
+         d="M 0,13 7,16 0,-19 Z"
          id="path817"
          sodipodi:nodetypes="cccc" />
       <circle
-         style="fill:none;fill-opacity:1;stroke:#7f7f7f;stroke-width:2.00314;stroke-opacity:1"
+         style="fill:none;fill-opacity:1;stroke:#808080;stroke-width:2.00314;stroke-opacity:1"
          id="path1426"
          cx="0"
          cy="0"
-         r="40" />
+         r="20" />
       <text
          xml:space="preserve"
-         style="font-size:32px;text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:2.00314;stroke-opacity:1"
+         style="font-size:16px;text-align:center;text-anchor:middle;fill:#808080;fill-opacity:1;stroke:none;stroke-width:2.00314;stroke-opacity:1"
          x="0"
-         y="-43"
+         y="-22"
          id="text1591"><tspan
            sodipodi:role="line"
-           id="tspan1589"
-           style="text-align:center;text-anchor:middle;fill:#7f7f7f;fill-opacity:1;stroke:none;stroke-width:2.00315"
-           x="0"
-           y="-43">N</tspan></text>
+           id="tspan1589">N</tspan></text>
     </g>
   </g>
 </svg>
