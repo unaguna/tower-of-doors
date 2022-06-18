@@ -1,6 +1,15 @@
 from collections import namedtuple
+from dataclasses import asdict, dataclass
 from datetime import datetime
 from enum import Enum
+
+
+class GameEndReason(Enum):
+    """Reason of game end"""
+
+    REMOTE = "REMOTE"
+    MAINTENANCE = "MAINTENANCE"
+    MASTER_KEY = "MASTER_KEY"
 
 
 class GameStatus(Enum):
@@ -59,6 +68,26 @@ GAME_STATUS_FIELDS = (
     "turn_player",
     "timestamp",
 )
+
+
+@dataclass(order=False, kw_only=True)
+class GameModel:
+    """The model of `game`"""
+
+    start_time: datetime
+    end_time: datetime | None = None
+    game_end_reason: GameEndReason | None = None
+
+
+@dataclass(order=False, kw_only=True)
+class GameRecord(GameModel):
+    """The record of `game`"""
+
+    id: int
+
+    @classmethod
+    def of(self, model: GameModel, id: int) -> "GameRecord":
+        return GameRecord(id=id, **asdict(model))
 
 
 class GameStatusRecord(

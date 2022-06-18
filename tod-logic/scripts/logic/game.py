@@ -24,7 +24,9 @@ def start_game(
     """
     now = datetime.now()
     with service.connect() as connection:
-        service.game.insert_start_game(connection=connection, now=now)
+        game_record = service.game.insert_start_game(
+            connection=connection, start_time=now
+        )
 
         service.gamestatus.insert_start_game(player_num, connection=connection, now=now)
         # TODO: start yawing because the game will start with interval-turn
