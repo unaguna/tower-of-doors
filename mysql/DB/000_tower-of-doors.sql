@@ -183,6 +183,46 @@ CREATE TABLE `yawing_schedule` (
 
 
 --
+-- Table structure for table `enum_game_end_reason`
+--
+
+DROP TABLE IF EXISTS `enum_game_end_reason`;
+CREATE TABLE `enum_game_end_reason` (
+  `game_end_reason` char(11) NOT NULL,
+  PRIMARY KEY (`game_end_reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Data for table `game_end_reason`
+--
+
+set autocommit=0;
+INSERT INTO `enum_game_end_reason` (`game_end_reason`) VALUES
+  ('REMOTE'),
+  ('MAINTENANCE'),
+  ('MASTER_KEY')
+;
+
+
+--
+-- Table structure for table `game`
+--
+
+DROP TABLE IF EXISTS `game`;
+CREATE TABLE `game` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `game_end_reason` char(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `game_end_reason_is_required_when_end_game` CHECK (`end_time` is NULL or `game_end_reason` is not NULL),
+  CONSTRAINT `game_end_reason_must_be_null_until_end_game` CHECK (`end_time` is not NULL or `game_end_reason` is NULL),
+  FOREIGN KEY fk_yawing_reason(`game_end_reason`) REFERENCES `enum_game_end_reason`(`game_end_reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
 -- Table structure for table `enum_game_status`
 --
 

@@ -3,11 +3,12 @@ from datetime import datetime, timedelta
 import MySQLdb
 
 import logic.azimuth
-from model import GameStatusRecord, YawingReason
+from model import GameStatusRecord
 import service
 import service.azimuthlog
 import service.doorlog
 import service.doorstatus
+import service.game
 import service.gamestatus
 import service.yawingschedule
 
@@ -21,8 +22,11 @@ def start_game(
         player_num (int):
             Number of groups of players participating in the game.
     """
+    now = datetime.now()
     with service.connect() as connection:
-        service.gamestatus.insert_start_game(player_num, connection=connection)
+        service.game.insert_start_game(connection=connection, now=now)
+
+        service.gamestatus.insert_start_game(player_num, connection=connection, now=now)
         # TODO: start yawing because the game will start with interval-turn
         connection.commit()
 
