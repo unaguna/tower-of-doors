@@ -9,6 +9,7 @@
         "gamestatus",
         "grafana",
         "Kakegurui",
+        "svgnode",
         "yawingschedule"
     ],
     "[json]": {

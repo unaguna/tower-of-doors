@@ -1,4 +1,6 @@
 .venv/
 log/
 
+local/
+
 /memo.txt

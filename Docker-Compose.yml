@@ -30,6 +30,7 @@ services:
     ports:
       - "127.0.0.1:3000:3000"
     environment:
+      GF_INSTALL_PLUGINS: aceiot-svg-panel
       GF_RENDERING_SERVER_URL: http://tod-grafana-renderer:8081/render
       GF_RENDERING_CALLBACK_URL: http://tod-grafana:3000/
   renderer:
