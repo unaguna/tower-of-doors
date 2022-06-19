@@ -3,10 +3,33 @@ from datetime import datetime
 import MySQLdb
 
 from db import sql_literal
-from model import GameModel, GameRecord
+from model import GameEndReason, GameModel, GameRecord
 
 
 _TABLE = "game"
+
+
+def get_by_id(id: int, connection: MySQLdb.Connection) -> GameRecord:
+    cursor = connection.cursor(MySQLdb.cursors.DictCursor)
+
+    query = f"""
+    SELECT
+        {",".join(f"`{f}`" for f in GameRecord.fields())}
+    FROM {_TABLE}
+    WHERE `id` = {id}
+    LIMIT 1
+    """
+
+    cursor.execute(query)
+    row = cursor.fetchone()
+
+    return GameRecord(
+        id=row["id"],
+        player_num=row["player_num"],
+        start_time=row["start_time"],
+        end_time=row["end_time"],
+        game_end_reason=GameEndReason.or_none(row["game_end_reason"]),
+    )
 
 
 def insert(game: GameModel, connection: MySQLdb.Connection) -> GameRecord:

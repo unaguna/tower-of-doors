@@ -150,18 +150,14 @@ def insert_end_game(
 
 
 def insert_next_turn_of(
-    current_game_status: GameStatusRecord, *, connection
+    current_game_status: GameStatusRecord, player_num: int, *, connection
 ) -> GameStatusRecord:
     if not current_game_status.on_game:
         raise Exception(
             "cannot insert into `game_status`: cannot increase turn when not on game"
         )
 
-    # TODO: game テーブルから player_num を取得して計算に使用する
-    next_turn = (current_game_status.turn_player + 1) % (
-        2
-        # current_game_status.player_num + 1
-    )
+    next_turn = (current_game_status.turn_player + 1) % (player_num + 1)
 
     next_game_status = GameStatusRecord(
         timestamp=datetime.now(),

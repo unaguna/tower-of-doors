@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import MySQLdb
 
 import logic.azimuth
-from model import GameStatusRecord
+from model import GameRecord, GameStatusRecord
 import service
 import service.azimuthlog
 import service.doorlog
@@ -51,6 +51,7 @@ def make_turn_next(
     *,
     connection: MySQLdb.Connection = None,
     current_game_status: GameStatusRecord = None,
+    current_game: GameRecord = None,
 ):
     """Progressing game phases
 
@@ -88,9 +89,14 @@ def make_turn_next(
     if current_game_status is None:
         current_game_status = service.gamestatus.get_latest(connection=connection)
 
+    if current_game is None:
+        current_game = service.game.get_by_id(
+            id=current_game_status.game_id, connection=connection
+        )
+
     # Move turn next
     next_game_status = service.gamestatus.insert_next_turn_of(
-        current_game_status, connection=connection
+        current_game_status, current_game.player_num, connection=connection
     )
 
     # Close doors

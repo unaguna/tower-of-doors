@@ -1,7 +1,9 @@
 from collections import namedtuple
 from dataclasses import asdict, dataclass
+import dataclasses
 from datetime import datetime
 from enum import Enum
+from typing import Sequence
 
 
 class GameEndReason(Enum):
@@ -10,6 +12,10 @@ class GameEndReason(Enum):
     REMOTE = "REMOTE"
     MAINTENANCE = "MAINTENANCE"
     MASTER_KEY = "MASTER_KEY"
+
+    @classmethod
+    def or_none(cls, name: str | None) -> "GameEndReason":
+        return GameEndReason(name) if name is not None else None
 
 
 class GameStatus(Enum):
@@ -87,8 +93,12 @@ class GameRecord(GameModel):
     id: int
 
     @classmethod
-    def of(self, model: GameModel, id: int) -> "GameRecord":
+    def of(cls, model: GameModel, id: int) -> "GameRecord":
         return GameRecord(id=id, **asdict(model))
+
+    @classmethod
+    def fields(cls) -> Sequence[str]:
+        return tuple(map(lambda f: f.name, dataclasses.fields(GameRecord)))
 
 
 class GameStatusRecord(
