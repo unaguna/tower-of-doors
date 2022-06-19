@@ -30,7 +30,9 @@ def start_game(
             player_num=player_num,
         )
 
-        service.gamestatus.insert_start_game(connection=connection, now=now)
+        service.gamestatus.insert_start_game(
+            connection=connection, game_id=game_record.id, now=now
+        )
         # TODO: start yawing because the game will start with interval-turn
         connection.commit()
 

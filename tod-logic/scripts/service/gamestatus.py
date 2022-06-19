@@ -25,6 +25,7 @@ def get_latest(*, connection) -> GameStatusRecord:
 
     return GameStatusRecord(
         status=GameStatus(row["status"]),
+        game_id=row["game_id"],
         turn_player=row["turn_player"],
         timestamp=row["timestamp"],
     )
@@ -36,10 +37,12 @@ def insert(game_status: GameStatusRecord, *, connection):
     query = f"""
     INSERT {_TABLE} (
         `status`,
+        `game_id`,
         `turn_player`,
         `timestamp`
     ) VALUES (
         {sql_literal(game_status.status)},
+        {sql_literal(game_status.game_id)},
         {sql_literal(game_status.turn_player)},
         {sql_literal(game_status.timestamp.isoformat())}
     )
@@ -61,6 +64,7 @@ def insert_start_maintenance(
     else:
         start_maintenance_status = GameStatusRecord(
             status=GameStatus.MAINTENANCE,
+            game_id=None,
             turn_player=None,
             timestamp=datetime.now(),
         )
@@ -82,6 +86,7 @@ def insert_end_maintenance(
     else:
         end_maintenance_status = GameStatusRecord(
             status=GameStatus.STANDBY,
+            game_id=None,
             turn_player=None,
             timestamp=datetime.now(),
         )
@@ -91,6 +96,7 @@ def insert_end_maintenance(
 
 
 def insert_start_game(
+    game_id: int,
     current_game_status: GameStatusRecord = None,
     now: datetime = None,
     *,
@@ -112,6 +118,7 @@ def insert_start_game(
     else:
         start_game_status = GameStatusRecord(
             status=GameStatus.ON_GAME,
+            game_id=game_id,
             turn_player=0,
             timestamp=now,
         )
@@ -133,6 +140,7 @@ def insert_end_game(
     else:
         end_game_status = GameStatusRecord(
             status=GameStatus.STANDBY,
+            game_id=None,
             turn_player=None,
             timestamp=datetime.now(),
         )
@@ -157,6 +165,7 @@ def insert_next_turn_of(
 
     next_game_status = GameStatusRecord(
         timestamp=datetime.now(),
+        game_id=current_game_status.game_id,
         turn_player=next_turn,
         status=current_game_status.status,
     )
