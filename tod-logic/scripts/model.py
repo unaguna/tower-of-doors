@@ -90,7 +90,7 @@ class GameRecord(GameModel):
 
     @classmethod
     def fields(cls) -> Sequence[str]:
-        return tuple(map(lambda f: f.name, dataclasses.fields(GameRecord)))
+        return tuple(f.name for f in dataclasses.fields(GameRecord))
 
 
 @dataclass(order=False, kw_only=True)
