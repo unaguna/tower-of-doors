@@ -12,10 +12,6 @@ import service
 import service.gamestatus
 
 
-INTERVAL_TIME_SEC = 30
-TURN_TIME_SEC = 30
-
-
 async def col_initial_connection():
     """Attempt to connect to DB until success
 
@@ -36,34 +32,17 @@ async def col_initial_connection():
         await asyncio.sleep(connection_interval.total_seconds())
 
 
-async def col_game_control(
-    *, interval_time: timedelta = None, turn_time: timedelta = None
-):
+async def col_game_control():
     """Control the progress of the game
 
     Periodically check the state of the game and perform game state transitions
     such as turn progression.
-
-    Args:
-        interval_time (timedelta, optional):
-            Duration of interval phase
-        turn_time (timedelta, optional):
-            Duration of each user's phase
     """
-    if interval_time is None:
-        interval_time = timedelta(seconds=INTERVAL_TIME_SEC)
-    if turn_time is None:
-        turn_time = timedelta(seconds=TURN_TIME_SEC)
-
-    loop_interval = max(timedelta(seconds=1), min(interval_time, turn_time) / 60)
+    loop_interval = timedelta(seconds=1)
 
     loop_period_time = datetime.now()
     while True:
-        logic.game.make_turn_next_with_judge(
-            interval_time=interval_time,
-            turn_time=turn_time,
-            now=loop_period_time,
-        )
+        logic.game.make_turn_next_with_judge(now=loop_period_time)
 
         # calc waiting time for the next loop
         next_loop_period_time = loop_period_time + loop_interval

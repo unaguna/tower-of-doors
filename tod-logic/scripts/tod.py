@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+from datetime import timedelta
 
 from argtype import positive_int
 from model import GameEndReason
@@ -70,6 +71,22 @@ class StartGameArgs:
         """Number of groups of players participating in the game."""
         return self._args.player_num
 
+    @property
+    def interval_period(self) -> timedelta:
+        """Period of interval phase."""
+        if self._args.interval_period is not None:
+            return timedelta(seconds=self._args.interval_period)
+        else:
+            return None
+
+    @property
+    def player_period(self) -> timedelta:
+        """Period of player's phase."""
+        if self._args.player_period is not None:
+            return timedelta(seconds=self._args.player_period)
+        else:
+            return None
+
 
 def command_open_door(_args: argparse.Namespace):
     """Implementation of subcommand to open doors.
@@ -110,7 +127,11 @@ def command_start_game(_args: argparse.Namespace):
         args (argparse.Namespace): The arguments got from `argparse` module.
     """
     args = StartGameArgs(_args)
-    logic.game.start_game(player_num=args.player_num)
+    logic.game.start_game(
+        player_num=args.player_num,
+        interval_period=args.interval_period,
+        player_period=args.player_period,
+    )
 
 
 def command_end_game(_: argparse.Namespace):
@@ -162,6 +183,20 @@ def arg_parser() -> argparse.ArgumentParser:
     parser_add = subparsers.add_parser("start", help="start a game")
     parser_add.add_argument(
         "player_num", type=positive_int, help="The number of players"
+    )
+    parser_add.add_argument(
+        "--interval-period",
+        "-I",
+        type=positive_int,
+        help="Period of interval phase in sec",
+        default=None,
+    )
+    parser_add.add_argument(
+        "--player-period",
+        "-P",
+        type=positive_int,
+        help="Period of prayer's phase in sec",
+        default=None,
     )
     parser_add.set_defaults(handler=command_start_game)
 

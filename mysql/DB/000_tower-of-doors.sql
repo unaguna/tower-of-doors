@@ -213,6 +213,8 @@ DROP TABLE IF EXISTS `game`;
 CREATE TABLE `game` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `player_num` int unsigned CHECK (`player_num` > 0),
+  `interval_period` int unsigned CHECK (`interval_period` > 0) COMMENT 'period of interval phase in millisec',
+  `player_period` int unsigned CHECK (`player_period` > 0) COMMENT 'period of player\'s phase in millisec',
   `start_time` datetime NOT NULL,
   `end_time` datetime DEFAULT NULL,
   `game_end_reason` char(11) DEFAULT NULL,

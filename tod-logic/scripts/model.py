@@ -1,7 +1,7 @@
 from collections import namedtuple
 from dataclasses import asdict, dataclass
 import dataclasses
-from datetime import datetime
+from datetime import datetime, timedelta
 from enum import Enum
 from typing import Sequence
 
@@ -81,6 +81,8 @@ class GameModel:
     """The model of `game`"""
 
     player_num: int
+    interval_period: timedelta
+    player_period: timedelta
     start_time: datetime
     end_time: datetime | None = None
     game_end_reason: GameEndReason | None = None

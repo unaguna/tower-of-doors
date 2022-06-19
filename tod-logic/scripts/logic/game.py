@@ -13,8 +13,15 @@ import service.gamestatus
 import service.yawingschedule
 
 
+INTERVAL_PERIOD_SEC = 300
+PLAYER_PERIOD_SEC = 300
+
+
 def start_game(
     player_num: int,
+    *,
+    interval_period: timedelta = None,
+    player_period: timedelta = None,
 ):
     """Start a game
 
@@ -22,12 +29,19 @@ def start_game(
         player_num (int):
             Number of groups of players participating in the game.
     """
+    if interval_period is None:
+        interval_period = timedelta(seconds=INTERVAL_PERIOD_SEC)
+    if player_period is None:
+        player_period = timedelta(seconds=PLAYER_PERIOD_SEC)
+
     now = datetime.now()
     with service.connect() as connection:
         game_record = service.game.insert_start_game(
             connection=connection,
             start_time=now,
             player_num=player_num,
+            interval_period=interval_period,
+            player_period=player_period,
         )
 
         service.gamestatus.insert_start_game(
@@ -56,8 +70,6 @@ def end_game(game_end_reason: GameEndReason):
 
 
 def make_turn_next(
-    interval_time: timedelta,
-    turn_time: timedelta,
     now: datetime,
     *,
     connection: MySQLdb.Connection = None,
@@ -71,10 +83,6 @@ def make_turn_next(
     use `make_turn_next_with_judge()`.
 
     Args:
-        interval_time (timedelta, optional):
-            Duration of interval phase
-        turn_time (timedelta, optional):
-            Duration of each user's phase
         now (datetime):
             current time
         connection (MySQLdb.Connection, optional):
@@ -84,15 +92,17 @@ def make_turn_next(
         current_game_status (GameStatusRecord, optional):
             Current game state.
             If not specified, retrieve from DB.
+        current_game (GameRecord, optional):
+            Current game.
+            If not specified, retrieve from DB.
     """
     if connection is None:
         with service.connect() as new_connection:
             make_turn_next(
-                interval_time=interval_time,
-                turn_time=turn_time,
                 now=now,
                 connection=new_connection,
                 current_game_status=current_game_status,
+                current_game=current_game,
             )
             new_connection.commit()
         return
@@ -117,7 +127,7 @@ def make_turn_next(
 
     # schedule yawing
     if next_game_status.on_interval_turn:
-        schedule_end_time = now + (interval_time) * 4 / 5
+        schedule_end_time = now + (current_game.interval_period) * 4 / 5
         scheduled_yawing = logic.azimuth.schedule_yaw(
             yawing_angle=60.0,
             schedule_start_time=now,
@@ -135,34 +145,32 @@ def make_turn_next(
         print("yawing scheduled:", scheduled_yawing)
 
 
-def make_turn_next_with_judge(
-    interval_time: timedelta,
-    turn_time: timedelta,
-    now: datetime,
-):
+def make_turn_next_with_judge(now: datetime):
     """Progressing game phases if there is no time remaining.
 
     Args:
-        interval_time (timedelta, optional):
-            Duration of interval phase
-        turn_time (timedelta, optional):
-            Duration of each user's phase
         now (datetime):
             current time
     """
     with service.connect() as connection:
         game_status = service.gamestatus.get_latest(connection=connection)
+
+        if not game_status.on_game:
+            return
+
+        game = service.game.get_by_id(game_status.game_id, connection=connection)
         game_status_oldness = now - game_status.timestamp
 
-        if (game_status.on_interval_turn and game_status_oldness >= interval_time) or (
-            game_status.on_someones_turn and game_status_oldness >= turn_time
+        if (
+            game_status.on_interval_turn and game_status_oldness >= game.interval_period
+        ) or (
+            game_status.on_someones_turn and game_status_oldness >= game.player_period
         ):
             make_turn_next(
-                interval_time=interval_time,
-                turn_time=turn_time,
                 now=now,
                 connection=connection,
                 current_game_status=game_status,
+                current_game=game,
             )
 
         connection.commit()
