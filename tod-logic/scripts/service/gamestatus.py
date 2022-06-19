@@ -3,7 +3,7 @@ from datetime import datetime
 import MySQLdb
 
 from db import sql_literal
-from model import GAME_STATUS_FIELDS, GameStatus, GameStatusRecord
+from model import GameStatus, GameStatusRecord
 
 
 _TABLE = "game_status"
@@ -14,7 +14,7 @@ def get_latest(*, connection) -> GameStatusRecord:
 
     query = f"""
     SELECT 
-        {",".join(f"`{f}`" for f in GAME_STATUS_FIELDS)}
+        {",".join(f"`{f}`" for f in GameStatusRecord.fields())}
     FROM {_TABLE}
     ORDER BY `timestamp`
     DESC LIMIT 1

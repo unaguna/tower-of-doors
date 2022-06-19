@@ -1,4 +1,3 @@
-from collections import namedtuple
 from dataclasses import asdict, dataclass
 import dataclasses
 from datetime import datetime, timedelta
@@ -49,31 +48,14 @@ class YawingReason(Enum):
     REMOTE = "REMOTE"
 
 
-class DoorLogRecord(
-    namedtuple(
-        "DoorLogRecord",
-        (
-            "door_id",
-            "status",
-            "timestamp",
-            "reason",
-        ),
-    )
-):
+@dataclass(order=False, kw_only=True)
+class DoorLogRecord:
     """The record of `door_log`"""
 
     door_id: str
     status: DoorStatus
     timestamp: datetime
     reason: str
-
-
-GAME_STATUS_FIELDS = (
-    "status",
-    "game_id",
-    "turn_player",
-    "timestamp",
-)
 
 
 @dataclass(order=False, kw_only=True)
@@ -100,21 +82,21 @@ class GameRecord(GameModel):
 
     @classmethod
     def fields(cls) -> Sequence[str]:
-        return tuple(map(lambda f: f.name, dataclasses.fields(GameRecord)))
+        return tuple(f.name for f in dataclasses.fields(cls))
 
 
-class GameStatusRecord(
-    namedtuple(
-        "GameStatusRecord",
-        GAME_STATUS_FIELDS,
-    )
-):
+@dataclass(order=False, kw_only=True)
+class GameStatusRecord:
     """The record of `game_status`"""
 
     status: GameStatus
     game_id: int | None
     turn_player: int | None
     timestamp: datetime
+
+    @classmethod
+    def fields(cls) -> Sequence[str]:
+        return tuple(f.name for f in dataclasses.fields(cls))
 
     @property
     def on_game(self) -> bool:
@@ -137,31 +119,29 @@ class GameStatusRecord(
         return self.on_game and self.turn_player == 0
 
 
-YAWING_SCHEDULE_FIELDS = (
-    "id",
-    "aim_azimuth",
-    "yawing_reason",
-    "schedule_start_time",
-    "schedule_end_time",
-    "yawing_status",
-    "actual_start_time",
-    "actual_end_time",
-)
+@dataclass(order=False, kw_only=True)
+class YawingScheduleModel:
+    """The model of `yawing_schedule`"""
 
-
-class YawingScheduleRecord(
-    namedtuple(
-        "YawingScheduleRecord",
-        YAWING_SCHEDULE_FIELDS,
-    )
-):
-    """The record of `yawing_schedule`"""
-
-    id: int
     aim_azimuth: float
     yawing_reason: YawingReason
     schedule_start_time: datetime
     schedule_end_time: datetime
     yawing_status: YawingStatus
-    actual_start_time: datetime | None
-    actual_end_time: datetime | None
+    actual_start_time: datetime | None = None
+    actual_end_time: datetime | None = None
+
+
+@dataclass(order=False, kw_only=True)
+class YawingScheduleRecord(YawingScheduleModel):
+    """The record of `yawing_schedule`"""
+
+    id: int
+
+    @classmethod
+    def of(cls, model: YawingScheduleModel, id: int) -> "YawingScheduleRecord":
+        return YawingScheduleRecord(id=id, **asdict(model))
+
+    @classmethod
+    def fields(cls) -> Sequence[str]:
+        return tuple(f.name for f in dataclasses.fields(cls))
