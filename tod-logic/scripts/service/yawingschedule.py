@@ -6,6 +6,7 @@ import MySQLdb
 from db import sql_literal
 from model import (
     YawingReason,
+    YawingScheduleModel,
     YawingScheduleRecord,
     YawingStatus,
 )
@@ -94,16 +95,12 @@ def insert_schedule(
     *,
     connection,
 ) -> YawingScheduleRecord:
-    yawing_schedule: YawingScheduleRecord = YawingScheduleRecord(
+    yawing_schedule = YawingScheduleModel(
         aim_azimuth=aim_azimuth,
         yawing_reason=yawing_reason,
         schedule_start_time=schedule_start_time,
         schedule_end_time=schedule_end_time,
         yawing_status=YawingStatus.SCHEDULED,
-        # TODO: dataclass を使用する際に、不要な引数があれば削除
-        id=None,
-        actual_start_time=None,
-        actual_end_time=None,
     )
 
     cursor = connection.cursor()
@@ -129,9 +126,7 @@ def insert_schedule(
     id = cursor.fetchone()[0]
     cursor.close()
 
-    # TODO: dataclass を使用する際に代入が可能になっていればコメントアウト
-    # yawing_schedule.id = id
-    return yawing_schedule
+    return YawingScheduleRecord.of(yawing_schedule, id)
 
 
 def update_start_yawing(

@@ -120,17 +120,27 @@ class GameStatusRecord:
 
 
 @dataclass(order=False, kw_only=True)
-class YawingScheduleRecord:
-    """The record of `yawing_schedule`"""
+class YawingScheduleModel:
+    """The model of `yawing_schedule`"""
 
-    id: int
     aim_azimuth: float
     yawing_reason: YawingReason
     schedule_start_time: datetime
     schedule_end_time: datetime
     yawing_status: YawingStatus
-    actual_start_time: datetime | None
-    actual_end_time: datetime | None
+    actual_start_time: datetime | None = None
+    actual_end_time: datetime | None = None
+
+
+@dataclass(order=False, kw_only=True)
+class YawingScheduleRecord(YawingScheduleModel):
+    """The record of `yawing_schedule`"""
+
+    id: int
+
+    @classmethod
+    def of(cls, model: YawingScheduleModel, id: int) -> "YawingScheduleRecord":
+        return YawingScheduleRecord(id=id, **asdict(model))
 
     @classmethod
     def fields(cls) -> Sequence[str]:
