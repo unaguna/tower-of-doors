@@ -6,7 +6,6 @@ import MySQLdb
 from db import sql_literal
 from model import (
     YawingReason,
-    YAWING_SCHEDULE_FIELDS,
     YawingScheduleRecord,
     YawingStatus,
 )
@@ -20,7 +19,7 @@ def get_now_yawing(*, connection) -> YawingScheduleRecord | None:
 
     query = f"""
     SELECT 
-        {",".join(f"`{f}`" for f in YAWING_SCHEDULE_FIELDS)}
+        {",".join(f"`{f}`" for f in YawingScheduleRecord.fields())}
     FROM {_TABLE}
     WHERE `yawing_status` = {sql_literal(YawingStatus.ON_YAWING)}
     LIMIT 1

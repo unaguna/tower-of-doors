@@ -58,14 +58,6 @@ class DoorLogRecord:
     reason: str
 
 
-GAME_STATUS_FIELDS = (
-    "status",
-    "game_id",
-    "turn_player",
-    "timestamp",
-)
-
-
 @dataclass(order=False, kw_only=True)
 class GameModel:
     """The model of `game`"""
@@ -90,7 +82,7 @@ class GameRecord(GameModel):
 
     @classmethod
     def fields(cls) -> Sequence[str]:
-        return tuple(f.name for f in dataclasses.fields(GameRecord))
+        return tuple(f.name for f in dataclasses.fields(cls))
 
 
 @dataclass(order=False, kw_only=True)
@@ -101,6 +93,10 @@ class GameStatusRecord:
     game_id: int | None
     turn_player: int | None
     timestamp: datetime
+
+    @classmethod
+    def fields(cls) -> Sequence[str]:
+        return tuple(f.name for f in dataclasses.fields(cls))
 
     @property
     def on_game(self) -> bool:
@@ -123,18 +119,6 @@ class GameStatusRecord:
         return self.on_game and self.turn_player == 0
 
 
-YAWING_SCHEDULE_FIELDS = (
-    "id",
-    "aim_azimuth",
-    "yawing_reason",
-    "schedule_start_time",
-    "schedule_end_time",
-    "yawing_status",
-    "actual_start_time",
-    "actual_end_time",
-)
-
-
 @dataclass(order=False, kw_only=True)
 class YawingScheduleRecord:
     """The record of `yawing_schedule`"""
@@ -147,3 +131,7 @@ class YawingScheduleRecord:
     yawing_status: YawingStatus
     actual_start_time: datetime | None
     actual_end_time: datetime | None
+
+    @classmethod
+    def fields(cls) -> Sequence[str]:
+        return tuple(f.name for f in dataclasses.fields(cls))
