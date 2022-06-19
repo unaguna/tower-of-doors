@@ -28,6 +28,10 @@ def start_game(
     Args:
         player_num (int):
             Number of groups of players participating in the game.
+        interval_period (timedelta, optional):
+            Period of interval phase. If not specified, use default value.
+        player_period (timedelta, optional):
+            Period of player's phase. If not specified, use default value.
     """
     if interval_period is None:
         interval_period = timedelta(seconds=INTERVAL_PERIOD_SEC)
@@ -52,7 +56,12 @@ def start_game(
 
 
 def end_game(game_end_reason: GameEndReason):
-    """Terminate a game"""
+    """Terminate a game
+
+    Args:
+        game_end_reason (GameEndReason):
+            The reason of this termination.
+    """
     now = datetime.now()
     with service.connect() as connection:
         current_game_status = service.gamestatus.get_latest(connection=connection)
