@@ -1,4 +1,3 @@
-from collections import namedtuple
 from dataclasses import asdict, dataclass
 import dataclasses
 from datetime import datetime, timedelta
@@ -49,17 +48,8 @@ class YawingReason(Enum):
     REMOTE = "REMOTE"
 
 
-class DoorLogRecord(
-    namedtuple(
-        "DoorLogRecord",
-        (
-            "door_id",
-            "status",
-            "timestamp",
-            "reason",
-        ),
-    )
-):
+@dataclass(order=False, kw_only=True)
+class DoorLogRecord:
     """The record of `door_log`"""
 
     door_id: str
@@ -103,12 +93,8 @@ class GameRecord(GameModel):
         return tuple(map(lambda f: f.name, dataclasses.fields(GameRecord)))
 
 
-class GameStatusRecord(
-    namedtuple(
-        "GameStatusRecord",
-        GAME_STATUS_FIELDS,
-    )
-):
+@dataclass(order=False, kw_only=True)
+class GameStatusRecord:
     """The record of `game_status`"""
 
     status: GameStatus
@@ -149,12 +135,8 @@ YAWING_SCHEDULE_FIELDS = (
 )
 
 
-class YawingScheduleRecord(
-    namedtuple(
-        "YawingScheduleRecord",
-        YAWING_SCHEDULE_FIELDS,
-    )
-):
+@dataclass(order=False, kw_only=True)
+class YawingScheduleRecord:
     """The record of `yawing_schedule`"""
 
     id: int
