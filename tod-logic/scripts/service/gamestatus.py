@@ -52,8 +52,13 @@ def insert(game_status: GameStatusRecord, *, connection):
 
 
 def insert_start_maintenance(
-    current_game_status: GameStatusRecord = None, *, connection: MySQLdb.Connection
+    current_game_status: GameStatusRecord = None,
+    now: datetime = None,
+    *,
+    connection: MySQLdb.Connection,
 ) -> GameStatusRecord:
+    if now is None:
+        now = datetime.now()
     if current_game_status is None:
         current_game_status = get_latest(connection=connection)
 
@@ -66,7 +71,7 @@ def insert_start_maintenance(
             status=GameStatus.MAINTENANCE,
             game_id=None,
             turn_player=None,
-            timestamp=datetime.now(),
+            timestamp=now,
         )
         insert(start_maintenance_status, connection=connection)
 

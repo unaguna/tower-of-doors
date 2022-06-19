@@ -1,4 +1,8 @@
+from datetime import datetime
+
+from model import GameEndReason
 import service
+import service.game
 import service.gamestatus
 
 
@@ -18,6 +22,7 @@ def start_maintenance(force_maintenance: bool):
     Args:
         force_maintenance (bool): If true, start maintenance even during the game.
     """
+    now = datetime.now()
     with service.connect() as connection:
         current_game_status = service.gamestatus.get_latest(connection=connection)
 
@@ -25,8 +30,16 @@ def start_maintenance(force_maintenance: bool):
             raise Exception("cannot start maintenance: now on game")
 
         service.gamestatus.insert_start_maintenance(
-            current_game_status=current_game_status, connection=connection
+            current_game_status=current_game_status, now=now, connection=connection
         )
+
+        if current_game_status.on_game:
+            service.game.update_end_game(
+                id=current_game_status.game_id,
+                game_end_reason=GameEndReason.MAINTENANCE,
+                end_time=now,
+                connection=connection,
+            )
 
         connection.commit()
 
