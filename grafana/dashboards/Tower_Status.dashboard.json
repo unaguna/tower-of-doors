@@ -192,7 +192,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "9.0.0",
       "targets": [
         {
           "datasource": {
@@ -393,7 +393,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "9.0.0",
       "targets": [
         {
           "datasource": {
@@ -404,7 +404,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  CASE WHEN turn_player > 0 THEN concat(turn_player, ' / ', player_num) WHEN turn_player=0 THEN concat('Interval / ', player_num) ELSE turn_player END AS value\nFROM game_status\nORDER BY `timestamp` DESC\nLIMIT 1",
+          "rawSql": "SELECT\n  CASE WHEN turn_player > 0 THEN concat(turn_player, ' / ', player_num) WHEN turn_player=0 THEN concat('Interval / ', player_num) ELSE turn_player END AS value\nFROM game_status\nLEFT JOIN game ON game_status.game_id = game.id\nORDER BY `timestamp` DESC\nLIMIT 1",
           "refId": "A",
           "select": [
             [
@@ -476,7 +476,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "9.0.0",
       "targets": [
         {
           "datasource": {
@@ -597,7 +597,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.0.0-beta2",
+      "pluginVersion": "9.0.0",
       "targets": [
         {
           "datasource": {

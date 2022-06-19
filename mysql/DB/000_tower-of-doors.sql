@@ -183,6 +183,49 @@ CREATE TABLE `yawing_schedule` (
 
 
 --
+-- Table structure for table `enum_game_end_reason`
+--
+
+DROP TABLE IF EXISTS `enum_game_end_reason`;
+CREATE TABLE `enum_game_end_reason` (
+  `game_end_reason` char(11) NOT NULL,
+  PRIMARY KEY (`game_end_reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Data for table `game_end_reason`
+--
+
+set autocommit=0;
+INSERT INTO `enum_game_end_reason` (`game_end_reason`) VALUES
+  ('REMOTE'),
+  ('MAINTENANCE'),
+  ('MASTER_KEY')
+;
+
+
+--
+-- Table structure for table `game`
+--
+
+DROP TABLE IF EXISTS `game`;
+CREATE TABLE `game` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `player_num` int unsigned CHECK (`player_num` > 0),
+  `interval_period` int unsigned CHECK (`interval_period` > 0) COMMENT 'period of interval phase in millisec',
+  `player_period` int unsigned CHECK (`player_period` > 0) COMMENT 'period of player\'s phase in millisec',
+  `start_time` datetime NOT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `game_end_reason` char(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `game_end_reason_is_required_when_end_game` CHECK (`end_time` is NULL or `game_end_reason` is not NULL),
+  CONSTRAINT `game_end_reason_must_be_null_until_end_game` CHECK (`end_time` is not NULL or `game_end_reason` is NULL),
+  FOREIGN KEY fk_yawing_reason(`game_end_reason`) REFERENCES `enum_game_end_reason`(`game_end_reason`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
 -- Table structure for table `enum_game_status`
 --
 
@@ -212,17 +255,17 @@ INSERT INTO `enum_game_status` (`status`) VALUES
 DROP TABLE IF EXISTS `game_status`;
 CREATE TABLE `game_status` (
   `status` char(11) NOT NULL,
-  `player_num` int unsigned CHECK (`player_num` > 0),
+  `game_id` bigint,
   # 0: interval phase
   # >0: player no
   `turn_player` int unsigned,
   `timestamp` datetime NOT NULL,
-  CONSTRAINT `player_num_must_not_be_null_when_on_game` CHECK (`status` <> 'ON_GAME' or `player_num` is not NULL),
+  CONSTRAINT `game_id_must_not_be_null_when_on_game` CHECK (`status` <> 'ON_GAME' or `game_id` is not NULL),
   CONSTRAINT `turn_player_must_not_be_null_when_on_game` CHECK (`status` <> 'ON_GAME' or `turn_player` is not NULL),
-  CONSTRAINT `player_num_must_be_null_when_not_on_game` CHECK (`status` = 'ON_GAME' or `player_num` is NULL),
   CONSTRAINT `turn_player_must_be_null_when_not_on_game` CHECK (`status` = 'ON_GAME' or `turn_player` is NULL),
-  CONSTRAINT `turn_player_must_not_be_greater_than_player_num` CHECK (`turn_player` <= `player_num`),
+  /* CONSTRAINT `turn_player_must_not_be_greater_than_player_num` CHECK (`turn_player` <= `player_num`), */
   PRIMARY KEY (`timestamp`),
+  FOREIGN KEY fk_game_id(`game_id`) REFERENCES `game`(`id`),
   FOREIGN KEY fk_game_status(`status`) REFERENCES `enum_game_status`(`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -232,8 +275,8 @@ CREATE TABLE `game_status` (
 --
 
 set autocommit=0;
-INSERT INTO `game_status` (`status`, `timestamp`, `player_num`, `turn_player`) VALUES
-  ('MAINTENANCE', now(), NULL, NULL)
+INSERT INTO `game_status` (`status`, `game_id`, `timestamp`, `turn_player`) VALUES
+  ('MAINTENANCE', NULL, now(), NULL)
 ;
 
 

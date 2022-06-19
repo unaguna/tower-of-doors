@@ -1,6 +1,21 @@
 from collections import namedtuple
-from datetime import datetime
+from dataclasses import asdict, dataclass
+import dataclasses
+from datetime import datetime, timedelta
 from enum import Enum
+from typing import Sequence
+
+
+class GameEndReason(Enum):
+    """Reason of game end"""
+
+    REMOTE = "REMOTE"
+    MAINTENANCE = "MAINTENANCE"
+    MASTER_KEY = "MASTER_KEY"
+
+    @classmethod
+    def or_none(cls, name: str | None) -> "GameEndReason":
+        return GameEndReason(name) if name is not None else None
 
 
 class GameStatus(Enum):
@@ -55,10 +70,37 @@ class DoorLogRecord(
 
 GAME_STATUS_FIELDS = (
     "status",
-    "player_num",
+    "game_id",
     "turn_player",
     "timestamp",
 )
+
+
+@dataclass(order=False, kw_only=True)
+class GameModel:
+    """The model of `game`"""
+
+    player_num: int
+    interval_period: timedelta
+    player_period: timedelta
+    start_time: datetime
+    end_time: datetime | None = None
+    game_end_reason: GameEndReason | None = None
+
+
+@dataclass(order=False, kw_only=True)
+class GameRecord(GameModel):
+    """The record of `game`"""
+
+    id: int
+
+    @classmethod
+    def of(cls, model: GameModel, id: int) -> "GameRecord":
+        return GameRecord(id=id, **asdict(model))
+
+    @classmethod
+    def fields(cls) -> Sequence[str]:
+        return tuple(map(lambda f: f.name, dataclasses.fields(GameRecord)))
 
 
 class GameStatusRecord(
@@ -70,7 +112,7 @@ class GameStatusRecord(
     """The record of `game_status`"""
 
     status: GameStatus
-    player_num: int | None
+    game_id: int | None
     turn_player: int | None
     timestamp: datetime
 

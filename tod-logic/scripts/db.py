@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from enum import Enum
 from numbers import Real
 
@@ -22,6 +22,8 @@ def sql_literal(value: any) -> str:
         return sql_literal(value.value)
     elif isinstance(value, datetime):
         return f"'{value.isoformat()}'"
+    elif isinstance(value, timedelta):
+        return f"'{int(value.total_seconds() * 1000)}'"
     elif isinstance(value, Real):
         return str(value)
     else:
