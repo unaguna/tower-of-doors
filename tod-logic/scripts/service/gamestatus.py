@@ -25,7 +25,6 @@ def get_latest(*, connection) -> GameStatusRecord:
 
     return GameStatusRecord(
         status=GameStatus(row["status"]),
-        player_num=row["player_num"],
         turn_player=row["turn_player"],
         timestamp=row["timestamp"],
     )
@@ -37,12 +36,10 @@ def insert(game_status: GameStatusRecord, *, connection):
     query = f"""
     INSERT {_TABLE} (
         `status`,
-        `player_num`,
         `turn_player`,
         `timestamp`
     ) VALUES (
         {sql_literal(game_status.status)},
-        {sql_literal(game_status.player_num)},
         {sql_literal(game_status.turn_player)},
         {sql_literal(game_status.timestamp.isoformat())}
     )
@@ -64,7 +61,6 @@ def insert_start_maintenance(
     else:
         start_maintenance_status = GameStatusRecord(
             status=GameStatus.MAINTENANCE,
-            player_num=None,
             turn_player=None,
             timestamp=datetime.now(),
         )
@@ -86,7 +82,6 @@ def insert_end_maintenance(
     else:
         end_maintenance_status = GameStatusRecord(
             status=GameStatus.STANDBY,
-            player_num=None,
             turn_player=None,
             timestamp=datetime.now(),
         )
@@ -96,7 +91,6 @@ def insert_end_maintenance(
 
 
 def insert_start_game(
-    player_num: int,
     current_game_status: GameStatusRecord = None,
     now: datetime = None,
     *,
@@ -118,7 +112,6 @@ def insert_start_game(
     else:
         start_game_status = GameStatusRecord(
             status=GameStatus.ON_GAME,
-            player_num=player_num,
             turn_player=0,
             timestamp=now,
         )
@@ -140,7 +133,6 @@ def insert_end_game(
     else:
         end_game_status = GameStatusRecord(
             status=GameStatus.STANDBY,
-            player_num=None,
             turn_player=None,
             timestamp=datetime.now(),
         )
@@ -157,15 +149,16 @@ def insert_next_turn_of(
             "cannot insert into `game_status`: cannot increase turn when not on game"
         )
 
+    # TODO: game テーブルから player_num を取得して計算に使用する
     next_turn = (current_game_status.turn_player + 1) % (
-        current_game_status.player_num + 1
+        2
+        # current_game_status.player_num + 1
     )
 
     next_game_status = GameStatusRecord(
         timestamp=datetime.now(),
         turn_player=next_turn,
         status=current_game_status.status,
-        player_num=current_game_status.player_num,
     )
 
     insert(next_game_status, connection=connection)

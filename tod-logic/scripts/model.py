@@ -64,7 +64,6 @@ class DoorLogRecord(
 
 GAME_STATUS_FIELDS = (
     "status",
-    "player_num",
     "turn_player",
     "timestamp",
 )
@@ -74,6 +73,7 @@ GAME_STATUS_FIELDS = (
 class GameModel:
     """The model of `game`"""
 
+    player_num: int
     start_time: datetime
     end_time: datetime | None = None
     game_end_reason: GameEndReason | None = None
@@ -99,7 +99,6 @@ class GameStatusRecord(
     """The record of `game_status`"""
 
     status: GameStatus
-    player_num: int | None
     turn_player: int | None
     timestamp: datetime
 

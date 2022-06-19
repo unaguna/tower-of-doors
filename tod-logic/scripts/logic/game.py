@@ -25,10 +25,12 @@ def start_game(
     now = datetime.now()
     with service.connect() as connection:
         game_record = service.game.insert_start_game(
-            connection=connection, start_time=now
+            connection=connection,
+            start_time=now,
+            player_num=player_num,
         )
 
-        service.gamestatus.insert_start_game(player_num, connection=connection, now=now)
+        service.gamestatus.insert_start_game(connection=connection, now=now)
         # TODO: start yawing because the game will start with interval-turn
         connection.commit()
 
