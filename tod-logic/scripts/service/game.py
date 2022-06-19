@@ -98,7 +98,7 @@ def update_end_game(
             `end_time` = {sql_literal(end_time)},
             `game_end_reason` = {sql_literal(game_end_reason)}
         WHERE
-            `id` = {sql_literal(id)}
+            `id` = {sql_literal(id)} and `end_time` is NULL
         """
 
         cursor.execute(query)
