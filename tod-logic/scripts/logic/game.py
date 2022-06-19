@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import MySQLdb
 
 import logic.azimuth
-from model import GameRecord, GameStatusRecord
+from model import GameEndReason, GameRecord, GameStatusRecord
 import service
 import service.azimuthlog
 import service.doorlog
@@ -37,10 +37,21 @@ def start_game(
         connection.commit()
 
 
-def end_game():
+def end_game(game_end_reason: GameEndReason):
     """Terminate a game"""
+    now = datetime.now()
     with service.connect() as connection:
-        service.gamestatus.insert_end_game(connection=connection)
+        current_game_status = service.gamestatus.get_latest(connection=connection)
+        service.gamestatus.insert_end_game(
+            current_game_status=current_game_status, now=now, connection=connection
+        )
+        service.game.update_end_game(
+            current_game_status.game_id,
+            game_end_reason,
+            end_time=now,
+            connection=connection,
+        )
+
         connection.commit()
 
 

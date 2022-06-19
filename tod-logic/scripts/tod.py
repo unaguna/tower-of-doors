@@ -3,6 +3,7 @@
 import argparse
 
 from argtype import positive_int
+from model import GameEndReason
 import logic.door
 import logic.game
 import logic.maintenance
@@ -118,7 +119,7 @@ def command_end_game(_: argparse.Namespace):
     Args:
         args (argparse.Namespace): The arguments got from `argparse` module.
     """
-    logic.game.end_game()
+    logic.game.end_game(GameEndReason.REMOTE)
 
 
 def command_check_maintenance(_: argparse.Namespace):

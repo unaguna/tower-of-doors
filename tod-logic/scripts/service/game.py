@@ -64,3 +64,25 @@ def insert_start_game(
 
     game = GameModel(player_num=player_num, start_time=start_time)
     return insert(game, connection=connection)
+
+
+def update_end_game(
+    id: int,
+    game_end_reason: GameEndReason,
+    end_time: datetime = None,
+    *,
+    connection: MySQLdb.Connection,
+):
+    if end_time is None:
+        end_time = datetime.now()
+
+    with connection.cursor() as cursor:
+        query = f"""
+        UPDATE {_TABLE} SET
+            `end_time` = {sql_literal(end_time)},
+            `game_end_reason` = {sql_literal(game_end_reason)}
+        WHERE
+            `id` = {sql_literal(id)}
+        """
+
+        cursor.execute(query)

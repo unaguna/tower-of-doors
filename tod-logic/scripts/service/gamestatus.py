@@ -128,8 +128,10 @@ def insert_start_game(
 
 
 def insert_end_game(
-    current_game_status: GameStatusRecord = None, *, connection
+    current_game_status: GameStatusRecord = None, now: datetime = None, *, connection
 ) -> GameStatusRecord:
+    if now is None:
+        now = datetime.now()
     if current_game_status is None:
         current_game_status = get_latest(connection=connection)
 
@@ -142,7 +144,7 @@ def insert_end_game(
             status=GameStatus.STANDBY,
             game_id=None,
             turn_player=None,
-            timestamp=datetime.now(),
+            timestamp=now,
         )
         insert(end_game_status, connection=connection)
 
