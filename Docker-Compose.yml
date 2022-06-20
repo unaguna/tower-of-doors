@@ -14,7 +14,9 @@ services:
     container_name: tower-of-doors-mysql
     hostname: tod-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=KEqUG3wDAAZaU5hRHBC43DvUmTbFEdtPM49jqKRCA4RePBTPCVeeU4ZTjASdNnkv
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+    secrets:
+      - mysql_root_password
     networks:
       - tower-of-doors-network
   grafana:
@@ -50,3 +52,6 @@ services:
 networks:
   tower-of-doors-network:
     external: true
+secrets:
+  mysql_root_password:
+    file: ./secrets/mysql_root_password.txt
