@@ -8,3 +8,7 @@ DROP USER IF EXISTS 'tod-logic';
 CREATE USER 'tod-logic' identified by 'h4UFhn3AGYAVc6hRxdsSWVbwSxMxfZPpsETXS7ZPA8LRkPANeKNFCAvXTexcZqTe';
 
 GRANT INSERT, SELECT, UPDATE, DELETE ON `tod`.* TO 'tod-logic';
+
+
+/* deny root login from non-localhost */
+RENAME USER 'root' TO 'root'@'127.0.0.1';
