@@ -104,3 +104,7 @@ You can execute SQL directly without using the above tools.
 
 - Grafana data is persistent.
 - MySQL data is NOT persistent and changes are lost when the container is deleted. This is because we believe that the data underlying the system is created and modified only during initialization.
+
+## Development
+
+See [./README_DEV.md](./README_DEV.md).
