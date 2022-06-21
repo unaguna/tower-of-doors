@@ -13,7 +13,7 @@ def get_latest(*, connection) -> GameStatusRecord:
     cursor = connection.cursor(MySQLdb.cursors.DictCursor)
 
     query = f"""
-    SELECT 
+    SELECT
         {",".join(f"`{f}`" for f in GameStatusRecord.fields())}
     FROM {_TABLE}
     ORDER BY `timestamp`
@@ -64,7 +64,8 @@ def insert_start_maintenance(
 
     if current_game_status.on_maintenance:
         raise Exception(
-            "cannot insert into `game_status`: cannot start maintenance: already in maintenance"
+            "cannot insert into `game_status`: cannot start maintenance: "
+            "already in maintenance"
         )
     else:
         start_maintenance_status = GameStatusRecord(
@@ -86,7 +87,8 @@ def insert_end_maintenance(
 
     if not current_game_status.on_maintenance:
         raise Exception(
-            "cannot insert into `game_status`: cannot end maintenance: not in maintenance now"
+            "cannot insert into `game_status`: cannot end maintenance: "
+            "not in maintenance now"
         )
     else:
         end_maintenance_status = GameStatusRecord(

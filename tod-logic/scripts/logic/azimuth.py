@@ -34,14 +34,15 @@ def _calc_next_azimuth(
     Returns:
         Tuple[float, bool]:
             azimuth and whether the yawing continues.
-            If the second value is false, the yawing of the specified schedule is complete.
+            If the second value is false, the yawing of the specified schedule is
+            complete.
     """
     if now is None:
         now = datetime.now()
 
     remaining_time = yawing_schedule.schedule_end_time - now
     # Remaining yawing angle
-    # The direction of yawing is determined so that the absolute value of the yawing angle is smaller
+    # The direction of yawing is determined so that abs(yawing_angle) is smaller
     remaining_azimuth = min(
         yawing_schedule.aim_azimuth - current_azimuth,
         yawing_schedule.aim_azimuth + 360 - current_azimuth,
@@ -51,7 +52,7 @@ def _calc_next_azimuth(
     # Number of azimuth change decisions to be made until the scheduled end time.
     remaining_step = max(1, math.floor(remaining_time / interval))
 
-    # Determine the angular velocity so that the yawing is completed by the scheduled end time.
+    # Determine the angular velocity so that the yawing is completed by scheduled time
     if remaining_step <= 1:
         next_azimuth = yawing_schedule.aim_azimuth
         is_last_step = True

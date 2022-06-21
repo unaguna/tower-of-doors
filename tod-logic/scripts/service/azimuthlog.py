@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import Sequence
 
 from db import sql_literal
 
