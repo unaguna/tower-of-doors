@@ -1,0 +1,4 @@
+mysqlclient~=2.1
+
+black~=22.3
+flake8~=4.0

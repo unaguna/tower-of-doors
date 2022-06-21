@@ -50,7 +50,7 @@ After completing the startup described above, you can do the following operation
 
 After completing the startup described above, you can see the operation monitoring view on <http://localhost:3000>. The login ID and password are both `admin`. If necessary, change the password and create a new user.
 
-### Start a game, open doors, etc.
+### Operate the tower
 
 Changing the status of the tower is done using the CUI tool.
 
@@ -82,7 +82,7 @@ Changing the status of the tower is done using the CUI tool.
 
     You can see more information with the command `tod --help`.
 
-### Request SQL directly.
+### Request SQL directly
 
 You can execute SQL directly without using the above tools.
 
@@ -104,3 +104,7 @@ You can execute SQL directly without using the above tools.
 
 - Grafana data is persistent.
 - MySQL data is NOT persistent and changes are lost when the container is deleted. This is because we believe that the data underlying the system is created and modified only during initialization.
+
+## Development
+
+See [./README_DEV.md](./README_DEV.md).

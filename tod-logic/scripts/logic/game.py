@@ -87,7 +87,7 @@ def make_turn_next(
 ):
     """Progressing game phases
 
-    Execution of this function will move to the next phase regardless of the time remaining.
+    This function will move to the next phase regardless of the time remaining.
     If you want to move to the next phase only when there is no time remaining,
     use `make_turn_next_with_judge()`.
 

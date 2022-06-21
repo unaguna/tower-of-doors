@@ -19,7 +19,7 @@ def get_now_yawing(*, connection) -> YawingScheduleRecord | None:
     cursor = connection.cursor(MySQLdb.cursors.DictCursor)
 
     query = f"""
-    SELECT 
+    SELECT
         {",".join(f"`{f}`" for f in YawingScheduleRecord.fields())}
     FROM {_TABLE}
     WHERE `yawing_status` = {sql_literal(YawingStatus.ON_YAWING)}
@@ -145,7 +145,10 @@ def update_start_yawing(
     SET
         `yawing_status` = {sql_literal(YawingStatus.ON_YAWING)},
         `actual_start_time` = {sql_literal(actual_start_time)}
-    WHERE `id` = {sql_literal(id)} and `yawing_status` = {sql_literal(YawingStatus.SCHEDULED)}
+    WHERE
+        `id` = {sql_literal(id)}
+        and
+        `yawing_status` = {sql_literal(YawingStatus.SCHEDULED)}
     """
 
     cursor.execute(query)
@@ -170,7 +173,10 @@ def update_end_yawing(
     SET
         `yawing_status` = {sql_literal(YawingStatus.COMPLETED)},
         `actual_end_time` = {sql_literal(actual_end_time)}
-    WHERE `id` = {sql_literal(id)} and `yawing_status` = {sql_literal(YawingStatus.ON_YAWING)}
+    WHERE
+        `id` = {sql_literal(id)}
+        and
+        `yawing_status` = {sql_literal(YawingStatus.ON_YAWING)}
     """
 
     cursor.execute(query)
