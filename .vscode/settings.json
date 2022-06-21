@@ -36,6 +36,7 @@
         "editor.defaultFormatter": null,
         "editor.formatOnSave": true
     },
+    "autoDocstring.docstringFormat": "google",
     "python.formatting.provider": "black",
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true
