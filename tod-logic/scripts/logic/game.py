@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import MySQLdb
 
 import logic.azimuth
-from model import GameEndReason, GameRecord, GameStatusRecord
+from model import GameEndReason, GameRecord, GameStatusRecord, YawingScheduleRecord
 import service
 import service.azimuthlog
 import service.doorlog
@@ -15,6 +15,18 @@ import service.yawingschedule
 
 INTERVAL_PERIOD_SEC = 300
 PLAYER_PERIOD_SEC = 300
+
+
+def _yaw_by_interval_phase(
+    *, connection: MySQLdb.Connection, interval_period: timedelta, now: datetime
+) -> YawingScheduleRecord:
+    schedule_end_time = now + interval_period * 4 / 5
+    return logic.azimuth.schedule_yaw(
+        yawing_angle=60.0,
+        schedule_start_time=now,
+        schedule_end_time=schedule_end_time,
+        connection=connection,
+    )
 
 
 def start_game(
@@ -40,6 +52,10 @@ def start_game(
 
     now = datetime.now()
     with service.connect() as connection:
+        now_yawing = service.yawingschedule.get_now_yawing(connection=connection)
+        if now_yawing is not None:
+            raise Exception("cannot start game: yawing now")
+
         game_record = service.game.insert_start_game(
             connection=connection,
             start_time=now,
@@ -48,10 +64,21 @@ def start_game(
             player_period=player_period,
         )
 
-        service.gamestatus.insert_start_game(
+        game_status_record = service.gamestatus.insert_start_game(
             connection=connection, game_id=game_record.id, now=now
         )
-        # TODO: start yawing because the game will start with interval-turn
+
+        # Cancel all yawing as they may interfere with the progress of the game.
+        service.yawingschedule.update_cancel_scheduled(connection=connection)
+
+        # start yawing because the game will start with interval-turn
+        if game_status_record.on_interval_turn:
+            _yaw_by_interval_phase(
+                connection=connection,
+                interval_period=game_record.interval_period,
+                now=now,
+            )
+
         connection.commit()
 
 
@@ -136,12 +163,8 @@ def make_turn_next(
 
     # schedule yawing
     if next_game_status.on_interval_turn:
-        schedule_end_time = now + (current_game.interval_period) * 4 / 5
-        scheduled_yawing = logic.azimuth.schedule_yaw(
-            yawing_angle=60.0,
-            schedule_start_time=now,
-            schedule_end_time=schedule_end_time,
-            connection=connection,
+        scheduled_yawing = _yaw_by_interval_phase(
+            connection=connection, interval_period=current_game.interval_period, now=now
         )
     else:
         scheduled_yawing = None
