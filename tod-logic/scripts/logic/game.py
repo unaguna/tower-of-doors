@@ -52,6 +52,10 @@ def start_game(
 
     now = datetime.now()
     with service.connect() as connection:
+        now_yawing = service.yawingschedule.get_now_yawing(connection=connection)
+        if now_yawing is not None:
+            raise Exception("cannot start game: yawing now")
+
         game_record = service.game.insert_start_game(
             connection=connection,
             start_time=now,
