@@ -28,6 +28,8 @@ def insert_azimuth(
     if timestamp is None:
         timestamp = datetime.now()
 
+    azimuth %= 360
+
     cursor = connection.cursor()
 
     query = f"""

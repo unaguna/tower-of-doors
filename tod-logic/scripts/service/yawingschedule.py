@@ -95,6 +95,8 @@ def insert_schedule(
     *,
     connection,
 ) -> YawingScheduleRecord:
+    aim_azimuth %= 360
+
     yawing_schedule = YawingScheduleModel(
         aim_azimuth=aim_azimuth,
         yawing_reason=yawing_reason,
