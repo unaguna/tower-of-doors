@@ -181,3 +181,16 @@ def update_end_yawing(
 
     cursor.execute(query)
     cursor.close()
+
+
+def update_cancel_scheduled(connection: MySQLdb.Connection):
+    with connection.cursor() as cursor:
+        query = f"""
+        UPDATE {_TABLE}
+        SET
+            `yawing_status` = {sql_literal(YawingStatus.CANCELLED)}
+        WHERE
+            `yawing_status` = {sql_literal(YawingStatus.SCHEDULED)}
+        """
+
+        cursor.execute(query)

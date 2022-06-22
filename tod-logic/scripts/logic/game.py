@@ -64,6 +64,9 @@ def start_game(
             connection=connection, game_id=game_record.id, now=now
         )
 
+        # Cancel all yawing as they may interfere with the progress of the game.
+        service.yawingschedule.update_cancel_scheduled(connection=connection)
+
         # start yawing because the game will start with interval-turn
         if game_status_record.on_interval_turn:
             _yaw_by_interval_phase(
